@@ -1,0 +1,646 @@
+================================================================
+CHRIS ALCHEMY CONSULTING — GHL CONVERSATIONAL AI KNOWLEDGE BASE
+================================================================
+Source: Official website — chrisalchemyconsulting.com
+Purpose: Train the GHL chat widget to accurately answer visitor questions
+Last updated: May 2026
+
+IMPORTANT NOTES FOR BOT BEHAVIOR:
+- Never promise specific timelines not listed here
+- For pricing not listed, direct to a strategy call
+- For complex/custom questions, direct to Book a Call or Contact page
+- Do NOT invent features, guarantees, or terms not in this document
+- Always be helpful, not salesy; information-first approach
+
+================================================================
+SECTION 1 — BUSINESS OVERVIEW
+================================================================
+
+BUSINESS NAME: Chris Alchemy Consulting
+WEBSITE: chrisalchemyconsulting.com
+TAGLINE: "Transforming Businesses Through Automation & Strategy"
+LOCATION: United States (serves clients worldwide)
+COPYRIGHT: © 2026 Chris Alchemy Consulting
+
+WHAT THE BUSINESS DOES:
+Chris Alchemy Consulting engineers CRM pipelines, automation frameworks, and growth systems for entrepreneurs and growing businesses using GoHighLevel (GHL). The goal is to help clients close more deals, retain more clients, and scale without the chaos — all through done-for-you system setup.
+
+CORE VALUE PROPOSITION:
+- 100% Done-For-You CRM setup inside GoHighLevel
+- Automated workflows that run without manual intervention
+- Onboarding completion in as little as 14 days
+- 4+ plan tiers available to match any business size
+
+KEY STATS DISPLAYED ON SITE:
+- Starting price: $299/mo (Starter Plan)
+- Average onboarding completion time: 14 days
+- 100% done-for-you CRM setup
+- 5-star client satisfaction rating
+- Plans range from Starter ($299/mo) to Enterprise ($1,499/mo)
+
+================================================================
+SECTION 2 — ABOUT CHRIS KARAGEUZIAN
+================================================================
+
+FULL NAME: Chris Karageuzian
+TITLE: Founder, Chris Alchemy Consulting
+DESCRIPTION: Entrepreneur, strategist, and architect of systems that turn ambition into scalable revenue.
+
+BACKGROUND:
+- Co-founded and successfully exited an AI-powered lending company
+- Journey from scrappy startup to scaled exit taught him what separates businesses that thrive from those that grind to a halt
+- Brings institutional-level operational knowledge to entrepreneurs and growing businesses
+
+PHILOSOPHY:
+"It's not about doing more; it's about doing the right things, faster, cleaner, and with a strategy that works."
+
+SPEAKING CREDENTIALS:
+- 50+ talks delivered
+- 5-star average rating
+- 10,000+ audience reached
+
+CORE EXPERTISE AREAS:
+1. CRM Architecture — Deep expertise in GoHighLevel: pipeline design, automation triggers, opportunity management, compliance setup
+2. Automation Engineering — End-to-end workflow automation: onboarding, contracts, appointment flows, client communication sequences
+3. Revenue Strategy — Financial modeling, revenue forecasting, growth planning from a founder who navigated early-stage through successful exit
+4. Leadership & Mindset — Coaching on executive presence, decision-making frameworks, mindset shifts for scaling organizations
+5. AI & Automation Integration — Practical implementation of AI tools to reduce operational overhead while increasing delivery quality and speed
+6. Exit & Growth Planning — Advising founders on building businesses structured for capital raises, strategic partnerships, and eventual exit
+
+THE ALCHEMY PHILOSOPHY (Core Values):
+1. Strategy First — Every system and automation is built around a deliberate growth strategy aligned to specific goals, not a template
+2. Speed & Precision — Done-for-you means done right and done fast. Most clients are fully operational within two weeks of onboarding
+3. Systems Over Hustle — Sustainable growth comes from working smarter, not harder. We build the machine so you can step back and lead
+4. Metrics-Driven — Every pipeline, automation, and campaign is tracked and measured. If it's not producing results, we fix it
+5. Partnership Mindset — We're not a vendor; we're a growth partner. Your success is our success
+6. Built to Scale — Everything is designed to handle 10X the volume you have today. We architect for where you're going, not just where you are now
+
+TIMELINE / JOURNEY:
+- Early Career: Co-founded AI-powered lending platform from the ground up
+- Exit: Executed a successful company sale, validating the systems-first approach
+- Today: Chris Alchemy Consulting — bringing institutional-grade CRM systems, automation frameworks, and revenue engineering to ambitious founders
+
+================================================================
+SECTION 3 — SERVICES & PRICING PLANS
+================================================================
+
+OVERVIEW:
+Every plan includes full GoHighLevel CRM setup, automation framework, and done-for-you onboarding system.
+
+BILLING OPTIONS:
+- Monthly billing available
+- Yearly billing available (saves approximately 17% — 2 months free)
+- All plans include a 14-day onboarding period
+- Enterprise requires a sales call for custom scoping
+
+---
+
+PLAN 1: STARTER
+Price: $299/month (or $2,990/year — 2 months free)
+Best for: Solo operators and small teams launching their first automated CRM system. Get the fundamentals right from day one.
+
+WHAT'S INCLUDED:
+✓ 3 Users
+✓ 5,000 Contacts
+✓ Full CRM Pipeline Setup
+✓ Onboarding Workflow
+✓ Appointment Confirmation
+✓ Phone Registry Setup
+✗ Custom Automation Recipes (not included)
+✗ Unlimited Contacts (not included)
+✗ Priority Support (not included)
+
+---
+
+PLAN 2: GROWTH (Most Popular)
+Price: $499/month (or $4,990/year — 2 months free)
+Best for: Growing businesses ready to handle more clients, more leads, and more revenue without proportional overhead.
+
+WHAT'S INCLUDED:
+✓ 10 Users
+✓ 25,000 Contacts
+✓ Full CRM Pipeline Setup
+✓ Full Automation Workflow Suite
+✓ Contract Signed Workflow
+✓ No-Show Rescheduling
+✓ Priority Email Support
+✗ Unlimited Contacts (not included)
+✗ Custom Recipes (not included)
+
+---
+
+PLAN 3: SCALE
+Price: $799/month (or $7,990/year — 2 months free)
+Best for: Agencies and scaling businesses. Unlimited users, unlimited contacts, every automation with no restrictions.
+
+WHAT'S INCLUDED:
+✓ Unlimited Users
+✓ Unlimited Contacts
+✓ All Core Features
+✓ Custom Automation Recipes
+✓ Revenue Reporting Dashboard
+✓ Dedicated Account Manager
+✓ Monthly Strategy Reviews
+✓ API Access
+✗ Custom Enterprise Setup (not included)
+
+---
+
+PLAN 4: ENTERPRISE
+Price: $1,499/month (or $14,990/year — 2 months free)
+Best for: Established organizations needing fully custom setup, white-glove service, custom integrations, and dedicated engineering support.
+
+WHAT'S INCLUDED:
+✓ Unlimited Everything
+✓ Custom Integrations
+✓ White-Label Options
+✓ Dedicated Engineer
+✓ SLA Guarantee
+✓ Quarterly Business Reviews
+✓ Custom Reporting
+✓ Priority Phone Support
+✓ Custom Sales Funnel Build
+
+HOW TO GET STARTED: All plans are initiated by booking a free strategy call.
+
+---
+
+FULL FEATURE COMPARISON TABLE:
+
+Feature                     | Starter | Growth | Scale | Enterprise
+Users                       |    3    |   10   | Unlim | Unlimited
+Contacts                    |  5,000  | 25,000 | Unlim | Unlimited
+CRM Pipeline Setup          |   Yes   |  Yes   |  Yes  |    Yes
+Onboarding Workflow         |   Yes   |  Yes   |  Yes  |    Yes
+Contract Signed Workflow    |   No    |  Yes   |  Yes  |    Yes
+Appointment Confirmation    |   Yes   |  Yes   |  Yes  |    Yes
+No-Show Rescheduling        |   No    |  Yes   |  Yes  |    Yes
+Phone Compliance Setup      |   Yes   |  Yes   |  Yes  |    Yes
+Custom Automation Recipes   |   No    |   No   |  Yes  |    Yes
+Revenue Dashboard           |   No    |   No   |  Yes  |    Yes
+Dedicated Account Manager   |   No    |   No   |  Yes  |    Yes
+Custom Integrations         |   No    |   No   |   No  |    Yes
+White-Label Options         |   No    |   No   |   No  |    Yes
+SLA Guarantee               |   No    |   No   |   No  |    Yes
+
+================================================================
+SECTION 4 — WHAT'S INCLUDED IN EVERY ENGAGEMENT (DELIVERABLES)
+================================================================
+
+Every engagement delivers these core components:
+
+1. ONBOARDING SYSTEM DESIGN
+- Complete onboarding process flow mapping
+- End-to-end architecture from purchase to client activation
+- Stage definitions and automation trigger points
+- Document templates for each onboarding step
+
+2. CRM PIPELINE (GoHighLevel)
+- Dedicated onboarding pipeline post-purchase
+- Pipeline stages aligned to onboarding progress
+- Automation triggers at each stage transition
+- Opportunity tracking and deal value setup
+
+3. PHONE REGISTRY & COMPLIANCE
+- Phone number registration and spam score review
+- Number reputation assessment
+- Existing approvals audit and tracking
+- Email verification setup (compliance)
+
+4. AUTOMATION WORKFLOW FRAMEWORK
+- Lead capture to contract, fully automated
+- Appointment confirmation and reminder sequences
+- No-show recovery and rescheduling automation
+- Custom trigger points built around your process
+
+5 CORE AUTOMATION WORKFLOWS INCLUDED (referenced across plans):
+- Onboarding workflow
+- Contract signing workflow
+- Appointment confirmation
+- Show/No-show handling
+- Client activation sequence
+
+================================================================
+SECTION 5 — ADD-ONS AND GHL RECIPES
+================================================================
+
+HOW ADD-ONS WORK:
+Each add-on is a standalone automation module that installs directly into your GHL account. Done-for-you setup is included with every add-on. We don't sell a file and leave you guessing — every add-on is installed, tested, and live in your GHL before we close the ticket.
+
+---
+
+ADD-ON 1: Follow-Up Sequence
+Price: $97 one-time
+What it does: Multi-touch, multi-channel follow-up sequence that nurtures cold leads back to booked calls. Proven 7-step system.
+Includes:
+- 7-step email + SMS sequence
+- Cadence: Days 1, 2, 3, 5, 7, 14, 30
+- Objection-handling copy included
+- A/B tested subject lines
+- GHL workflow file included
+
+---
+
+ADD-ON 2: Appointment Confirmation Suite
+Price: $127 one-time
+What it does: Full confirmation and reminder system that slashes no-show rates by up to 60%. Runs completely on autopilot.
+Includes:
+- Instant booking confirmation
+- 48hr, 24hr, and 1hr reminders
+- SMS + email dual delivery
+- Calendar link re-send on no-confirm
+- Post-show thank-you automation
+
+---
+
+ADD-ON 3: No-Show Recovery System
+Price: $87 one-time
+What it does: Automatically re-engages no-shows with a 3-touch recovery sequence that books them back 40% of the time.
+Includes:
+- Triggered on no-show status
+- Empathetic re-engagement copy
+- Direct rescheduling link
+- 2 SMS + 1 email sequence
+- Stops on rebook
+
+---
+
+ADD-ON 4: Review Generation Sequence
+Price: $67 one-time
+What it does: Automatically requests Google/Facebook reviews from happy clients at the perfect moment — after a positive interaction.
+Includes:
+- Timed post-win review request
+- Direct link to review platforms
+- Negative feedback redirect flow
+- Follow-up if no review in 48hrs
+- Stops automatically on review
+
+---
+
+ADD-ON 5: Contract + Proposal Workflow
+Price: $147 one-time
+What it does: Automates the entire proposal-to-contract pipeline. Sent, signed, and onboarding started without a single manual step.
+Includes:
+- Proposal delivery automation
+- Contract send on verbal yes
+- Follow-up if unsigned after 24hrs
+- Onboarding trigger on signature
+- Welcome email + calendar link
+
+---
+
+ADD-ON 6: Lead Reactivation Campaign
+Price: $117 one-time
+What it does: Breathes life into dead leads in your CRM. 14-day reactivation sequence turns cold contacts into warm conversations.
+Includes:
+- 14-day reactivation sequence
+- Pattern-interrupt messaging
+- Offer-based re-engagement
+- SMS + email + voicemail drops
+- Auto-tag on re-engagement
+
+---
+
+COMPLETE ADD-ON BUNDLE:
+Price: $397 (one-time) — saves $244 off individual prices
+Individual total would be: $641
+What you get:
+✓ Follow-Up Sequence
+✓ Appointment Confirmation Suite
+✓ No-Show Recovery System
+✓ Review Generation Sequence
+✓ Contract + Proposal Workflow
+✓ Lead Reactivation Campaign
+✓ All 6 GHL Recipes (below)
+✓ Done-for-you setup included
+
+---
+
+GHL AUTOMATION RECIPES (6 pre-built blueprints):
+Each recipe comes with trigger setup, workflow logic, and copy templates. They drop directly into your GoHighLevel account.
+
+Recipe 1 — New Client Onboarding Recipe (Category: Onboarding)
+Steps: Order form submitted → CRM contact created + tagged → Contract sent via DocuSign/HelloSign → Welcome email with next steps → Pipeline opportunity created
+
+Recipe 2 — Lead Nurture Speed-to-Lead Recipe (Category: Sales)
+Logic: Contacts new leads within 60 seconds via SMS and email. Studies show first responder wins 78% of deals.
+Steps: New lead enters system → Instant SMS within 60 seconds → Personalized intro email → Calendar link for booking → Salesperson notification
+
+Recipe 3 — Client Retention + Upsell Recipe (Category: Retention)
+Steps: 30-day check-in message → Value reinforcement email → 60-day results celebration → Upsell offer presentation → 90-day renewal prompt
+
+Recipe 4 — Referral Generation Recipe (Category: Referrals)
+Steps: Triggered after positive outcome tag → Referral ask SMS + email → Referral link sent → Referral tracking tag applied → Thank-you + reward notification
+
+Recipe 5 — Dormant Lead Reactivation Recipe (Category: Re-engagement)
+Logic: Automatically identifies leads with 30+ days of inactivity.
+Steps: Filter: 30 days no activity → Pattern-interrupt SMS → Value-add email with new offer → Final breakup message → Move to archive if no response
+
+Recipe 6 — Webinar & Event Registration Recipe (Category: Events)
+Steps: Registration confirmation → Day-before reminder → 1-hour pre-event message → Post-event replay + offer → Non-attender follow-up
+
+================================================================
+SECTION 6 — MARKETING SERVICES
+================================================================
+
+OVERVIEW:
+Full-stack marketing services designed to generate, nurture, and convert leads at scale. Marketing campaigns are wired directly into GoHighLevel CRM so every lead is instantly captured, tagged, and entering a nurture sequence.
+
+CORE PROMISE: A closed-loop marketing machine — traffic → lead → automation → client. No lead falls through the cracks. No follow-up missed.
+
+MARKETING PERFORMANCE STATS (site-listed):
+- 3.2x average ROI on marketing spend
+- 68% reduction in cost per lead
+- 42% average close rate improvement
+
+MARKETING SERVICES OFFERED:
+
+1. PAID ADVERTISING
+Facebook, Instagram, and Google ad campaigns engineered for your target audience with GHL lead capture built in.
+Includes: Campaign strategy & setup, creative & copy, A/B testing, weekly optimization
+
+2. SALES FUNNEL BUILD
+High-converting landing pages, opt-in funnels, and VSL pages built directly in GoHighLevel.
+Includes: Landing page design, lead magnet setup, thank-you page flow, CRM integration
+
+3. EMAIL MARKETING
+Automated email campaigns, newsletters, and broadcast sequences that nurture your list and drive repeat revenue.
+Includes: Strategy & calendar, copywriting included, segmentation setup, deliverability optimization
+
+4. SMS MARKETING
+Strategic SMS campaigns with 98% open rates. Promotions, re-engagement, and event announcements.
+Includes: Compliant list management, campaign copy, broadcast scheduling, response automation
+
+5. CONTENT & SEO
+Strategic content creation and SEO optimization for organic traffic and long-term brand authority.
+Includes: Keyword research, blog content production, on-page optimization, backlink building
+
+6. ANALYTICS & REPORTING
+Full attribution reporting — know exactly which campaigns drive revenue, not just leads.
+Includes: Dashboard setup, weekly performance reports, ROI tracking, conversion analysis
+
+THE MARKETING PROCESS (4 steps):
+1. Audit & Strategy — Deep audit of current marketing, ICP, and competitive landscape. Build a 90-day strategy around specific revenue goals
+2. Build & Integrate — Campaigns, funnels, and automations are built and wired directly into GHL CRM
+3. Launch & Monitor — Campaigns go live with real-time monitoring daily for the first two weeks
+4. Optimize & Scale — Weekly analysis, A/B testing, systematic scaling. Goal: drive down cost per acquisition and drive up lifetime value
+
+MARKETING FAQs:
+
+Q: Do you need GoHighLevel to use your marketing services?
+A: Not necessarily, but it's highly recommended. Our marketing services are designed to integrate seamlessly with GHL so every lead flows automatically into your pipeline. If you don't have GHL, we'll recommend the right setup as part of onboarding.
+
+Q: What's the minimum ad budget you recommend?
+A: We typically recommend a minimum of $1,500/month in ad spend for meaningful results. That said, we've helped clients generate strong ROI with as little as $500/month depending on the niche and offer. We'll give you a realistic projection on our strategy call.
+
+Q: How long until we see results?
+A: Typically 2–4 weeks for early indicators and 60–90 days for consistent, optimized results. Paid ads can produce leads within 48–72 hours of launch; SEO takes 3–6 months to compound.
+
+Q: Do you write the ad copy and creative?
+A: Yes. Our service includes full copywriting and creative direction. We handle the scripts, headlines, body copy, and visual concepts. You review and approve before anything goes live.
+
+Q: Can you work with our existing marketing team?
+A: Absolutely. Many clients bring us in alongside their existing team to provide strategic oversight, GHL integration expertise, and campaign optimization. We can work as a fractional CMO, a specialist contractor, or a hands-on execution partner.
+
+CLIENT MARKETING RESULTS (site-listed):
+- Coaching Business: $47K revenue from a single 10-day re-engagement campaign to a dormant lead list of 1,200 contacts
+- Real Estate Agency: 312 leads in 45 days from Facebook/Instagram ads with average CPL of $8.40 (down from $32 before)
+- B2B Services Firm: 62% increase in qualified demos booked per month after implementing speed-to-lead recipe and restructuring LinkedIn outreach funnel
+
+================================================================
+SECTION 7 — SPEAKING SERVICES
+================================================================
+
+OVERVIEW:
+Chris delivers high-density, immediately actionable content that audiences remember and implement. His presentations blend sharp business insight with relatable stories from the trenches.
+
+SPEAKING STATS:
+- 50+ talks delivered
+- 5-star average rating
+- 10,000+ audience reached
+
+SIGNATURE SPEAKING TOPICS:
+1. "The Revenue Machine: Building a CRM That Closes for You" — Tags: CRM, Automation, Revenue
+2. "Scale Without Breaking: Systems for High-Growth Companies" — Tags: Operations, Growth, Leadership
+3. "Automating Your Sales Process Without Losing the Human Touch" — Tags: Sales, Automation
+4. "The Alchemy of Exit: Building a Business Worth Buying" — Tags: Exit Strategy, M&A, Business Value
+5. "AI & Automation: The Founder's Practical Playbook" — Tags: AI, Automation, Practical
+6. "Mindset of the Scaling Founder: Lead with Clarity" — Tags: Mindset, Leadership, Founder
+
+FORMAT OPTIONS:
+1. Keynote Address — 45–90 minutes. High-energy, story-driven. Perfect for conferences, summits, annual kickoffs.
+2. Workshop / Masterclass — 2–4 hours. Hands-on, interactive. Participants leave with a built framework they can immediately deploy.
+3. Panel Discussion — 30–60 minutes. Chris as panelist or moderator on automation, CRM, entrepreneurship, scaling.
+4. Corporate Training — Half or full day. For sales teams, operations, and leadership on CRM adoption, automation, and growth systems.
+5. Podcast / Media — 30–90 minutes. Available for podcast appearances, media interviews, expert commentary.
+6. Virtual / Webinar — Any duration. All formats available virtually.
+
+PAST SPEAKING ENGAGEMENTS (site-listed):
+- Founders & Operators Summit (Conference) — Keynote, 800+ attendees
+- GHL Mastery Live (Workshop) — Masterclass, 200+ attendees
+- Agency Owner Retreat (Corporate) — Training, 50+ agency owners
+- Scale or Fail Podcast (Podcast) — Guest, 25K+ downloads
+- Automation for Entrepreneurs (Webinar) — Virtual, 1,200+ registered
+- AI & Future of Sales Panel (Panel) — Panelist, Tech Industry
+
+SPEAKING INQUIRY PROCESS:
+- Submit inquiry form on the Speaking page with event details
+- Chris's team responds within 24 business hours with availability and rates
+- Content is customized for your audience and goals
+- Available in-person and virtually worldwide
+
+================================================================
+SECTION 8 — HOW IT WORKS (3-PHASE PROCESS)
+================================================================
+
+PHASE 1 — STRATEGY CALL
+We map your current business, identify gaps, and design your custom automation blueprint — all in one deep-dive session.
+
+PHASE 2 — BUILD & DEPLOY
+Our team builds your entire CRM pipeline, automation workflows, and onboarding system inside GoHighLevel within days.
+
+PHASE 3 — LAUNCH & SCALE
+Go live with a fully automated system. We train your team, monitor performance, and continuously optimize for growth.
+
+================================================================
+SECTION 9 — REVENUE CALCULATOR (TOOL)
+================================================================
+
+WHAT IT DOES:
+The Lead Loss & Revenue Calculator shows visitors exactly how many leads slip through the cracks every month, what those leads are worth, and what automation recovers.
+
+HOW IT WORKS:
+- Input: Monthly Leads, Average Deal Value, Current Close Rate
+- The calculator assumes ~40% of leads go uncontacted without automation (industry data)
+- With automation: 97% contact rate, 25% close rate lift modeled
+- Output: Leads missed monthly, revenue left on table, current vs. projected revenue, monthly gain, annual recovery
+
+The calculator is available at: chrisalchemyconsulting.com/calculator.html
+
+================================================================
+SECTION 10 — FREE STRATEGY CALL (BOOKING)
+================================================================
+
+WHAT IT IS:
+A free 30-minute strategy call. No obligation. We audit your current setup, identify the gaps, and map out exactly what your business needs to scale.
+
+FORMAT: Video or Phone (available worldwide)
+COST: 100% free
+AVAILABILITY: Same-week availability
+
+WHAT HAPPENS ON THE CALL:
+1. Business Audit — We review your current CRM, follow-up process, and automation setup to identify exactly where you're losing revenue
+2. Custom Blueprint — You walk away with a clear picture of what your automation system should look like, with exact steps to build it
+3. Revenue Projection — We calculate the specific dollar amount you're leaving on the table and what a properly built system would add to your monthly revenue
+4. Right Plan for You — We'll match you to the right service tier and any add-ons that will move the needle most for your specific business
+
+AFTER THE CALL:
+- You'll receive a follow-up email with a summary of recommendations
+- If interested in moving forward: a custom proposal within 24 hours
+- No pressure — we follow up once and then let you decide on your timeline
+
+BOOKING FAQ:
+
+Q: Is the strategy call really free?
+A: 100% free, no strings attached. We offer this call because most people leave it with massive clarity on their business. Even if you don't work with us, you'll walk away with real, actionable insights.
+
+Q: Do I need to have GoHighLevel already?
+A: No. We work with clients at all stages — from businesses that have never touched a CRM to those with an existing GHL account that needs restructuring. We'll assess where you are and recommend the right next step.
+
+Q: How long does the call take?
+A: We block 30 minutes for every strategy call. Some go a little longer if there's a lot to cover; we never cut you short.
+
+Q: What happens after the call?
+A: You'll receive a follow-up email with a summary of recommendations and, if you're interested, a custom proposal within 24 hours.
+
+HOW TO BOOK: Visit chrisalchemyconsulting.com/calendar.html
+A GHL booking widget is embedded on that page for direct scheduling.
+
+================================================================
+SECTION 11 — CONTACT & RESPONSE TIMES
+================================================================
+
+WEBSITE: chrisalchemyconsulting.com
+LOCATION: Based in the United States (serves clients worldwide)
+RESPONSE TIME: Within 24 hours (business hours)
+
+CONTACT OPTIONS:
+1. Contact form at chrisalchemyconsulting.com/contact.html — we respond within 24 hours
+2. Book a free strategy call directly at chrisalchemyconsulting.com/calendar.html
+3. Speaking inquiry form at chrisalchemyconsulting.com/speaking.html — 24-hour response
+
+WHAT HAPPENS AFTER CONTACT FORM SUBMISSION:
+1. We receive your message instantly
+2. We review your goals and current setup within a few hours
+3. We respond within 24 hours with next steps or a calendar link
+
+ROLES SERVED (contact form dropdown options — indicates who we work with):
+- Entrepreneurs / Founders
+- Agency Owners
+- Sales Team Leads
+- Coaches / Consultants
+- Other business operators
+
+SERVICES TO INQUIRE ABOUT:
+- CRM Setup & Pipeline Design
+- Automation Workflows
+- SaaS Platform Setup
+- Speaking Engagement
+- Marketing Systems
+- Multiple Services
+- "Not sure yet, just exploring" is also welcome
+
+================================================================
+SECTION 12 — CLIENT TESTIMONIALS (from the website)
+================================================================
+
+"Chris set up our entire GoHighLevel pipeline in under two weeks. Our lead follow-up rate went from 40% to 95%. That's pure revenue we were leaving on the table."
+— Marcus Reynolds, CEO, Apex Realty Group
+
+"The automation framework Chris built saves us 20+ hours a week. Every new client is onboarded perfectly without us lifting a finger. Worth every penny."
+— Sarah Liu, Founder, Scale Digital Agency
+
+"We went from 3 dropped leads per week to zero. The appointment confirmation sequences alone recovered $12,000 in the first month. Game-changing work."
+— David Morales, Owner, Elite Coaching Co.
+
+"The Growth Plan gave us everything we needed to handle 10X the clients. Professional setup, clean pipelines, and automations that actually work. Highly recommend."
+— Jessica Park, Director, NovaCare Health
+
+"Chris understood our sales process better than we did. He mapped it, automated it, and now our close rate is up 38%. That's not software; that's strategy."
+— Alex Turner, Founder, Momentum Consulting
+
+"I booked the call expecting a sales pitch. Instead I got a 30-minute masterclass on where my business was bleeding money. Chris gave me three things I could fix that week, for free."
+— Mark T., Agency Owner, Scale Plan Client
+
+"Chris doesn't just speak; he changes how people think about their business. Our entire team left his workshop and rebuilt their CRM the next day. The ROI on booking him was immediate."
+— Rachel Kim, Event Director, Founders Forward Summit
+
+================================================================
+SECTION 13 — FREQUENTLY ASKED QUESTIONS (BOT SCRIPTS)
+================================================================
+
+Q: What is Chris Alchemy Consulting?
+A: Chris Alchemy Consulting is a premium CRM setup, automation, and revenue systems firm. We specialize in building done-for-you GoHighLevel pipelines, automation frameworks, and growth systems for entrepreneurs and businesses ready to scale.
+
+Q: What platform do you use?
+A: We specialize in GoHighLevel (GHL), which we use to build CRM pipelines, automate workflows, and set up all communication sequences. We build and configure everything for you.
+
+Q: Do I need to know how to use GoHighLevel?
+A: No. Our service is done-for-you. We handle all the technical setup inside GoHighLevel. You don't need any prior experience.
+
+Q: What's your starting price?
+A: Our Starter Plan begins at $299/month. It includes full CRM pipeline setup, onboarding workflow, appointment confirmation, and phone registry setup for up to 3 users and 5,000 contacts.
+
+Q: What plans do you offer?
+A: We have four plans:
+- Starter: $299/mo (3 users, 5,000 contacts)
+- Growth: $499/mo (10 users, 25,000 contacts) — Most Popular
+- Scale: $799/mo (unlimited users & contacts)
+- Enterprise: $1,499/mo (fully custom, white-glove)
+All plans can be billed yearly to save approximately 17%.
+
+Q: Which plan is right for me?
+A: The best way to find out is to book a free 30-minute strategy call. We'll review your business, lead volume, and goals and match you to the right tier. There's no obligation.
+
+Q: Do you offer yearly billing?
+A: Yes. Yearly billing saves approximately 17% (equivalent to 2 months free) on any plan.
+
+Q: How long does setup take?
+A: Most clients are fully operational within 14 days of onboarding. Our team moves fast — done right and done fast is part of our core philosophy.
+
+Q: What's included in every plan?
+A: Every plan includes: full CRM pipeline setup, onboarding workflow, appointment confirmation, and phone registry & compliance setup. Higher plans add more users, more contacts, and advanced automation features.
+
+Q: What are add-ons?
+A: Add-ons are standalone automation modules you can add to any plan. They're installed and configured in your GHL account by our team. Options include follow-up sequences ($97), appointment confirmation suites ($127), no-show recovery ($87), review generation ($67), contract workflows ($147), and lead reactivation ($117). A bundle with everything is available for $397 (saves $244).
+
+Q: What is a GHL Recipe?
+A: A GHL Recipe is a pre-built automation blueprint that drops directly into your GoHighLevel account. Each comes with trigger setup, workflow logic, and copy templates. Examples include speed-to-lead, client retention/upsell, referral generation, and event registration sequences.
+
+Q: Can I add marketing services to my plan?
+A: Yes. We offer full-stack marketing services including paid advertising, sales funnel builds, email marketing, SMS marketing, content & SEO, and analytics. These are designed to integrate directly with your GoHighLevel system.
+
+Q: Do you work with businesses that don't have GoHighLevel yet?
+A: Absolutely. We work with clients at all stages — from those who have never had a CRM to those restructuring an existing GHL account. We'll advise you on what you need during the strategy call.
+
+Q: Is the strategy call really free? What's the catch?
+A: It's 100% free with no obligation. We offer it because most people leave with real clarity about their business and many choose to work with us. Even if you don't, you'll walk away with actionable insights about where you're losing revenue.
+
+Q: Can Chris speak at our event?
+A: Yes. Chris is available for keynotes, workshops, panel discussions, corporate training, podcasts, and virtual sessions. You can submit a speaking inquiry at chrisalchemyconsulting.com/speaking.html and his team will respond within 24 business hours.
+
+Q: How do I contact you?
+A: You can contact us via the contact form at chrisalchemyconsulting.com/contact.html, or book a call directly at chrisalchemyconsulting.com/calendar.html. We respond within 24 hours.
+
+Q: How do I calculate my potential ROI?
+A: Use the free Lead Loss & Revenue Calculator at chrisalchemyconsulting.com/calculator.html. Enter your monthly leads, average deal value, and current close rate to see how much revenue you're leaving on the table and what automation could recover.
+
+Q: What industries do you work with?
+A: Our systems are effective across industries where lead nurturing and client onboarding are critical — including real estate, coaching, agencies, B2B services, health & wellness, consulting, and more. The strategy call will confirm whether we're the right fit.
+
+Q: Do you guarantee results?
+A: We don't make specific income guarantees. What we guarantee is a done-for-you setup built correctly, tested, and live in your GHL. The results shown on our site (like 95% follow-up rates, $12K recovered in month one, etc.) come from real client engagements. Your results will depend on your offer, lead volume, and business context.
+
+================================================================
+END OF KNOWLEDGE BASE
+================================================================

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact | Chris Alchemy Consulting</title>
+  <meta name="description" content="Get in touch with Chris Alchemy Consulting. Send us a message and we'll respond within 24 hours to discuss your CRM, automation, and growth goals."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap"/></noscript>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .contact-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:5rem;align-items:flex-start;}
+    @media(max-width:960px){.contact-grid{grid-template-columns:1fr;gap:3rem;}}
+
+    /* Form Panel */
+    .contact-form-wrap{background:rgba(10,10,10,0.7);border:1px solid rgba(216,169,91,0.15);border-radius:20px;padding:2.5rem 2.25rem;}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;}
+    @media(max-width:600px){.form-row{grid-template-columns:1fr;}}
+    .form-group{display:flex;flex-direction:column;gap:0.45rem;margin-bottom:1.25rem;}
+    .form-group label{font-size:0.8rem;font-weight:600;color:rgba(255,255,255,0.65);letter-spacing:0.04em;text-transform:uppercase;}
+    .form-group input,
+    .form-group select,
+    .form-group textarea{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:0.8rem 1rem;color:var(--white);font-family:var(--font-body);font-size:0.9rem;transition:border-color 0.3s ease,background 0.3s ease;outline:none;width:100%;}
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus{border-color:rgba(216,169,91,0.5);background:rgba(216,169,91,0.04);}
+    .form-group input::placeholder,
+    .form-group textarea::placeholder{color:rgba(255,255,255,0.22);}
+    .form-group select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23d8a95b' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
+    .form-group select option{background:#0a0a0a;color:var(--white);}
+    .form-group textarea{resize:vertical;min-height:130px;line-height:1.65;}
+    .form-error{font-size:0.75rem;color:#e05c5c;margin-top:0.25rem;display:none;}
+    .form-group.has-error input,
+    .form-group.has-error textarea{border-color:#e05c5c;}
+    .form-group.has-error .form-error{display:block;}
+
+    /* Success state */
+    .contact-success{display:none;text-align:center;padding:3rem 2rem;}
+    .contact-success.show{display:block;}
+    .contact-form-fields.hidden{display:none;}
+    .success-icon{width:64px;height:64px;background:rgba(216,169,91,0.12);border:1px solid rgba(216,169,91,0.3);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;color:var(--gold);}
+    .success-title{font-family:'Montserrat',sans-serif;font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:0.75rem;}
+    .success-text{font-size:0.9rem;color:rgba(255,255,255,0.5);line-height:1.7;max-width:340px;margin:0 auto 2rem;}
+
+    /* Info Panel */
+    .contact-info{display:flex;flex-direction:column;gap:2rem;}
+    .contact-info-card{background:rgba(10,10,10,0.6);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:1.75rem 1.5rem;transition:border-color 0.3s ease;}
+    .contact-info-card:hover{border-color:rgba(216,169,91,0.25);}
+    .ci-icon{width:42px;height:42px;background:rgba(216,169,91,0.1);border:1px solid rgba(216,169,91,0.2);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--gold);margin-bottom:1rem;flex-shrink:0;}
+    .ci-title{font-family:'Montserrat',sans-serif;font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:0.35rem;}
+    .ci-text{font-size:0.85rem;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+    /* Steps */
+    .next-steps{display:flex;flex-direction:column;gap:1rem;margin-top:0.5rem;}
+    .next-step{display:flex;align-items:flex-start;gap:0.875rem;}
+    .ns-num{width:28px;height:28px;background:rgba(216,169,91,0.12);border:1px solid rgba(216,169,91,0.25);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Montserrat',sans-serif;font-size:0.72rem;font-weight:700;color:var(--gold);flex-shrink:0;margin-top:2px;}
+    .ns-text{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.6;}
+    .ns-text strong{color:rgba(255,255,255,0.75);font-weight:600;}
+
+    @media(max-width:768px){
+      .contact-form-wrap{padding:1.75rem 1.25rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="addons.html">Add-ons</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="marketing.html">Marketing</a></li>
+      <li><a href="calculator.html">Calculator</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <a href="calendar.html" class="nav-btn btn">Book a Call</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html">Services</a>
+  <a href="addons.html">Add-ons</a>
+  <a href="speaking.html">Speaking</a>
+  <a href="marketing.html">Marketing</a>
+  <a href="calculator.html">Calculator</a>
+  <a href="contact.html">Contact</a>
+  <a href="calendar.html" class="btn btn-gold nav-btn">Book a Call</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-head">
+  <div class="container">
+    <div class="section-eyebrow" style="justify-content:center;" data-aos="fade">Get in Touch</div>
+    <h1 class="section-title" data-aos="up" data-delay="100">Let's <em>Start the Conversation</em></h1>
+    <p class="section-desc" style="max-width:520px;margin:0 auto;" data-aos="up" data-delay="200">Whether you're ready to transform your CRM, automate your follow-up, or just want to explore what's possible, we'd love to hear from you.</p>
+    <div class="ph-line"></div>
+  </div>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- FORM PANEL -->
+      <div data-aos="right">
+        <div class="contact-form-wrap">
+          <div class="contact-form-fields">
+            <h3 style="font-family:'Montserrat',sans-serif;font-size:1.2rem;color:var(--white);font-weight:700;margin-bottom:0.4rem;">Send Us a Message</h3>
+            <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);margin-bottom:2rem;line-height:1.6;">Fill in the form below and we'll get back to you within 24 hours.</p>
+
+            <form id="contact-form" novalidate>
+              <div class="form-row">
+                <div class="form-group" id="fg-name">
+                  <label for="full-name">Full Name <span style="color:var(--gold);">*</span></label>
+                  <input type="text" id="full-name" name="full_name" placeholder="Chris Smith" autocomplete="name"/>
+                  <span class="form-error">Please enter your full name.</span>
+                </div>
+                <div class="form-group" id="fg-email">
+                  <label for="email">Email Address <span style="color:var(--gold);">*</span></label>
+                  <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email"/>
+                  <span class="form-error">Please enter a valid email.</span>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="phone">Phone Number <span style="color:rgba(255,255,255,0.25);font-weight:400;text-transform:none;letter-spacing:0;">(optional)</span></label>
+                  <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" autocomplete="tel"/>
+                </div>
+                <div class="form-group">
+                  <label for="role">I Am A</label>
+                  <select id="role" name="role">
+                    <option value="" disabled selected>Select your role</option>
+                    <option value="entrepreneur">Entrepreneur / Founder</option>
+                    <option value="agency">Agency Owner</option>
+                    <option value="sales">Sales Team Lead</option>
+                    <option value="coach">Coach / Consultant</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="service">Interested In</label>
+                <select id="service" name="service">
+                  <option value="" disabled selected>Select a service</option>
+                  <option value="crm">CRM Setup & Pipeline Design</option>
+                  <option value="automation">Automation Workflows</option>
+                  <option value="saas">SaaS Platform Setup</option>
+                  <option value="speaking">Speaking Engagement</option>
+                  <option value="marketing">Marketing Systems</option>
+                  <option value="multiple">Multiple Services</option>
+                  <option value="unsure">Not sure yet, just exploring</option>
+                </select>
+              </div>
+
+              <div class="form-group" id="fg-message">
+                <label for="message">Message <span style="color:var(--gold);">*</span></label>
+                <textarea id="message" name="message" placeholder="Tell us about your business, your current challenges, and what you're hoping to achieve..."></textarea>
+                <span class="form-error">Please write a brief message.</span>
+              </div>
+
+              <button type="submit" class="btn btn-gold" style="width:100%;justify-content:center;font-size:0.9rem;padding:0.9rem 2rem;">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+          <!-- Success State -->
+          <div class="contact-success" id="contact-success">
+            <div class="success-icon">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="success-title">Message Received!</div>
+            <p class="success-text">Thank you for reaching out. We'll review your message and respond within 24 hours. In the meantime, feel free to book a strategy call.</p>
+            <a href="calendar.html" class="btn btn-gold">Book a Strategy Call →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- INFO PANEL -->
+      <div data-aos="left" data-delay="100">
+        <div class="contact-info">
+
+          <div class="contact-info-card">
+            <div class="ci-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="ci-title">What Happens Next</div>
+            <div class="next-steps">
+              <div class="next-step">
+                <div class="ns-num">1</div>
+                <div class="ns-text"><strong>Submit your message</strong> and we'll receive it instantly.</div>
+              </div>
+              <div class="next-step">
+                <div class="ns-num">2</div>
+                <div class="ns-text"><strong>We review</strong> your goals and current setup within a few hours.</div>
+              </div>
+              <div class="next-step">
+                <div class="ns-num">3</div>
+                <div class="ns-text"><strong>We respond</strong> within 24 hours with next steps or a calendar link.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="ci-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6.72 6.72l1.16-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="ci-title">Prefer a Call?</div>
+            <p class="ci-text" style="margin-bottom:1rem;">Skip the form and book a free 30-minute strategy call directly on our calendar. We'll map your current setup and show you exactly what you're leaving on the table.</p>
+            <a href="calendar.html" class="btn btn-gold" style="font-size:0.82rem;padding:0.6rem 1.25rem;">Book Free Strategy Call →</a>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="ci-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </div>
+            <div class="ci-title">Quick Details</div>
+            <p class="ci-text" style="margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Based in the United States
+            </p>
+            <p class="ci-text" style="margin-bottom:0.5rem;display:flex;align-items:center;gap:0.5rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              chrisalchemyconsulting.com
+            </p>
+            <p class="ci-text" style="display:flex;align-items:center;gap:0.5rem;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Response within 24 hours
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <div class="section-eyebrow center" style="justify-content:center;" data-aos="fade">Ready for More?</div>
+    <h2 class="section-title center" data-aos="up" data-delay="100" style="max-width:580px;margin:0 auto 1.25rem;">Not Sure Which Service Is Right for You?</h2>
+    <p class="section-desc center" data-aos="up" data-delay="200" style="max-width:480px;margin:0 auto 2.5rem;">Use our Revenue Calculator to see exactly how much you're leaving on the table, then we'll map the right solution together.</p>
+    <div class="flex-center gap-md" data-aos="up" data-delay="300">
+      <a href="calculator.html" class="btn btn-gold" data-mag>Open Revenue Calculator</a>
+      <a href="services.html" class="btn btn-outline">View Services</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
+        <p class="footer-tagline">Premium CRM setup, automation frameworks, and revenue systems for ambitious entrepreneurs ready to scale.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.852L1.78 2.25H8.08l4.258 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Chris</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="addons.html">Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="speaking.html">Speaking</a></li>
+          <li><a href="marketing.html">Marketing</a></li>
+          <li><a href="calculator.html">Revenue Calculator</a></li>
+          <li><a href="calendar.html">Book a Call</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-col-title">Get in Touch</div>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> chrisalchemyconsulting.com</p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> United States</p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Response within 24 hours</p>
+        <div class="mt-md">
+          <a href="calendar.html" class="btn btn-gold" style="font-size:0.82rem;padding:0.6rem 1.25rem;">Book a Call →</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-div"></div>
+    <div class="footer-bottom">
+      <span>© 2026 Chris Alchemy Consulting. All rights reserved.</span>
+      <span>Transforming Businesses Through Automation & Strategy</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-top" aria-label="Back to top">↑</a>
+
+<script src="js/main.js"></script>
+<script>
+  const form = document.getElementById('contact-form');
+  const successEl = document.getElementById('contact-success');
+  const fieldsEl = document.querySelector('.contact-form-fields');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let valid = true;
+
+    const name = document.getElementById('full-name');
+    const email = document.getElementById('email');
+    const message = document.getElementById('message');
+
+    const groups = { 'fg-name': name, 'fg-email': email, 'fg-message': message };
+    Object.entries(groups).forEach(([id, input]) => {
+      const fg = document.getElementById(id);
+      if (!input.value.trim() || (input.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value))) {
+        fg.classList.add('has-error');
+        valid = false;
+      } else {
+        fg.classList.remove('has-error');
+      }
+    });
+
+    if (valid) {
+      fieldsEl.classList.add('hidden');
+      successEl.classList.add('show');
+    }
+  });
+
+  ['full-name','email','message'].forEach(id => {
+    document.getElementById(id).addEventListener('input', function() {
+      const fg = this.closest('.form-group');
+      if (fg) fg.classList.remove('has-error');
+    });
+  });
+</script>
+  <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
+</body>
+</html>

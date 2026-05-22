@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lead Loss Calculator | Chris Alchemy Consulting</title>
+  <meta name="description" content="See exactly how many leads you're missing every month, what they're worth, and how automation recovers them."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap"/></noscript>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ===== CALCULATOR LAYOUT ===== */
+    .calc-shell{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:flex-start;}
+    @media(max-width:960px){.calc-shell{grid-template-columns:1fr;}}
+
+    /* Inputs panel */
+    .calc-panel{background:rgba(8,8,8,0.9);border:var(--border);border-radius:20px;padding:2.25rem;}
+    @media(max-width:560px){.calc-panel{padding:1.5rem;}}
+    .calc-panel-title{font-family:'Montserrat',sans-serif;font-size:0.9rem;font-weight:700;color:var(--white);letter-spacing:0.04em;margin-bottom:1.75rem;display:flex;align-items:center;gap:0.625rem;}
+    .calc-panel-title svg{color:var(--gold);}
+    .inp-group{margin-bottom:1.5rem;}
+    .inp-label{display:flex;justify-content:space-between;align-items:center;font-size:0.78rem;color:rgba(255,255,255,0.5);font-weight:500;margin-bottom:0.5rem;}
+    .inp-val{color:var(--gold);font-weight:700;font-family:'Montserrat',sans-serif;}
+    .inp-slider{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:2px;background:rgba(255,255,255,0.08);outline:none;cursor:pointer;}
+    .inp-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;box-shadow:0 0 8px rgba(216,169,91,0.5);transition:transform 0.15s ease;}
+    .inp-slider::-webkit-slider-thumb:hover{transform:scale(1.3);}
+    .inp-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);cursor:pointer;border:none;}
+    .inp-hint{font-size:0.7rem;color:rgba(255,255,255,0.28);margin-top:0.3rem;}
+    .inp-divider{height:1px;background:rgba(255,255,255,0.05);margin:1.5rem 0;}
+
+    /* Results panel */
+    .results-panel{display:flex;flex-direction:column;gap:1.25rem;}
+
+    /* Big metric cards */
+    .metric-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    @media(max-width:400px){.metric-row{grid-template-columns:1fr;}}
+    .metric-card{border-radius:16px;padding:1.5rem 1.25rem;text-align:center;border:1px solid transparent;}
+    .metric-card.danger{background:rgba(220,60,60,0.07);border-color:rgba(220,60,60,0.2);}
+    .metric-card.gold{background:rgba(216,169,91,0.07);border-color:rgba(216,169,91,0.2);}
+    .metric-card.teal{background:rgba(10,78,92,0.15);border-color:rgba(113,159,174,0.25);}
+    .metric-card.green{background:rgba(40,180,100,0.07);border-color:rgba(40,180,100,0.2);}
+    .metric-lbl{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:0.5rem;line-height:1.4;}
+    .metric-val{font-family:'Montserrat',sans-serif;font-size:1.85rem;font-weight:800;line-height:1;}
+    .metric-val.red{color:#e05a5a;}
+    .metric-val.gold{color:var(--gold);}
+    .metric-val.teal{color:var(--teal-light);}
+    .metric-val.green{color:#4eca80;}
+    .metric-sub{font-size:0.68rem;color:rgba(255,255,255,0.3);margin-top:0.35rem;}
+    .metric-full{grid-column:1/-1;}
+
+    /* Pipeline funnel */
+    .funnel-panel{background:rgba(8,8,8,0.9);border:var(--border);border-radius:20px;padding:1.75rem;}
+    .funnel-title{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.5rem;display:flex;align-items:center;gap:0.5rem;}
+    .funnel-stage{margin-bottom:0.875rem;}
+    .funnel-stage-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:0.3rem;}
+    .funnel-stage-name{font-size:0.75rem;color:rgba(255,255,255,0.55);font-weight:500;}
+    .funnel-stage-nums{font-size:0.75rem;font-weight:700;font-family:'Montserrat',sans-serif;}
+    .funnel-bar-track{height:8px;background:rgba(255,255,255,0.05);border-radius:4px;overflow:hidden;}
+    .funnel-bar-fill{height:100%;border-radius:4px;transition:width 0.6s cubic-bezier(0.4,0,0.2,1);}
+    .funnel-bar-fill.f-total{background:rgba(255,255,255,0.25);}
+    .funnel-bar-fill.f-followed{background:var(--grad-gold);}
+    .funnel-bar-fill.f-missed{background:rgba(220,60,60,0.7);}
+    .funnel-bar-fill.f-appt{background:linear-gradient(90deg,#0a4e5c,#719fae);}
+    .funnel-bar-fill.f-showed{background:rgba(113,159,174,0.8);}
+    .funnel-bar-fill.f-closed{background:linear-gradient(90deg,#d8a95b,#4eca80);}
+    .funnel-legend{display:flex;flex-wrap:wrap;gap:0.625rem 1.25rem;margin-top:1.25rem;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,0.06);}
+    .funnel-leg-item{display:flex;align-items:center;gap:0.4rem;font-size:0.7rem;color:rgba(255,255,255,0.45);}
+    .funnel-leg-dot{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+
+    /* Revenue comparison */
+    .revenue-panel{background:rgba(8,8,8,0.9);border:var(--border);border-radius:20px;padding:1.75rem;}
+    .revenue-compare{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+    @media(max-width:400px){.revenue-compare{grid-template-columns:1fr;}}
+    .rev-block{padding:1.25rem;border-radius:12px;text-align:center;}
+    .rev-block.current{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);}
+    .rev-block.projected{background:rgba(216,169,91,0.08);border:1px solid rgba(216,169,91,0.2);}
+    .rev-label{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.5rem;}
+    .rev-amount{font-family:'Montserrat',sans-serif;font-size:1.6rem;font-weight:800;line-height:1;}
+    .rev-amount.curr-val{color:rgba(255,255,255,0.5);}
+    .rev-amount.proj-val{color:var(--gold);}
+    .rev-per{font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:0.25rem;}
+    .chart-wrap{height:160px;position:relative;}
+    .gain-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1.25rem;}
+    @media(max-width:400px){.gain-row{grid-template-columns:1fr;}}
+    .gain-item{background:rgba(78,202,128,0.06);border:1px solid rgba(78,202,128,0.18);border-radius:10px;padding:1rem;text-align:center;}
+    .gain-lbl{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:0.4rem;}
+    .gain-val{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:800;color:#4eca80;}
+
+    /* Speed-to-lead insight */
+    .insight-card{background:rgba(216,169,91,0.05);border:1px solid rgba(216,169,91,0.15);border-radius:14px;padding:1.25rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;}
+    .insight-icon{width:36px;height:36px;background:rgba(216,169,91,0.12);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--gold);}
+    .insight-body h4{font-size:0.82rem;color:var(--white);font-weight:600;margin-bottom:0.3rem;}
+    .insight-body p{font-size:0.75rem;color:rgba(255,255,255,0.45);line-height:1.55;}
+
+    /* CTA inside calc */
+    .calc-cta{background:linear-gradient(135deg,rgba(10,78,92,0.4),rgba(216,169,91,0.08));border:var(--border);border-radius:16px;padding:1.75rem;text-align:center;}
+    .calc-cta h3{font-family:'Montserrat',sans-serif;font-size:1.05rem;color:var(--white);font-weight:700;margin-bottom:0.5rem;}
+    .calc-cta p{font-size:0.8rem;color:rgba(255,255,255,0.45);margin-bottom:1.25rem;}
+    .calc-disclaimer{font-size:0.68rem;color:rgba(255,255,255,0.25);text-align:center;line-height:1.6;margin-top:0.75rem;}
+
+    /* Direct number inputs */
+    .inp-num{background:transparent;border:none;border-bottom:1px dashed rgba(216,169,91,0.4);color:var(--gold);font-weight:700;font-family:'Montserrat',sans-serif;font-size:0.83rem;width:64px;text-align:right;outline:none;-moz-appearance:textfield;cursor:text;padding:0 0 1px;}
+    .inp-num::-webkit-inner-spin-button,.inp-num::-webkit-outer-spin-button{-webkit-appearance:none;}
+    .inp-num:focus{border-bottom-color:var(--gold);background:rgba(216,169,91,0.04);}
+    .inp-unit{color:var(--gold);font-weight:700;font-size:0.83rem;font-family:'Montserrat',sans-serif;margin-left:1px;}
+    .inp-val-wrap{display:flex;align-items:center;}
+
+    /* Chart custom override */
+    .chart-overrides{margin-bottom:1rem;}
+    .override-hint{font-size:0.7rem;color:rgba(255,255,255,0.3);display:flex;align-items:center;gap:0.4rem;margin-bottom:0.75rem;}
+    .override-row{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-bottom:0.5rem;}
+    @media(max-width:400px){.override-row{grid-template-columns:1fr;}}
+    .override-field label{display:block;font-size:0.7rem;color:rgba(255,255,255,0.38);margin-bottom:0.35rem;letter-spacing:0.02em;}
+    .override-field input[type=number]{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:0.55rem 0.75rem;color:var(--white);font-size:0.82rem;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s ease;box-sizing:border-box;}
+    .override-field input[type=number]:focus{border-color:rgba(216,169,91,0.5);background:rgba(216,169,91,0.04);}
+    .override-field input[type=number]::placeholder{color:rgba(255,255,255,0.18);}
+    .override-field input[type=number]::-webkit-inner-spin-button,.override-field input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none;}
+    .override-reset{background:none;border:1px solid rgba(216,169,91,0.25);border-radius:6px;color:rgba(216,169,91,0.65);font-size:0.7rem;cursor:pointer;padding:0.3rem 0.65rem;transition:color 0.2s ease,border-color 0.2s ease;}
+    .override-reset:hover{color:var(--gold);border-color:rgba(216,169,91,0.55);}
+
+    /* Leakage cards */
+    .leakage-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.875rem;}
+    @media(max-width:560px){.leakage-grid{grid-template-columns:1fr;}}
+    .leak-card{background:rgba(220,60,60,0.05);border:1px solid rgba(220,60,60,0.15);border-radius:12px;padding:1.25rem;text-align:center;}
+    .leak-lbl{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(220,90,90,0.7);margin-bottom:0.4rem;}
+    .leak-val{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:800;color:#e05a5a;line-height:1;}
+    .leak-sub{font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:0.3rem;}
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li>
+      <li><a href="addons.html">Add-ons</a></li><li><a href="speaking.html">Speaking</a></li><li><a href="marketing.html">Marketing</a></li><li><a href="calculator.html" class="active">Calculator</a></li><li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="calendar.html" class="nav-btn btn">Book a Call</a>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav">
+  <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
+  <a href="addons.html">Add-ons</a><a href="speaking.html">Speaking</a><a href="marketing.html">Marketing</a>
+  <a href="calculator.html">Calculator</a>
+  <a href="contact.html">Contact</a>
+  <a href="calendar.html" class="btn btn-gold nav-btn">Book a Call</a>
+</div>
+
+<!-- PAGE HEADER -->
+<div class="page-head" style="padding-bottom:3rem;">
+  <div class="container">
+    <div class="section-eyebrow" style="justify-content:center;" data-aos="fade">Lead Intelligence</div>
+    <h1 class="section-title" data-aos="up" data-delay="100">Lead Loss &amp; <em>Revenue Calculator</em></h1>
+    <p class="section-desc" style="max-width:560px;margin:0 auto;" data-aos="up" data-delay="200">See exactly how many leads slip through the cracks every month, what those leads are worth, and what automation recovers.</p>
+    <div class="ph-line"></div>
+  </div>
+</div>
+
+<section class="section" style="padding-top:1.5rem;">
+  <div class="container">
+    <div class="calc-shell">
+
+      <!-- LEFT: INPUTS -->
+      <div class="calc-panel" data-aos="right">
+        <div class="calc-panel-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Your Numbers
+        </div>
+
+        <div class="inp-group">
+          <div class="inp-label">
+            <span>Monthly Leads</span>
+            <div class="inp-val-wrap"><input type="number" class="inp-num" id="numLeads" value="100" min="1" oninput="syncSl('slLeads',this,5,5000);calcUpdate()"/></div>
+          </div>
+          <input type="range" class="inp-slider" id="slLeads" min="5" max="500" value="100" step="5" oninput="syncNum('numLeads',this);calcUpdate()"/>
+          <div class="inp-hint">Total leads per month (type any number)</div>
+        </div>
+
+        <div class="inp-group">
+          <div class="inp-label">
+            <span>Average Deal Value</span>
+            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="numDeal" value="2000" min="1" oninput="syncSl('slDeal',this,100,999999);calcUpdate()" style="width:78px;"/></div>
+          </div>
+          <input type="range" class="inp-slider" id="slDeal" min="100" max="50000" value="2000" step="100" oninput="syncNum('numDeal',this);calcUpdate()"/>
+          <div class="inp-hint">Revenue per client (enter your real number)</div>
+        </div>
+
+        <div class="inp-group" style="margin-bottom:0;">
+          <div class="inp-label">
+            <span>Current Close Rate</span>
+            <div class="inp-val-wrap"><input type="number" class="inp-num" id="numClose" value="20" min="1" max="100" oninput="syncSl('slClose',this,1,100);calcUpdate()"/><span class="inp-unit">%</span></div>
+          </div>
+          <input type="range" class="inp-slider" id="slClose" min="1" max="80" value="20" step="1" oninput="syncNum('numClose',this);calcUpdate()"/>
+          <div class="inp-hint">% of leads you convert to paying clients</div>
+        </div>
+
+        <div class="inp-divider"></div>
+        <p style="font-size:0.7rem;color:rgba(255,255,255,0.22);line-height:1.65;margin:0;">Based on industry data: ~40% of leads go uncontacted without automation. These numbers show what you're currently leaving on the table.</p>
+      </div>
+
+      <!-- RIGHT: RESULTS -->
+      <div class="results-panel" data-aos="left" data-delay="100">
+
+        <div class="metric-row">
+          <div class="metric-card danger">
+            <div class="metric-lbl">Leads Missed Monthly</div>
+            <div class="metric-val red" id="metMissed">40</div>
+            <div class="metric-sub">going uncontacted</div>
+          </div>
+          <div class="metric-card gold">
+            <div class="metric-lbl">Revenue Left on Table</div>
+            <div class="metric-val gold" id="metLost">$16K</div>
+            <div class="metric-sub">every month</div>
+          </div>
+          <div class="metric-card teal metric-full" style="display:grid;grid-template-columns:1fr 1fr;gap:0;padding:1.25rem;">
+            <div style="text-align:center;padding-right:1rem;border-right:1px solid rgba(255,255,255,0.06);">
+              <div class="metric-lbl">Current Monthly Revenue</div>
+              <div class="metric-val" style="color:rgba(255,255,255,0.5);font-size:1.6rem;" id="revCurrent">$10K</div>
+            </div>
+            <div style="text-align:center;padding-left:1rem;">
+              <div class="metric-lbl">With Automation</div>
+              <div class="metric-val green" style="font-size:1.6rem;" id="revProjected">$28K</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="revenue-panel">
+          <div class="funnel-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            Revenue Comparison
+          </div>
+          <div class="chart-wrap">
+            <canvas id="revenueChart"></canvas>
+          </div>
+          <div class="gain-row">
+            <div class="gain-item">
+              <div class="gain-lbl">Monthly Gain</div>
+              <div class="gain-val" id="gainMonthly">+$18K</div>
+            </div>
+            <div class="gain-item">
+              <div class="gain-lbl">Annual Recovery</div>
+              <div class="gain-val" id="gainAnnual">+$216K</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-cta">
+          <h3>Ready to Recover This Revenue?</h3>
+          <p>Book a free strategy call and we'll show you exactly where to start.</p>
+          <a href="calendar.html" class="btn btn-gold" data-mag>Book Free Strategy Call →</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a><p class="footer-tagline">Premium CRM setup, automation frameworks, and revenue systems for ambitious entrepreneurs ready to scale.</p><div class="footer-socials"><a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a><a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a><a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg></a><a href="#" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.852L1.78 2.25H8.08l4.258 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a></div></div>
+      <div><div class="footer-col-title">Navigation</div><ul class="footer-links"><li><a href="index.html">Home</a></li><li><a href="about.html">About Chris</a></li><li><a href="services.html">Services</a></li><li><a href="addons.html">Add-ons</a></li></ul></div>
+      <div><div class="footer-col-title">Resources</div><ul class="footer-links"><li><a href="speaking.html">Speaking</a></li><li><a href="marketing.html">Marketing</a></li><li><a href="calculator.html">Revenue Calculator</a></li><li><a href="calendar.html">Book a Call</a></li></ul></div>
+      <div class="footer-contact"><div class="footer-col-title">Get in Touch</div>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <a href="contact.html" style="color:inherit;">Contact Us</a></p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> chrisalchemyconsulting.com</p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> United States</p>
+        <div class="mt-md"><a href="calendar.html" class="btn btn-gold" style="font-size:0.78rem;padding:0.55rem 1rem;">Book a Call →</a></div>
+      </div>
+    </div>
+    <div class="footer-div"></div>
+    <div class="footer-bottom"><span>© 2026 Chris Alchemy Consulting. All rights reserved.</span><span>Transforming Businesses Through Automation &amp; Strategy</span></div>
+  </div>
+</footer>
+
+<a href="#" class="back-top" aria-label="Back to top">↑</a>
+<script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+let revenueChart = null;
+
+function fmt(n){
+  if(n >= 1000000) return '$'+(n/1000000).toFixed(1)+'M';
+  if(n >= 1000) return '$'+Math.round(n/1000)+'K';
+  return '$'+n;
+}
+function syncNum(numId, slider){ const el=document.getElementById(numId); if(el) el.value=slider.value; }
+function syncSl(slId, numEl, mn, mx){ const sl=document.getElementById(slId); if(sl) sl.value=Math.min(Math.max(parseFloat(numEl.value)||mn,mn),mx); }
+
+function calcUpdate(){
+  const leads     = Math.max(1, parseInt(document.getElementById('numLeads').value)||100);
+  const dealVal   = Math.max(1, parseInt(document.getElementById('numDeal').value)||2000);
+  const closeRate = Math.min(1, Math.max(0.01, (parseInt(document.getElementById('numClose').value)||20)/100));
+
+  // Current: industry avg ~40% of leads go uncontacted
+  const missed      = Math.round(leads * 0.40);
+  const contacted   = leads - missed;
+  const curCloses   = Math.round(contacted * closeRate);
+  const curRevenue  = curCloses * dealVal;
+  const lostRevenue = Math.round(missed * closeRate * dealVal);
+
+  // With automation: 97% contact rate, 25% close lift
+  const autoCloses  = Math.round(leads * 0.97 * Math.min(closeRate * 1.25, 0.95));
+  const projRevenue = autoCloses * dealVal;
+  const monthlyGain = Math.max(projRevenue - curRevenue, 0);
+  const annualGain  = monthlyGain * 12;
+
+  // Update display
+  document.getElementById('metMissed').textContent    = missed;
+  document.getElementById('metLost').textContent      = fmt(lostRevenue);
+  document.getElementById('revCurrent').textContent   = fmt(curRevenue);
+  document.getElementById('revProjected').textContent = fmt(projRevenue);
+  document.getElementById('gainMonthly').textContent  = '+' + fmt(monthlyGain);
+  document.getElementById('gainAnnual').textContent   = '+' + fmt(annualGain);
+
+  // Slider fills
+  ['slLeads','slDeal','slClose'].forEach(id => {
+    const el = document.getElementById(id);
+    const mn = parseFloat(el.min), mx = parseFloat(el.max), val = parseFloat(el.value);
+    const pct = Math.min(100, Math.max(0, ((val-mn)/(mx-mn)*100))).toFixed(1);
+    el.style.background = `linear-gradient(to right,#d8a95b ${pct}%,rgba(255,255,255,0.08) ${pct}%)`;
+  });
+
+  // Chart
+  const ctx = document.getElementById('revenueChart').getContext('2d');
+  if(revenueChart) revenueChart.destroy();
+  revenueChart = new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels:['Current Revenue','With Automation'],
+      datasets:[{
+        data:[curRevenue, projRevenue],
+        backgroundColor:['rgba(255,255,255,0.08)','rgba(216,169,91,0.35)'],
+        borderColor:['rgba(255,255,255,0.15)','rgba(216,169,91,0.7)'],
+        borderWidth:1, borderRadius:6
+      }]
+    },
+    options:{
+      responsive:true, maintainAspectRatio:false,
+      plugins:{legend:{display:false}, tooltip:{callbacks:{label:c=>fmt(c.raw)+'/mo'}}},
+      scales:{
+        x:{grid:{display:false}, ticks:{color:'rgba(255,255,255,0.4)',font:{family:'Inter',size:11}}},
+        y:{grid:{color:'rgba(255,255,255,0.05)'}, ticks:{color:'rgba(255,255,255,0.35)',font:{family:'Inter',size:10},callback:v=>fmt(v)}, border:{display:false}}
+      }
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', calcUpdate);
+</script>
+  <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
+</body>
+</html>
