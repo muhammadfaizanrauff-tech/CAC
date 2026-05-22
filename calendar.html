@@ -12,7 +12,11 @@
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     .cal-layout{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:flex-start;}
-    @media(max-width:900px){.cal-layout{grid-template-columns:1fr;}}
+    @media(max-width:900px){
+      .cal-layout{grid-template-columns:1fr;}
+      .cal-form-side{order:-1;}
+      .cal-info{order:1;position:static;}
+    }
     .cal-info{position:sticky;top:120px;}
     .cal-info .section-title{font-size:2.2rem;}
     .what-list{list-style:none;display:flex;flex-direction:column;gap:1rem;margin:2rem 0;}
@@ -40,6 +44,8 @@
     .checkbox-item.selected .checkbox-check{display:block;}
     .checkbox-text{font-size:0.875rem;color:rgba(255,255,255,0.65);}
     .ghl-embed-wrap{border-radius:16px;overflow:hidden;background:rgba(10,10,10,0.5);}
+    @media(max-width:900px){.ghl-embed-wrap iframe{min-height:600px !important;}}
+    @media(max-width:560px){.ghl-embed-wrap iframe{min-height:520px !important;}}
     .trust-row{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.5rem;}
     .trust-item{display:flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:rgba(255,255,255,0.4);}
     .trust-item span{color:var(--gold);}
@@ -146,7 +152,7 @@
       </div>
 
       <!-- FORM SIDE -->
-      <div data-aos="left" data-delay="150">
+      <div class="cal-form-side" data-aos="left" data-delay="150">
         <div class="cal-form-card">
           <div class="form-section-title">Schedule Your Call</div>
           <div class="form-section-sub">Pick a time that works for you and we'll see you on the call.</div>
