@@ -283,7 +283,7 @@ input,textarea,select{font-family:var(--font-body);}
 .tag-bronze{background:rgba(148,102,62,0.2);color:var(--bronze);border:1px solid rgba(148,102,62,0.3);}
 
 /* ===== BACK TO TOP ===== */
-.back-top{position:fixed;bottom:5.5rem;right:2rem;width:44px;height:44px;background:var(--grad-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-size:1.1rem;cursor:pointer;z-index:100;opacity:0;transform:translateY(10px);transition:all 0.35s ease;box-shadow:0 4px 20px rgba(216,169,91,0.4);text-decoration:none;border:none;}
+.back-top{position:fixed;bottom:7.375rem;right:2rem;width:44px;height:44px;background:var(--grad-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#000;font-size:1.1rem;cursor:pointer;z-index:100;opacity:0;transform:translateY(10px);transition:all 0.35s ease;box-shadow:0 4px 20px rgba(216,169,91,0.4);text-decoration:none;border:none;}
 .back-top.show{opacity:1;transform:translateY(0);}
 .back-top:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(216,169,91,0.5);}
 
@@ -355,6 +355,7 @@ select.form-input option{background:#111;}
 @media(max-width:1024px){
   .section{padding:5rem 2rem;}
   .section-sm{padding:3rem 2rem;}
+  .cursor,.cursor-ring{display:none!important;}
 }
 @media(max-width:768px){
   .section{padding:4rem 1.25rem;}
@@ -370,7 +371,7 @@ select.form-input option{background:#111;}
   .stat-num{font-size:1.9rem;}
   .stat-item{padding:2rem 1.25rem;}
   .testi-card{width:78vw;max-width:300px;padding:1.5rem;flex-shrink:0;}
-  .back-top{bottom:5.25rem;right:1rem;width:38px;height:38px;font-size:0.9rem;}
+  .back-top{bottom:7.125rem;right:1rem;width:38px;height:38px;font-size:0.9rem;}
   .cta-banner{padding:4rem 1.25rem;}
   .cta-banner .flex-center{flex-direction:column;}
   .cta-banner .btn{width:100%;max-width:300px;justify-content:center;}
