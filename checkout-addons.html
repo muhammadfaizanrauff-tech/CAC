@@ -11,26 +11,38 @@
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap"/></noscript>
   <link rel="stylesheet" href="css/style.css"/>
   <style>
-    .checkout-wrap{max-width:860px;margin:0 auto;}
-    .checkout-header{text-align:center;margin-bottom:2.5rem;}
-    .checkout-header .section-eyebrow{justify-content:center;}
-    .trust-bar{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin:2rem 0;padding:1.5rem;background:rgba(10,10,10,0.6);border:var(--border);border-radius:14px;}
-    .trust-item-co{display:flex;align-items:center;gap:0.6rem;font-size:0.82rem;color:rgba(255,255,255,0.45);}
-    .trust-item-co svg{color:var(--gold);}
-    .form-card{background:rgba(10,10,10,0.85);border:var(--border);border-radius:20px;padding:2.5rem;margin-bottom:2rem;}
-    @media(max-width:560px){.form-card{padding:1.5rem 1rem;}}
-    .form-card-title{font-family:'Montserrat',sans-serif;font-size:1.2rem;color:var(--white);margin-bottom:0.375rem;}
-    .form-card-sub{font-size:0.875rem;color:rgba(255,255,255,0.4);margin-bottom:1.75rem;}
-    .ghl-form-wrap{border-radius:12px;overflow:hidden;min-height:5880px;}
-    .back-link{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:rgba(255,255,255,0.4);text-decoration:none;margin-bottom:2rem;transition:color 0.2s ease;}
-    .back-link:hover{color:var(--gold);}
+    .co-layout{display:grid;grid-template-columns:1fr 1.75fr;gap:3.5rem;align-items:flex-start;}
+    @media(max-width:960px){.co-layout{grid-template-columns:1fr;}}
+    .co-info{position:sticky;top:110px;}
+    .co-back{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.82rem;color:rgba(255,255,255,0.38);text-decoration:none;margin-bottom:1.75rem;transition:color 0.2s ease;}
+    .co-back:hover{color:var(--gold);}
+    .co-eyebrow{font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:0.875rem;}
+    .co-title{font-family:'Montserrat',sans-serif;font-size:1.9rem;line-height:1.2;color:var(--white);margin-bottom:0.875rem;letter-spacing:-0.01em;}
+    .co-title em{font-style:normal;color:var(--gold);}
+    .co-desc{font-size:0.875rem;color:rgba(255,255,255,0.48);line-height:1.7;margin-bottom:2rem;}
+    .co-what{background:rgba(10,10,10,0.7);border:var(--border);border-radius:14px;padding:1.5rem;margin-bottom:1.5rem;}
+    .co-what-title{font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.35);margin-bottom:1rem;font-weight:600;}
+    .co-what-list{list-style:none;display:flex;flex-direction:column;gap:0.75rem;}
+    .co-what-list li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.85rem;color:rgba(255,255,255,0.58);line-height:1.5;}
+    .co-what-list .ck{color:var(--gold);font-size:0.9rem;flex-shrink:0;margin-top:1px;}
+    .co-trust{display:flex;flex-direction:column;gap:0.625rem;margin-bottom:1.75rem;}
+    .co-trust-item{display:flex;align-items:center;gap:0.625rem;font-size:0.82rem;color:rgba(255,255,255,0.4);}
+    .co-trust-item svg{color:var(--gold);flex-shrink:0;}
+    .co-help{font-size:0.8rem;color:rgba(255,255,255,0.3);line-height:1.6;}
+    .co-help a{color:var(--gold);}
+    .co-form-card{background:rgba(10,10,10,0.85);border:var(--border);border-radius:20px;overflow:hidden;}
+    .co-form-header{padding:2rem 2rem 1.5rem;border-bottom:1px solid rgba(255,255,255,0.06);}
+    .co-form-header-title{font-family:'Montserrat',sans-serif;font-size:1.1rem;color:var(--white);margin-bottom:0.3rem;}
+    .co-form-header-sub{font-size:0.82rem;color:rgba(255,255,255,0.38);}
+    .co-form-body{padding:1.5rem 2rem 2rem;}
+    @media(max-width:560px){.co-form-header{padding:1.25rem;} .co-form-body{padding:1.25rem;}}
+    .ghl-form-wrap iframe{width:100%;border:none;display:block;}
+    @media(max-width:960px){.co-info{position:static;}}
   </style>
 </head>
 <body>
 
 <div class="scroll-progress"></div>
-<div class="cursor"></div>
-<div class="cursor-ring"></div>
 
 <nav class="nav">
   <div class="nav-inner">
@@ -47,71 +59,92 @@
 <div class="mobile-nav">
   <a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a>
   <a href="addons.html">Add-ons</a><a href="speaking.html">Speaking</a><a href="marketing.html">Marketing</a>
-  <a href="calculator.html">Calculator</a>
-  <a href="contact.html">Contact</a>
+  <a href="calculator.html">Calculator</a><a href="contact.html">Contact</a>
   <a href="calendar.html" class="btn btn-gold nav-btn">Book a Call</a>
 </div>
 
-<!-- PAGE HEADER -->
-<div class="page-head" style="padding-bottom:3rem;">
+<!-- CHECKOUT BODY -->
+<section style="padding:8rem 0 5rem;">
   <div class="container">
-    <div class="section-eyebrow" style="justify-content:center;" data-aos="fade">Secure Checkout</div>
-    <h1 class="section-title" data-aos="up" data-delay="100">Purchase Your <em>Add-Ons</em></h1>
-    <p class="section-desc" style="max-width:520px;margin:0 auto;" data-aos="up" data-delay="200">Select the add-ons or snapshots you want below, complete your payment, and we'll email you your snapshot link — ready to load into your GHL sub-account.</p>
-    <div class="ph-line"></div>
-  </div>
-</div>
+    <div class="co-layout">
 
-<!-- CHECKOUT FORM -->
-<section class="section" style="padding-top:2rem;">
-  <div class="container">
-    <div class="checkout-wrap">
+      <!-- LEFT — INFO PANEL -->
+      <div class="co-info" data-aos="right">
+        <a href="addons.html" class="co-back">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Add-ons
+        </a>
 
-      <a href="addons.html" class="back-link" data-aos="fade">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
-        Back to Add-ons
-      </a>
+        <div class="co-eyebrow">Secure Checkout</div>
+        <h1 class="co-title">Purchase Your <em>Add-Ons</em></h1>
+        <p class="co-desc">Select the add-ons or snapshots you want, complete your payment, and we'll email you your snapshot link ready to load into your GHL sub-account.</p>
 
-      <!-- Trust Bar -->
-      <div class="trust-bar" data-aos="up">
-        <div class="trust-item-co"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Secure Payment via GoHighLevel</div>
-        <div class="trust-item-co"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> Snapshot link delivered via email</div>
-        <div class="trust-item-co"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> Delivered within 24 hours</div>
-        <div class="trust-item-co"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> 5-star rated setup</div>
-      </div>
-
-      <!-- GHL Form -->
-      <div class="form-card" data-aos="up" data-delay="100">
-        <div class="form-card-title">Select Your Add-Ons &amp; Complete Payment</div>
-        <div class="form-card-sub">Choose the products you want, enter your details, and pay securely. You'll receive an email with your snapshot link shortly after.</div>
-        <div class="ghl-form-wrap">
-          <iframe
-            src="https://api.leadconnectorhq.com/widget/form/Pbx2VtWQSPffT9NUVNLs"
-            style="width:100%;height:100%;border:none;border-radius:3px;min-height:5880px;"
-            id="inline-Pbx2VtWQSPffT9NUVNLs"
-            data-layout="{'id':'INLINE'}"
-            data-trigger-type="alwaysShow"
-            data-trigger-value=""
-            data-activation-type="alwaysActivated"
-            data-activation-value=""
-            data-deactivation-type="neverDeactivate"
-            data-deactivation-value=""
-            data-form-name="Add ons - GHL "
-            data-height="5880"
-            data-layout-iframe-id="inline-Pbx2VtWQSPffT9NUVNLs"
-            data-form-id="Pbx2VtWQSPffT9NUVNLs"
-            title="Add ons - GHL ">
-          </iframe>
+        <!-- What you get -->
+        <div class="co-what">
+          <div class="co-what-title">What happens after purchase</div>
+          <ul class="co-what-list">
+            <li><span class="ck">✓</span> Payment confirmed instantly via GoHighLevel</li>
+            <li><span class="ck">✓</span> Snapshot link emailed to you within 24 hours</li>
+            <li><span class="ck">✓</span> Load snapshot directly into your GHL sub-account</li>
+            <li><span class="ck">✓</span> Automation goes live immediately after loading</li>
+          </ul>
         </div>
+
+        <!-- Trust signals -->
+        <div class="co-trust">
+          <div class="co-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Secure payment powered by GoHighLevel
+          </div>
+          <div class="co-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Snapshot delivered within 24 hours
+          </div>
+          <div class="co-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            5-star rated setup and support
+          </div>
+          <div class="co-trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            One-time payment, no subscription
+          </div>
+        </div>
+
+        <p class="co-help">
+          Have a question before purchasing?<br/>
+          <a href="contact.html">Contact us</a> or <a href="calendar.html">book a free call</a> — we're happy to help.
+        </p>
       </div>
 
-      <!-- Reassurance note -->
-      <div style="text-align:center;padding:1.5rem;background:rgba(216,169,91,0.05);border:1px solid rgba(216,169,91,0.15);border-radius:14px;margin-bottom:3rem;" data-aos="up">
-        <p style="font-size:0.875rem;color:rgba(255,255,255,0.5);line-height:1.7;margin:0;">
-          After completing your purchase you will receive an email containing your GHL snapshot link(s). Open the link and load the snapshot into your GoHighLevel sub-account to activate your automation instantly.
-          <br/><br/>
-          Questions? <a href="contact.html" style="color:var(--gold);">Contact us</a> or <a href="calendar.html" style="color:var(--gold);">book a call</a>.
-        </p>
+      <!-- RIGHT — FORM -->
+      <div data-aos="left" data-delay="100">
+        <div class="co-form-card">
+          <div class="co-form-header">
+            <div class="co-form-header-title">Select Add-Ons &amp; Complete Payment</div>
+            <div class="co-form-header-sub">Choose your products, enter your details, and pay securely below.</div>
+          </div>
+          <div class="co-form-body">
+            <div class="ghl-form-wrap">
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/form/Pbx2VtWQSPffT9NUVNLs"
+                style="width:100%;border:none;border-radius:3px;"
+                id="inline-Pbx2VtWQSPffT9NUVNLs"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Add ons - GHL "
+                data-height="5880"
+                data-layout-iframe-id="inline-Pbx2VtWQSPffT9NUVNLs"
+                data-form-id="Pbx2VtWQSPffT9NUVNLs"
+                title="Add ons - GHL ">
+              </iframe>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
