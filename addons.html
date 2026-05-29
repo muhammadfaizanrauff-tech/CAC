@@ -24,6 +24,11 @@
     .snap-name{font-family:"Montserrat",sans-serif;font-size:0.9rem;color:var(--white);font-weight:600;line-height:1.4;}
     .snap-price{font-size:1.3rem;font-weight:700;color:var(--gold);font-family:"Montserrat",sans-serif;}
     .snap-price span{font-size:0.8rem;color:rgba(255,255,255,0.35);font-weight:400;font-family:"Inter",sans-serif;}
+    .snap-sort-bar{display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:1.75rem;padding:0.875rem 1.25rem;background:rgba(10,10,10,0.6);border:var(--border);border-radius:12px;}
+    .snap-sort-label{font-size:0.82rem;color:rgba(255,255,255,0.4);margin-right:0.25rem;white-space:nowrap;}
+    .sort-btn{padding:0.45rem 1.1rem;border-radius:8px;border:1px solid rgba(255,255,255,0.1);background:transparent;color:rgba(255,255,255,0.5);font-size:0.82rem;cursor:pointer;font-family:"Inter",sans-serif;transition:all 0.25s ease;}
+    .sort-btn:hover{border-color:rgba(216,169,91,0.4);color:var(--gold);}
+    .sort-btn.active{background:rgba(216,169,91,0.12);border-color:rgba(216,169,91,0.4);color:var(--gold);font-weight:600;}
     .recipe-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:3rem;}
     @media(max-width:700px){.recipe-grid{grid-template-columns:1fr;}}
     .recipe-card{background:rgba(10,10,10,0.75);border:var(--border);border-radius:16px;padding:2rem;transition:all 0.35s ease;position:relative;overflow:hidden;}
@@ -187,7 +192,13 @@
       <h2 class="section-title" data-aos="up" data-delay="100">Ready-Made <em>GHL Snapshots</em></h2>
       <p class="section-desc wide" data-aos="up" data-delay="200">Pre-built automation snapshots that load directly into your GoHighLevel sub-account. Purchase, receive your snapshot link via email, and go live in minutes.</p>
     </div>
-    <div class="snap-grid">
+    <div class="snap-sort-bar">
+      <span class="snap-sort-label">Sort by price:</span>
+      <button class="sort-btn active" data-sort="default">Default</button>
+      <button class="sort-btn" data-sort="asc">Low to High</button>
+      <button class="sort-btn" data-sort="desc">High to Low</button>
+    </div>
+    <div class="snap-grid" id="snapGrid">
       <div class="snap-card" data-aos="up" data-delay="0">
         <div class="snap-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
         <div class="snap-name">Add Old Customer Data</div>
@@ -430,6 +441,33 @@
 
 <a href="#" class="back-top">↑</a>
 <script src="js/main.js"></script>
+<script>
+(function(){
+  const grid = document.getElementById('snapGrid');
+  if (!grid) return;
+  const cards = Array.from(grid.querySelectorAll('.snap-card'));
+  const origOrder = [...cards];
+  cards.forEach(function(c){
+    const txt = c.querySelector('.snap-price').textContent;
+    c.dataset.price = parseInt(txt.replace(/[^0-9]/g, '')) || 0;
+  });
+  document.querySelectorAll('.sort-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      document.querySelectorAll('.sort-btn').forEach(function(b){ b.classList.remove('active'); });
+      this.classList.add('active');
+      var sort = this.dataset.sort;
+      var sorted;
+      if (sort === 'asc') sorted = [...cards].sort(function(a,b){ return a.dataset.price - b.dataset.price; });
+      else if (sort === 'desc') sorted = [...cards].sort(function(a,b){ return b.dataset.price - a.dataset.price; });
+      else sorted = [...origOrder];
+      sorted.forEach(function(c){ c.style.opacity='0'; c.style.transform='translateY(10px)'; grid.appendChild(c); });
+      requestAnimationFrame(function(){
+        sorted.forEach(function(c){ c.style.transition='opacity 0.3s ease,transform 0.3s ease'; c.style.opacity='1'; c.style.transform='translateY(0)'; });
+      });
+    });
+  });
+})();
+</script>
   <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
 </body>
 </html>
