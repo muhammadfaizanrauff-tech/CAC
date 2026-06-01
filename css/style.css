@@ -115,6 +115,8 @@ input,textarea,select{font-family:var(--font-body);}
 .center{text-align:center;}
 .center .section-eyebrow{justify-content:center;}
 .center .section-desc{margin:0 auto;}
+.nowrap-desktop{white-space:nowrap;}
+@media(max-width:1024px){.nowrap-desktop{white-space:normal;}}
 
 /* ===== CARDS ===== */
 .card{background:rgba(10,10,10,0.8);border:var(--border);border-radius:16px;padding:2rem;position:relative;overflow:hidden;transition:all 0.35s var(--ease);backdrop-filter:blur(8px);}
