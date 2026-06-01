@@ -281,38 +281,38 @@
       <div data-aos="left" data-delay="150">
         <div class="speak-form">
           <h3 style="font-family:'Montserrat',sans-serif;font-size:1.4rem;margin-bottom:2rem;">Speaking Inquiry Form</h3>
-          <form action="thank-you.html" method="GET" onsubmit="return handleSpeakForm(event)">
+          <form onsubmit="return handleSpeakForm(event)">
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">First Name *</label>
-                <input type="text" class="form-input" placeholder="John" required/>
+                <input type="text" id="sp-first" class="form-input" placeholder="John" required/>
               </div>
               <div class="form-group">
                 <label class="form-label">Last Name *</label>
-                <input type="text" class="form-input" placeholder="Smith" required/>
+                <input type="text" id="sp-last" class="form-input" placeholder="Smith" required/>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Email Address *</label>
-              <input type="email" class="form-input" placeholder="john@company.com" required/>
+              <input type="email" id="sp-email" class="form-input" placeholder="john@company.com" required/>
             </div>
             <div class="form-group">
               <label class="form-label">Event Name & Type *</label>
-              <input type="text" class="form-input" placeholder="e.g. Founders Summit 2026 – Keynote" required/>
+              <input type="text" id="sp-event" class="form-input" placeholder="e.g. Founders Summit 2026 – Keynote" required/>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label class="form-label">Event Date</label>
-                <input type="date" class="form-input"/>
+                <input type="date" id="sp-date" class="form-input"/>
               </div>
               <div class="form-group">
                 <label class="form-label">Expected Audience Size</label>
-                <input type="text" class="form-input" placeholder="e.g. 300–500"/>
+                <input type="text" id="sp-audience" class="form-input" placeholder="e.g. 300–500"/>
               </div>
             </div>
             <div class="form-group">
               <label class="form-label">Preferred Format</label>
-              <select class="form-input">
+              <select id="sp-format" class="form-input">
                 <option value="">Select a format</option>
                 <option>Keynote Address</option>
                 <option>Workshop / Masterclass</option>
@@ -324,7 +324,7 @@
             </div>
             <div class="form-group">
               <label class="form-label">Tell us about your event & audience *</label>
-              <textarea class="form-input" placeholder="What are you hoping Chris's presentation will achieve for your audience?" required></textarea>
+              <textarea id="sp-message" class="form-input" placeholder="What are you hoping Chris's presentation will achieve for your audience?" required></textarea>
             </div>
             <button type="submit" class="btn btn-gold w100" style="font-size:0.95rem;padding:1rem;" data-mag>Submit Speaking Inquiry →</button>
           </form>
@@ -353,7 +353,36 @@
 <script>
 function handleSpeakForm(e) {
   e.preventDefault();
-  window.location.href = 'thank-you.html';
+
+  const payload = {
+    first_name    : document.getElementById('sp-first').value.trim(),
+    last_name     : document.getElementById('sp-last').value.trim(),
+    full_name     : document.getElementById('sp-first').value.trim() + ' ' + document.getElementById('sp-last').value.trim(),
+    email         : document.getElementById('sp-email').value.trim(),
+    event_name    : document.getElementById('sp-event').value.trim(),
+    event_date    : document.getElementById('sp-date').value,
+    audience_size : document.getElementById('sp-audience').value.trim(),
+    format        : document.getElementById('sp-format').value,
+    message       : document.getElementById('sp-message').value.trim(),
+    source        : 'Speaking Inquiry — chrisalchemyconsulting.com',
+    page_url      : window.location.href
+  };
+
+  const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/c83cc336-799f-4949-aa66-e5ad6baa14bf';
+
+  try {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', GHL_WEBHOOK, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send(JSON.stringify(payload));
+  } catch(e) {}
+
+  try {
+    const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
+    navigator.sendBeacon && navigator.sendBeacon(GHL_WEBHOOK, blob);
+  } catch(e) {}
+
+  window.location.href = 'thank-you';
   return false;
 }
 </script>
