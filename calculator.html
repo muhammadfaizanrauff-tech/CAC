@@ -127,6 +127,48 @@
     .leak-lbl{font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(220,90,90,0.7);margin-bottom:0.4rem;}
     .leak-val{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:800;color:#e05a5a;line-height:1;}
     .leak-sub{font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:0.3rem;}
+
+    /* ===== EMAIL CAPTURE ===== */
+    .email-row{display:flex;gap:0.75rem;margin-top:1rem;flex-wrap:wrap;}
+    .email-inp{flex:1;min-width:160px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);border-radius:10px;padding:0.7rem 1rem;color:var(--white);font-size:0.85rem;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.2s;}
+    .email-inp:focus{border-color:rgba(216,169,91,0.6);}
+    .email-inp::placeholder{color:rgba(255,255,255,0.28);}
+    .email-fine{font-size:0.66rem;color:rgba(255,255,255,0.2);margin-top:0.5rem;text-align:center;}
+    .email-sent{display:none;font-size:0.85rem;color:#4eca80;font-weight:600;text-align:center;padding:0.5rem 0;}
+
+    /* ===== SECTION DIVIDER ===== */
+    .calc-section-divider{height:1px;background:linear-gradient(to right,transparent,rgba(216,169,91,0.25),transparent);margin:4.5rem auto 0;max-width:640px;}
+
+    /* ===== AI COST-SAVINGS CALCULATOR ===== */
+    .ai-select{width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:0.75rem 1rem;color:var(--white);font-size:0.875rem;font-family:'Inter',sans-serif;outline:none;cursor:pointer;-webkit-appearance:none;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='rgba(216,169,91,0.7)' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;transition:border-color 0.2s;}
+    .ai-select:focus{border-color:rgba(216,169,91,0.5);}
+    .ai-select option{background:#0a0a0a;color:#fff;}
+    .staff-counter{display:flex;align-items:center;gap:0.875rem;}
+    .staff-btn{width:34px;height:34px;border-radius:8px;border:1px solid rgba(216,169,91,0.35);background:rgba(216,169,91,0.08);color:var(--gold);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;font-family:'Montserrat',sans-serif;line-height:1;}
+    .staff-btn:hover{background:rgba(216,169,91,0.2);}
+    .staff-display{font-family:'Montserrat',sans-serif;font-size:1.25rem;font-weight:700;color:var(--gold);min-width:28px;text-align:center;}
+    .toggle-row{display:flex;align-items:center;justify-content:space-between;padding:0.625rem 0;border-top:1px solid rgba(255,255,255,0.05);margin-top:0.25rem;}
+    .toggle-lbl{font-size:0.8rem;color:rgba(255,255,255,0.5);line-height:1.4;}
+    .toggle-lbl span{display:block;font-size:0.68rem;color:rgba(255,255,255,0.28);margin-top:0.1rem;}
+    .tog{position:relative;display:inline-block;width:40px;height:22px;flex-shrink:0;}
+    .tog input{opacity:0;width:0;height:0;}
+    .tog-track{position:absolute;cursor:pointer;inset:0;background:rgba(255,255,255,0.1);border-radius:22px;transition:.3s;}
+    .tog input:checked+.tog-track{background:rgba(216,169,91,0.65);}
+    .tog-track::before{content:'';position:absolute;height:16px;width:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.3s;}
+    .tog input:checked+.tog-track::before{transform:translateX(18px);}
+    .ai-hero{text-align:center;padding:2.25rem 1.5rem;background:linear-gradient(135deg,rgba(216,169,91,0.09),rgba(10,78,92,0.18));border:1px solid rgba(216,169,91,0.22);border-radius:18px;}
+    .ai-hero-lbl{font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.38);margin-bottom:0.625rem;}
+    .ai-hero-num{font-family:'Montserrat',sans-serif;font-size:3rem;font-weight:800;color:var(--gold);line-height:1;}
+    .ai-hero-yr{font-family:'Montserrat',sans-serif;font-size:1.1rem;font-weight:700;color:rgba(216,169,91,0.7);margin-top:0.4rem;}
+    .ai-hero-sub{font-size:0.78rem;color:rgba(255,255,255,0.38);margin-top:0.75rem;line-height:1.55;}
+    .ai-alt{display:none;text-align:center;padding:1.75rem;background:rgba(10,78,92,0.1);border:1px solid rgba(113,159,174,0.22);border-radius:14px;font-size:0.875rem;color:rgba(255,255,255,0.55);line-height:1.6;}
+    .ai-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.875rem;}
+    @media(max-width:480px){.ai-stats{grid-template-columns:1fr 1fr;}}
+    .ai-stat{background:rgba(8,8,8,0.9);border:var(--border);border-radius:14px;padding:1.25rem 1rem;text-align:center;}
+    .ai-stat-lbl{font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:0.4rem;line-height:1.4;}
+    .ai-stat-num{font-family:'Montserrat',sans-serif;font-size:1.3rem;font-weight:800;line-height:1;}
+    .ai-stat-sub{font-size:0.65rem;color:rgba(255,255,255,0.28);margin-top:0.3rem;}
+    .hours-field{display:none;margin-top:1rem;}
   </style>
 </head>
 <body>
@@ -254,8 +296,185 @@
 
         <div class="calc-cta">
           <h3>Ready to Recover This Revenue?</h3>
-          <p>Book a free strategy call and we'll show you exactly where to start.</p>
-          <a href="calendar.html" class="btn btn-gold" data-mag>Book Free Strategy Call →</a>
+          <p>Enter your email and we'll send you a summary of your results — or book a free strategy call now.</p>
+          <div class="email-row">
+            <input type="email" id="emailLead" class="email-inp" placeholder="your@email.com"/>
+            <button onclick="sendReport('lead')" class="btn btn-gold" style="white-space:nowrap;">Email My Results →</button>
+          </div>
+          <div class="email-sent" id="sentLead">✓ Report on its way — check your inbox!</div>
+          <p class="email-fine">No spam. One email with your numbers.</p>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+            <a href="calendar.html" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI COST-SAVINGS CALCULATOR -->
+<div class="calc-section-divider"></div>
+<section class="section" style="padding-top:3.5rem;">
+  <div class="container">
+    <div class="center mb-lg" style="margin-bottom:3rem;">
+      <div class="section-eyebrow" data-aos="fade" style="justify-content:center;">AI Automation</div>
+      <h2 class="section-title" data-aos="up" data-delay="100">AI Cost-Savings <em>Calculator</em></h2>
+      <p class="section-desc" data-aos="up" data-delay="200" style="max-width:540px;margin:0 auto;">See exactly how much you save replacing admin labor with AI automation — calculated from your own real numbers.</p>
+    </div>
+
+    <div class="calc-shell">
+
+      <!-- LEFT: AI INPUTS -->
+      <div class="calc-panel" data-aos="right">
+        <div class="calc-panel-title">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
+          Your Current Setup
+        </div>
+
+        <!-- Staff count -->
+        <div class="inp-group">
+          <div class="inp-label"><span>Admin / Reception Staff</span></div>
+          <div class="staff-counter" style="margin-top:0.5rem;">
+            <button class="staff-btn" onclick="changeStaff(-1)">−</button>
+            <div class="staff-display" id="staffDisplay">1</div>
+            <button class="staff-btn" onclick="changeStaff(1)">+</button>
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-left:0.25rem;">person(s)</span>
+          </div>
+          <input type="hidden" id="aiStaff" value="1"/>
+          <div class="inp-hint">Number of admin or reception roles handled by staff</div>
+        </div>
+
+        <!-- Salary slider -->
+        <div class="inp-group">
+          <div class="inp-label">
+            <span>Avg. Monthly Salary / Person</span>
+            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalaryNum" value="4000" min="2000" max="8000" step="100" oninput="syncSl('aiSalarySl',this,2000,8000);aiCalcUpdate()" style="width:64px;"/></div>
+          </div>
+          <input type="range" class="inp-slider" id="aiSalarySl" min="2000" max="8000" value="4000" step="100" oninput="syncNum('aiSalaryNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Base monthly salary before taxes/overhead</div>
+        </div>
+
+        <!-- AI Package -->
+        <div class="inp-group">
+          <div class="inp-label"><span>AI Package</span></div>
+          <select class="ai-select" id="aiPackage" onchange="aiCalcUpdate()" style="margin-top:0.5rem;">
+            <option value="999">Starter AI — $999/mo</option>
+            <option value="1400" selected>Essential AI — $1,400/mo</option>
+            <option value="2000">Professional AI — $2,000/mo</option>
+            <option value="2800">Enterprise AI — $2,800/mo</option>
+          </select>
+          <div class="inp-hint">Select the plan that matches your business scale</div>
+        </div>
+
+        <div class="inp-divider"></div>
+
+        <!-- Overhead toggle -->
+        <div class="toggle-row">
+          <div class="toggle-lbl">
+            Include payroll taxes &amp; overhead
+            <span>+18% for employer taxes, benefits, equipment, software</span>
+          </div>
+          <label class="tog">
+            <input type="checkbox" id="aiOverhead" checked onchange="aiCalcUpdate()"/>
+            <span class="tog-track"></span>
+          </label>
+        </div>
+
+        <!-- Hours toggle + field -->
+        <div class="toggle-row" style="border-top:1px solid rgba(255,255,255,0.05);">
+          <div class="toggle-lbl">
+            Show time reclaimed
+            <span>Add hours/week spent on admin tasks</span>
+          </div>
+          <label class="tog">
+            <input type="checkbox" id="aiHoursToggle" onchange="toggleHoursField();aiCalcUpdate()"/>
+            <span class="tog-track"></span>
+          </label>
+        </div>
+        <div class="hours-field" id="hoursField">
+          <div class="inp-label">
+            <span>Hours/week on phones &amp; admin</span>
+            <div class="inp-val-wrap"><input type="number" class="inp-num" id="aiHoursNum" value="20" min="1" max="80" oninput="syncSl('aiHoursSl',this,1,80);aiCalcUpdate()" style="width:40px;"/><span class="inp-unit">hrs</span></div>
+          </div>
+          <input type="range" class="inp-slider" id="aiHoursSl" min="1" max="80" value="20" step="1" oninput="syncNum('aiHoursNum',this);aiCalcUpdate()"/>
+        </div>
+
+        <div class="inp-divider"></div>
+        <p style="font-size:0.7rem;color:rgba(255,255,255,0.22);line-height:1.65;margin:0;">Constants used: 18% overhead rate, 4.33 weeks/month. All calculations are based on your inputs — no hard-coded numbers.</p>
+      </div>
+
+      <!-- RIGHT: AI RESULTS -->
+      <div class="results-panel" data-aos="left" data-delay="100">
+
+        <!-- Hero savings number -->
+        <div class="ai-hero" id="aiHeroPanel">
+          <div class="ai-hero-lbl">You Save Every Month</div>
+          <div class="ai-hero-num" id="aiMonthlySavings">$3,664</div>
+          <div class="ai-hero-yr" id="aiYearlySavings">$43,968 / year</div>
+          <div class="ai-hero-sub" id="aiHeroSub">65% lower than your current overhead · 1 hire avoided</div>
+        </div>
+
+        <!-- Custom plan message (shown when AI isn't cheaper) -->
+        <div class="ai-alt" id="aiAltMsg">
+          <strong style="color:var(--white);">At this staffing level, a custom plan makes more sense.</strong><br/>
+          Your current labor cost is within range of the AI package — let's talk about a structure that maximises your ROI.
+          <div style="margin-top:1rem;"><a href="calendar.html" class="btn btn-gold" style="font-size:0.82rem;padding:0.6rem 1.25rem;">Book a Strategy Call →</a></div>
+        </div>
+
+        <!-- Stat breakdown -->
+        <div class="revenue-panel">
+          <div class="funnel-title" style="margin-bottom:1rem;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Cost Breakdown
+          </div>
+          <div class="ai-stats">
+            <div class="ai-stat">
+              <div class="ai-stat-lbl">Current Monthly Overhead</div>
+              <div class="ai-stat-num red" id="aiHumanCost">$5,664</div>
+              <div class="ai-stat-sub">incl. taxes &amp; overhead</div>
+            </div>
+            <div class="ai-stat">
+              <div class="ai-stat-lbl">With AI Automation</div>
+              <div class="ai-stat-num gold" id="aiCostVal">$1,400</div>
+              <div class="ai-stat-sub">monthly package</div>
+            </div>
+            <div class="ai-stat">
+              <div class="ai-stat-lbl">% Lower</div>
+              <div class="ai-stat-num green" id="aiPercent">65%</div>
+              <div class="ai-stat-sub">cost reduction</div>
+            </div>
+            <div class="ai-stat">
+              <div class="ai-stat-lbl">Hires Avoided</div>
+              <div class="ai-stat-num gold" id="aiHires">1</div>
+              <div class="ai-stat-sub">headcount saved</div>
+            </div>
+            <div class="ai-stat" id="aiHoursStat" style="display:none;">
+              <div class="ai-stat-lbl">Hours Reclaimed/mo</div>
+              <div class="ai-stat-num" style="color:rgba(113,159,174,1);" id="aiHoursReclaimed">87</div>
+              <div class="ai-stat-sub">freed from admin</div>
+            </div>
+            <div class="ai-stat">
+              <div class="ai-stat-lbl">Annual Savings</div>
+              <div class="ai-stat-num green" id="aiAnnualStat">$43,968</div>
+              <div class="ai-stat-sub">per year</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="calc-cta">
+          <h3>Ready to Move Forward With AI?</h3>
+          <p>Enter your email and we'll send your full savings report — or book a call to get started.</p>
+          <div class="email-row">
+            <input type="email" id="emailAI" class="email-inp" placeholder="your@email.com"/>
+            <button onclick="sendReport('ai')" class="btn btn-gold" style="white-space:nowrap;">Email My Report →</button>
+          </div>
+          <div class="email-sent" id="sentAI">✓ Report sent — check your inbox!</div>
+          <p class="email-fine">No spam. One email with your savings breakdown.</p>
+          <div style="margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,0.06);">
+            <a href="calendar.html" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
+          </div>
         </div>
 
       </div>
@@ -355,7 +574,143 @@ function calcUpdate(){
   });
 }
 
-document.addEventListener('DOMContentLoaded', calcUpdate);
+document.addEventListener('DOMContentLoaded', function(){ calcUpdate(); aiCalcUpdate(); });
+
+/* ============================================================
+   AI COST-SAVINGS CALCULATOR
+   ============================================================ */
+const OVERHEAD_RATE = 0.18;
+const WORK_WEEKS    = 4.33;
+
+function changeStaff(delta){
+  const el = document.getElementById('aiStaff');
+  const disp = document.getElementById('staffDisplay');
+  let v = Math.max(1, Math.min(20, parseInt(el.value) + delta));
+  el.value = v;
+  disp.textContent = v;
+  aiCalcUpdate();
+}
+
+function toggleHoursField(){
+  const show = document.getElementById('aiHoursToggle').checked;
+  document.getElementById('hoursField').style.display = show ? 'block' : 'none';
+  document.getElementById('aiHoursStat').style.display = show ? 'block' : 'none';
+}
+
+function fmtDollar(n){
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function aiCalcUpdate(){
+  const staff    = parseInt(document.getElementById('aiStaff').value) || 1;
+  const salary   = parseInt(document.getElementById('aiSalaryNum').value) || 4000;
+  const aiCost   = parseInt(document.getElementById('aiPackage').value) || 1400;
+  const overhead = document.getElementById('aiOverhead').checked;
+  const showHrs  = document.getElementById('aiHoursToggle').checked;
+  const hrsWk    = parseInt(document.getElementById('aiHoursNum').value) || 20;
+
+  // Slider fill for salary
+  const sl = document.getElementById('aiSalarySl');
+  const mn = parseFloat(sl.min), mx = parseFloat(sl.max), val = parseFloat(sl.value);
+  const pct = Math.min(100, Math.max(0, ((val-mn)/(mx-mn)*100))).toFixed(1);
+  sl.style.background = `linear-gradient(to right,#d8a95b ${pct}%,rgba(255,255,255,0.08) ${pct}%)`;
+  if(showHrs){
+    const hsl = document.getElementById('aiHoursSl');
+    const hp = Math.min(100,Math.max(0,((parseFloat(hsl.value)-parseFloat(hsl.min))/(parseFloat(hsl.max)-parseFloat(hsl.min))*100))).toFixed(1);
+    hsl.style.background = `linear-gradient(to right,#d8a95b ${hp}%,rgba(255,255,255,0.08) ${hp}%)`;
+  }
+
+  // Algorithm
+  const base_labor      = staff * salary;
+  const overhead_amount = overhead ? base_labor * OVERHEAD_RATE : 0;
+  const human_cost      = base_labor + overhead_amount;
+  const monthly_savings = human_cost - aiCost;
+  const yearly_savings  = monthly_savings * 12;
+  const percent_saved   = Math.round((monthly_savings / human_cost) * 100);
+  const hrs_reclaimed   = Math.round(hrsWk * WORK_WEEKS);
+
+  // Guardrail: AI not cheaper
+  const hero  = document.getElementById('aiHeroPanel');
+  const altMsg = document.getElementById('aiAltMsg');
+
+  if(aiCost >= human_cost || percent_saved < 0){
+    hero.style.display  = 'none';
+    altMsg.style.display = 'block';
+    document.getElementById('aiHumanCost').textContent  = fmtDollar(human_cost);
+    document.getElementById('aiCostVal').textContent    = fmtDollar(aiCost);
+    document.getElementById('aiPercent').textContent    = '—';
+    document.getElementById('aiHires').textContent      = staff;
+    document.getElementById('aiAnnualStat').textContent = '—';
+    document.getElementById('aiMonthlySavings').textContent = '—';
+    document.getElementById('aiYearlySavings').textContent  = '';
+    return;
+  }
+
+  hero.style.display   = 'block';
+  altMsg.style.display = 'none';
+
+  // Update outputs
+  document.getElementById('aiMonthlySavings').textContent = fmtDollar(monthly_savings) + '/mo';
+  document.getElementById('aiYearlySavings').textContent  = fmtDollar(yearly_savings) + ' / year';
+  document.getElementById('aiHeroSub').textContent        = percent_saved + '% lower than your current overhead · ' + staff + (staff === 1 ? ' hire' : ' hires') + ' avoided';
+  document.getElementById('aiHumanCost').textContent      = fmtDollar(human_cost);
+  document.getElementById('aiCostVal').textContent        = fmtDollar(aiCost);
+  document.getElementById('aiPercent').textContent        = percent_saved + '%';
+  document.getElementById('aiHires').textContent          = staff;
+  document.getElementById('aiAnnualStat').textContent     = fmtDollar(yearly_savings);
+  if(showHrs) document.getElementById('aiHoursReclaimed').textContent = hrs_reclaimed;
+}
+
+/* ============================================================
+   WEBHOOK — EMAIL REPORT CAPTURE
+   Replace YOUR_GHL_WEBHOOK_URL with your real GHL webhook URL
+   ============================================================ */
+const GHL_WEBHOOK_URL = 'YOUR_GHL_WEBHOOK_URL';
+
+async function sendReport(type){
+  const emailEl = document.getElementById(type === 'lead' ? 'emailLead' : 'emailAI');
+  const sentEl  = document.getElementById(type === 'lead' ? 'sentLead' : 'sentAI');
+  const email   = emailEl.value.trim();
+
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    emailEl.style.borderColor = 'rgba(220,60,60,0.6)';
+    emailEl.focus();
+    return;
+  }
+  emailEl.style.borderColor = '';
+
+  let payload = { email, source: type === 'lead' ? 'Lead Loss Calculator' : 'AI Cost-Savings Calculator', page_url: window.location.href };
+
+  if(type === 'lead'){
+    payload.monthly_leads     = document.getElementById('numLeads').value;
+    payload.deal_value        = document.getElementById('numDeal').value;
+    payload.close_rate        = document.getElementById('numClose').value + '%';
+    payload.leads_missed      = document.getElementById('metMissed').textContent;
+    payload.revenue_lost      = document.getElementById('metLost').textContent;
+    payload.current_revenue   = document.getElementById('revCurrent').textContent;
+    payload.projected_revenue = document.getElementById('revProjected').textContent;
+    payload.monthly_gain      = document.getElementById('gainMonthly').textContent;
+    payload.annual_gain       = document.getElementById('gainAnnual').textContent;
+  } else {
+    payload.staff_count       = document.getElementById('aiStaff').value;
+    payload.monthly_salary    = '$' + document.getElementById('aiSalaryNum').value;
+    payload.ai_package        = document.getElementById('aiPackage').options[document.getElementById('aiPackage').selectedIndex].text;
+    payload.human_cost        = document.getElementById('aiHumanCost').textContent;
+    payload.ai_cost           = document.getElementById('aiCostVal').textContent;
+    payload.monthly_savings   = document.getElementById('aiMonthlySavings').textContent;
+    payload.yearly_savings    = document.getElementById('aiYearlySavings').textContent;
+    payload.percent_saved     = document.getElementById('aiPercent').textContent;
+    payload.hires_avoided     = document.getElementById('aiHires').textContent;
+  }
+
+  try {
+    await fetch(GHL_WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), mode:'no-cors' });
+  } catch(e){ /* no-cors swallows the response — submission still fires */ }
+
+  emailEl.style.display = 'none';
+  emailEl.closest('.email-row').style.display = 'none';
+  sentEl.style.display = 'block';
+}
 </script>
   <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
 </body>
