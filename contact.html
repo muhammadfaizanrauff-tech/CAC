@@ -349,6 +349,27 @@
     });
 
     if (valid) {
+      const payload = {
+        full_name : document.getElementById('full-name').value.trim(),
+        email     : document.getElementById('email').value.trim(),
+        phone     : document.getElementById('phone').value.trim(),
+        role      : document.getElementById('role').value,
+        service   : document.getElementById('service').value,
+        message   : document.getElementById('message').value.trim(),
+        source    : 'Contact Form — chrisalchemyconsulting.com',
+        page_url  : window.location.href
+      };
+
+      // ← Replace with your GHL Inbound Webhook URL
+      const GHL_WEBHOOK = 'YOUR_GHL_WEBHOOK_URL';
+
+      fetch(GHL_WEBHOOK, {
+        method : 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body   : JSON.stringify(payload),
+        mode   : 'no-cors'
+      }).catch(function(){});
+
       fieldsEl.classList.add('hidden');
       successEl.classList.add('show');
     }
