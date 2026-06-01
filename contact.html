@@ -363,11 +363,19 @@
       // ← Replace with your GHL Inbound Webhook URL
       const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/598f8839-22e2-4a24-8325-65c4b092dc63';
 
-      fetch(GHL_WEBHOOK, {
-        method : 'POST',
-        headers: { 'Content-Type': 'text/plain' },
-        body   : JSON.stringify(payload)
-      }).catch(function(){});
+      // Send via XMLHttpRequest — most compatible with GHL webhooks
+      try {
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', GHL_WEBHOOK, true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(JSON.stringify(payload));
+      } catch(e) {}
+
+      // Fallback: sendBeacon for reliability
+      try {
+        const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
+        navigator.sendBeacon && navigator.sendBeacon(GHL_WEBHOOK, blob);
+      } catch(e) {}
 
       fieldsEl.classList.add('hidden');
       successEl.classList.add('show');
