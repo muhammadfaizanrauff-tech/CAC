@@ -360,22 +360,8 @@
         page_url  : window.location.href
       };
 
-      // ← Replace with your GHL Inbound Webhook URL
       const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/598f8839-22e2-4a24-8325-65c4b092dc63';
-
-      // Send via XMLHttpRequest — most compatible with GHL webhooks
-      try {
-        const xhr = new XMLHttpRequest();
-        xhr.open('POST', GHL_WEBHOOK, true);
-        xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(payload));
-      } catch(e) {}
-
-      // Fallback: sendBeacon for reliability
-      try {
-        const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
-        navigator.sendBeacon && navigator.sendBeacon(GHL_WEBHOOK, blob);
-      } catch(e) {}
+      sendToGHL(GHL_WEBHOOK, payload);
 
       fieldsEl.classList.add('hidden');
       successEl.classList.add('show');
@@ -388,6 +374,32 @@
       if (fg) fg.classList.remove('has-error');
     });
   });
+
+  function sendToGHL(url, data) {
+    var iframe = document.getElementById('ghl-relay-frame');
+    if (!iframe) {
+      iframe = document.createElement('iframe');
+      iframe.id = 'ghl-relay-frame';
+      iframe.name = 'ghl-relay-frame';
+      iframe.style.display = 'none';
+      document.body.appendChild(iframe);
+    }
+    var form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
+    form.target = 'ghl-relay-frame';
+    form.style.display = 'none';
+    Object.keys(data).forEach(function(key) {
+      var input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = data[key];
+      form.appendChild(input);
+    });
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(function(){ document.body.removeChild(form); }, 2000);
+  }
 </script>
   <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
 </body>

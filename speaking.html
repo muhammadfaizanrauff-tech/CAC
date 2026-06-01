@@ -370,20 +370,36 @@ function handleSpeakForm(e) {
 
   const GHL_WEBHOOK = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/c83cc336-799f-4949-aa66-e5ad6baa14bf';
 
-  try {
-    const xhr = new XMLHttpRequest();
-    xhr.open('POST', GHL_WEBHOOK, true);
-    xhr.setRequestHeader('Content-Type', 'application/json');
-    xhr.send(JSON.stringify(payload));
-  } catch(e) {}
+  sendToGHL(GHL_WEBHOOK, payload);
 
-  try {
-    const blob = new Blob([JSON.stringify(payload)], { type: 'text/plain' });
-    navigator.sendBeacon && navigator.sendBeacon(GHL_WEBHOOK, blob);
-  } catch(e) {}
-
-  window.location.href = 'thank-you';
+  setTimeout(function(){ window.location.href = 'thank-you'; }, 500);
   return false;
+}
+
+function sendToGHL(url, data) {
+  var iframe = document.getElementById('ghl-relay-frame');
+  if (!iframe) {
+    iframe = document.createElement('iframe');
+    iframe.id = 'ghl-relay-frame';
+    iframe.name = 'ghl-relay-frame';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+  }
+  var form = document.createElement('form');
+  form.method = 'POST';
+  form.action = url;
+  form.target = 'ghl-relay-frame';
+  form.style.display = 'none';
+  Object.keys(data).forEach(function(key) {
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = key;
+    input.value = data[key];
+    form.appendChild(input);
+  });
+  document.body.appendChild(form);
+  form.submit();
+  setTimeout(function(){ document.body.removeChild(form); }, 2000);
 }
 </script>
   <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
