@@ -365,9 +365,8 @@
 
       fetch(GHL_WEBHOOK, {
         method : 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body   : JSON.stringify(payload),
-        mode   : 'no-cors'
+        headers: { 'Content-Type': 'text/plain' },
+        body   : JSON.stringify(payload)
       }).catch(function(){});
 
       fieldsEl.classList.add('hidden');
