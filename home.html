@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chris Alchemy Consulting | Transform Your Business</title>
+  <meta name="description" content="Premium CRM setup, business automation, and coaching services. Chris Alchemy Consulting helps entrepreneurs scale smarter, faster."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap"/></noscript>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* Home-specific hero layout */
+    .hero-content{display:block;}
+    .hero-col{max-width:680px;}
+    /* How it works */
+    .hiw-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3.5rem;}
+    @media(max-width:768px){.hiw-grid{grid-template-columns:1fr;}}
+    .hiw-card{background:rgba(10,10,10,0.6);border:1px solid rgba(255,255,255,0.06);border-radius:18px;padding:2.5rem 2rem;text-align:center;transition:all 0.35s ease;position:relative;overflow:hidden;}
+    .hiw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad-gold);transform:scaleX(0);transition:transform 0.35s ease;transform-origin:left;}
+    .hiw-card:hover::before{transform:scaleX(1);}
+    .hiw-card:hover{transform:translateY(-8px);border-color:rgba(216,169,91,0.2);}
+    .hiw-num{font-family:'Montserrat',sans-serif;font-size:4rem;color:rgba(216,169,91,0.45);font-weight:700;line-height:1;margin-bottom:1rem;}
+    .hiw-icon{font-size:2.25rem;margin-bottom:1rem;}
+    .hiw-title{font-family:'Montserrat',sans-serif;font-size:1.2rem;color:#fefefe;margin-bottom:0.625rem;}
+    .hiw-text{font-size:0.875rem;color:rgba(255,255,255,0.45);line-height:1.72;}
+    /* Services preview */
+    .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
+    @media(max-width:900px){.svc-grid{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:560px){.svc-grid{grid-template-columns:1fr;}}
+    /* Marquee gradient fade */
+    .testimonials-fade{position:relative;}
+    .testimonials-fade::before,.testimonials-fade::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none;}
+    .testimonials-fade::before{left:0;background:linear-gradient(90deg,#050505,transparent);}
+    .testimonials-fade::after{right:0;background:linear-gradient(-90deg,#050505,transparent);}
+    /* CTA section glow */
+    .cta-glow{position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(216,169,91,0.07),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;}
+  </style>
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<div class="cursor"></div>
+<div class="cursor-ring"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="home" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
+    <ul class="nav-links">
+      <li><a href="home">Home</a></li>
+      <li><a href="about">About</a></li>
+      <li><a href="services">Services</a></li>
+      <li><a href="addons">Add-ons</a></li>
+      <li><a href="speaking">Speaking</a></li>
+      <li><a href="marketing">Marketing</a></li>
+      <li><a href="calculator">Calculator</a></li>
+      <li><a href="contact">Contact</a></li>
+    </ul>
+    <a href="calendar" class="nav-btn btn">Book a Call</a>
+    <button class="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav">
+  <a href="home">Home</a>
+  <a href="about">About</a>
+  <a href="services">Services</a>
+  <a href="addons">Add-ons</a>
+  <a href="speaking">Speaking</a>
+  <a href="marketing">Marketing</a>
+  <a href="calculator">Calculator</a>
+  <a href="contact">Contact</a>
+  <a href="calendar" class="btn btn-gold nav-btn">Book a Call</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-grad"></div>
+  <div class="hero-content container">
+    <div class="hero-col">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        Premium CRM & Automation Consulting
+      </div>
+      <h1 class="hero-title">
+        Transform Your Business<br/>Into a <em>Wealth</em><br/>Generating Machine
+      </h1>
+      <p class="hero-sub">Chris Alchemy Consulting engineers your entire CRM pipeline, automation framework, and growth systems so you close more deals, retain more clients, and scale without the chaos.</p>
+      <div class="hero-actions">
+        <a href="calculator" class="btn btn-gold" data-mag>Calculate Your Revenue ↗</a>
+        <a href="services" class="btn btn-outline">View Plans</a>
+      </div>
+      <div class="hero-metrics">
+        <div class="hero-metric">
+          <div class="num" data-count="100" data-suf="%" style="color:var(--gold);font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;">100%</div>
+          <div class="label">Done-For-You Setup</div>
+        </div>
+        <div class="hero-metric">
+          <div class="num" data-count="4" data-pre="" data-suf="+" style="color:var(--gold);font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;">4+</div>
+          <div class="label">Plan Tiers Available</div>
+        </div>
+        <div class="hero-metric">
+          <div class="num" style="color:var(--gold);font-family:'Montserrat',sans-serif;font-size:2rem;font-weight:700;">5★</div>
+          <div class="label">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAND -->
+<section class="stats-band section-sm">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item" data-aos="zoom" data-delay="0">
+        <div class="stat-num" data-count="299" data-pre="$" data-suf="/mo">$299/mo</div>
+        <div class="stat-lbl">Starting price for<br/>Starter Plan</div>
+      </div>
+      <div class="stat-item" data-aos="zoom" data-delay="100">
+        <div class="stat-num">Automated</div>
+        <div class="stat-lbl">Workflows built<br/>for every client</div>
+      </div>
+      <div class="stat-item" data-aos="zoom" data-delay="200">
+        <div class="stat-num" data-count="14" data-suf=" days">14 days</div>
+        <div class="stat-lbl">Average onboarding<br/>completion time</div>
+      </div>
+      <div class="stat-item" data-aos="zoom" data-delay="300">
+        <div class="stat-num" data-count="100" data-suf="%">100%</div>
+        <div class="stat-lbl">Done-for-you<br/>CRM setup</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="glow-line"></div>
+
+<!-- SERVICES OVERVIEW -->
+<section class="section dot-pattern">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">What We Build For You</div>
+      <h2 class="section-title" data-aos="up" data-delay="100">Everything You Need to <em>Scale</em></h2>
+      <p class="section-desc wide" data-aos="up" data-delay="200">From CRM architecture to automated follow-up sequences, we handle the technical so you can focus on the revenue.</p>
+    </div>
+    <div class="svc-grid">
+      <div class="card" data-aos="up" data-delay="0">
+        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+        <div class="card-title">Onboarding System Design</div>
+        <p class="card-text">Complete end-to-end onboarding architecture mapped from purchase to client activation. Every step documented and automated.</p>
+        <div style="margin-top:1.25rem"><a href="services" class="text-gold" style="font-size:0.85rem;font-weight:600;">Explore →</a></div>
+      </div>
+      <div class="card" data-aos="up" data-delay="80">
+        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><path d="M6 21V9a9 9 0 0 0 9 9"/></svg></div>
+        <div class="card-title">CRM Pipeline Setup</div>
+        <p class="card-text">GoHighLevel pipeline built and configured with dedicated stages, automation triggers, and opportunity tracking aligned to your process.</p>
+        <div style="margin-top:1.25rem"><a href="services" class="text-gold" style="font-size:0.85rem;font-weight:600;">Explore →</a></div>
+      </div>
+      <div class="card" data-aos="up" data-delay="160">
+        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10"/></svg></div>
+        <div class="card-title">Automation Framework</div>
+        <p class="card-text">5 production-ready workflows: onboarding, contract signing, appointment confirmation, show/no-show, all running on autopilot.</p>
+        <div style="margin-top:1.25rem"><a href="services" class="text-gold" style="font-size:0.85rem;font-weight:600;">Explore →</a></div>
+      </div>
+      <div class="card" data-aos="up" data-delay="240">
+        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <div class="card-title">Phone & Compliance</div>
+        <p class="card-text">Phone registry, spam score monitoring, and compliance review so your messages actually land, not in spam folders or carrier blocks.</p>
+        <div style="margin-top:1.25rem"><a href="services" class="text-gold" style="font-size:0.85rem;font-weight:600;">Explore →</a></div>
+      </div>
+      <div class="card" data-aos="up" data-delay="320">
+        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"/><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg></div>
+        <div class="card-title">SaaS Product Tiers</div>
+        <p class="card-text">4 fully configured SaaS plans from Starter ($299/mo) to Enterprise ($1,499/mo) with clear feature differentiation and billing setup.</p>
+        <div style="margin-top:1.25rem"><a href="services" class="text-gold" style="font-size:0.85rem;font-weight:600;">View Plans →</a></div>
+      </div>
+      <div class="card" data-aos="up" data-delay="400">
+        <div class="card-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+        <div class="card-title">Revenue Add-ons</div>
+        <p class="card-text">Follow-up sequences, appointment confirmation recipes, GHL automation snippets designed to maximize every lead in your pipeline.</p>
+        <div style="margin-top:1.25rem"><a href="addons" class="text-gold" style="font-size:0.85rem;font-weight:600;">See Add-ons →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:rgba(10,78,92,0.05);">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">The Process</div>
+      <h2 class="section-title" data-aos="up" data-delay="100">From Zero to <em>Fully Automated</em></h2>
+      <p class="section-desc wide" data-aos="up" data-delay="200">Our proven 3-phase framework turns your scattered tools into a revenue-generating system.</p>
+    </div>
+    <div class="hiw-grid">
+      <div class="hiw-card" data-aos="up" data-delay="0">
+        <div class="hiw-num">01</div>
+        <div class="hiw-icon" style="color:var(--gold);display:flex;align-items:center;justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6.72 6.72l1.16-.93a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="hiw-title">Strategy Call</div>
+        <p class="hiw-text">We map your current business, identify gaps, and design your custom automation blueprint, all in one deep-dive session.</p>
+      </div>
+      <div class="hiw-card" data-aos="up" data-delay="120">
+        <div class="hiw-num">02</div>
+        <div class="hiw-icon" style="color:var(--gold);display:flex;align-items:center;justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
+        <div class="hiw-title">Build & Deploy</div>
+        <p class="hiw-text">Our team builds your entire CRM pipeline, automation workflows, and onboarding system inside GoHighLevel within days.</p>
+      </div>
+      <div class="hiw-card" data-aos="up" data-delay="240">
+        <div class="hiw-num">03</div>
+        <div class="hiw-icon" style="color:var(--gold);display:flex;align-items:center;justify-content:center;"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></svg></div>
+        <div class="hiw-title">Launch & Scale</div>
+        <p class="hiw-text">Go live with a fully automated system. We train your team, monitor performance, and continuously optimize for growth.</p>
+      </div>
+    </div>
+    <div class="center mt-xl" data-aos="up" data-delay="300">
+      <a href="calculator" class="btn btn-gold" data-mag>Calculate My Revenue Potential</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">Client Results</div>
+      <h2 class="section-title" data-aos="up" data-delay="100">Real Businesses, <em>Real Growth</em></h2>
+    </div>
+  </div>
+  <div class="testimonials-fade">
+    <div class="testimonials-overflow">
+      <div class="testimonials-track">
+        <!-- Set 1 -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Working with Chris gave me the clarity and direction that I didn't know I was missing. He helped me tighten up my strategy, shift my mindset, and follow through with the plans for my business. I'm seeing real progress and feeling confident in my business and myself as an owner."</p>
+          <div class="testi-author">
+            <div class="testi-av">AO</div>
+            <div><div class="testi-name">Andy O.</div><div class="testi-role">CEO &amp; Founder</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris's personalized scripts and coaching has empowered my team to make highly effective dials... In just 3 weeks, we generated a staggering $50M sales pipeline and $500K in revenue... His systems are not only scalable but also incredibly efficient."</p>
+          <div class="testi-author">
+            <div class="testi-av">GR</div>
+            <div><div class="testi-name">Gus Rodriguez</div><div class="testi-role">CEO &amp; Founder</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris has been monumental in helping me establish the 'NO-QUIT' mindset. He has helped me surge forward in my artistic career. Through his business expertise &amp; coaching, I now have my work on exhibit at The Las Vegas Natural History Museum and The Salon des Refusés."</p>
+          <div class="testi-author">
+            <div class="testi-av">LW</div>
+            <div><div class="testi-name">Liz Wilinski</div><div class="testi-role">Contemporary Artist</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris is an example of skill and application of skill. He understood my situation and proceeded with confidence to help me successfully. If you are someone that is trying to improve your skills, do not hesitate to call on Chris as your personal consultant."</p>
+          <div class="testi-author">
+            <div class="testi-av">RV</div>
+            <div><div class="testi-name">Raul Vasquez</div><div class="testi-role">Real Estate Investor</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris set up our entire GoHighLevel pipeline in under two weeks. Our lead follow-up rate went from 40% to 95%. That's pure revenue we were leaving on the table."</p>
+          <div class="testi-author">
+            <div class="testi-av">MR</div>
+            <div><div class="testi-name">Marcus Reynolds</div><div class="testi-role">CEO</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The automation framework Chris built saves us 20+ hours a week. Every new client is onboarded perfectly without us lifting a finger. Worth every penny."</p>
+          <div class="testi-author">
+            <div class="testi-av">SL</div>
+            <div><div class="testi-name">Sarah Liu</div><div class="testi-role">Founder</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"We went from 3 dropped leads per week to zero. The appointment confirmation sequences alone recovered $12,000 in the first month. Game-changing work."</p>
+          <div class="testi-author">
+            <div class="testi-av">DM</div>
+            <div><div class="testi-name">David Morales</div><div class="testi-role">Owner</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The Growth Plan gave us everything we needed to handle 10X the clients. Professional setup, clean pipelines, and automations that actually work. Highly recommend."</p>
+          <div class="testi-author">
+            <div class="testi-av">JP</div>
+            <div><div class="testi-name">Jessica Park</div><div class="testi-role">Director</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris understood our sales process better than we did. He mapped it, automated it, and now our close rate is up 38%. That's not software; that's strategy."</p>
+          <div class="testi-author">
+            <div class="testi-av">AT</div>
+            <div><div class="testi-name">Alex Turner</div><div class="testi-role">Founder</div></div>
+          </div>
+        </div>
+        <!-- Duplicate set for seamless loop -->
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Working with Chris gave me the clarity and direction that I didn't know I was missing. He helped me tighten up my strategy, shift my mindset, and follow through with the plans for my business. I'm seeing real progress and feeling confident in my business and myself as an owner."</p>
+          <div class="testi-author">
+            <div class="testi-av">AO</div>
+            <div><div class="testi-name">Andy O.</div><div class="testi-role">CEO &amp; Founder</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris's personalized scripts and coaching has empowered my team to make highly effective dials... In just 3 weeks, we generated a staggering $50M sales pipeline and $500K in revenue... His systems are not only scalable but also incredibly efficient."</p>
+          <div class="testi-author">
+            <div class="testi-av">GR</div>
+            <div><div class="testi-name">Gus Rodriguez</div><div class="testi-role">CEO &amp; Founder</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris has been monumental in helping me establish the 'NO-QUIT' mindset. He has helped me surge forward in my artistic career. Through his business expertise &amp; coaching, I now have my work on exhibit at The Las Vegas Natural History Museum and The Salon des Refusés."</p>
+          <div class="testi-author">
+            <div class="testi-av">LW</div>
+            <div><div class="testi-name">Liz Wilinski</div><div class="testi-role">Contemporary Artist</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris is an example of skill and application of skill. He understood my situation and proceeded with confidence to help me successfully. If you are someone that is trying to improve your skills, do not hesitate to call on Chris as your personal consultant."</p>
+          <div class="testi-author">
+            <div class="testi-av">RV</div>
+            <div><div class="testi-name">Raul Vasquez</div><div class="testi-role">Real Estate Investor</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris set up our entire GoHighLevel pipeline in under two weeks. Our lead follow-up rate went from 40% to 95%. That's pure revenue we were leaving on the table."</p>
+          <div class="testi-author">
+            <div class="testi-av">MR</div>
+            <div><div class="testi-name">Marcus Reynolds</div><div class="testi-role">CEO</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The automation framework Chris built saves us 20+ hours a week. Every new client is onboarded perfectly without us lifting a finger. Worth every penny."</p>
+          <div class="testi-author">
+            <div class="testi-av">SL</div>
+            <div><div class="testi-name">Sarah Liu</div><div class="testi-role">Founder</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"We went from 3 dropped leads per week to zero. The appointment confirmation sequences alone recovered $12,000 in the first month. Game-changing work."</p>
+          <div class="testi-author">
+            <div class="testi-av">DM</div>
+            <div><div class="testi-name">David Morales</div><div class="testi-role">Owner</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"The Growth Plan gave us everything we needed to handle 10X the clients. Professional setup, clean pipelines, and automations that actually work. Highly recommend."</p>
+          <div class="testi-author">
+            <div class="testi-av">JP</div>
+            <div><div class="testi-name">Jessica Park</div><div class="testi-role">Director</div></div>
+          </div>
+        </div>
+        <div class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">"Chris understood our sales process better than we did. He mapped it, automated it, and now our close rate is up 38%. That's not software; that's strategy."</p>
+          <div class="testi-author">
+            <div class="testi-av">AT</div>
+            <div><div class="testi-name">Alex Turner</div><div class="testi-role">Founder</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="cta-glow"></div>
+  <div class="container">
+    <div class="section-eyebrow center" data-aos="fade" style="justify-content:center;margin-bottom:0.9rem;">Ready to Start?</div>
+    <h2 class="section-title center nowrap-desktop" data-aos="up" data-delay="100" style="margin:0 auto 1.25rem;">Stop Losing Revenue to <em>Broken Systems</em></h2>
+    <p class="section-desc center" data-aos="up" data-delay="200" style="max-width:500px;margin:0 auto 2.5rem;">Book your free strategy call today. We'll audit your current setup and show you exactly what you're leaving on the table.</p>
+    <div class="flex-center gap-md" data-aos="up" data-delay="300">
+      <a href="calendar" class="btn btn-gold" data-mag>Book Free Strategy Call</a>
+      <a href="calculator" class="btn btn-outline">See Revenue Calculator</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="home" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
+        <p class="footer-tagline">Premium CRM setup, automation frameworks, and revenue systems for ambitious entrepreneurs ready to scale.</p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.736-8.852L1.78 2.25H8.08l4.258 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="home">Home</a></li>
+          <li><a href="about">About Chris</a></li>
+          <li><a href="services">Services</a></li>
+          <li><a href="addons">Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="speaking">Speaking</a></li>
+          <li><a href="marketing">Marketing</a></li>
+          <li><a href="calculator">Revenue Calculator</a></li>
+          <li><a href="calendar">Book a Call</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-col-title">Get in Touch</div>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <a href="contact" style="color:inherit;">Contact Us</a></p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> chrisalchemyconsulting.com</p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> United States</p>
+        <div class="mt-md">
+          <a href="calendar" class="btn btn-gold" style="font-size:0.82rem;padding:0.6rem 1.25rem;">Book a Call →</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-div"></div>
+    <div class="footer-bottom">
+      <span>© 2026 Chris Alchemy Consulting. All rights reserved.</span>
+      <span>Transforming Businesses Through Automation & Strategy</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-top" aria-label="Back to top">↑</a>
+
+<script src="js/main.js"></script>
+  <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
+</body>
+</html>
