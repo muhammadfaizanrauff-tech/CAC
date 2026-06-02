@@ -186,11 +186,11 @@ input,textarea,select{font-family:var(--font-body);}
 .testimonials-track{display:flex;gap:1.5rem;animation:marquee 35s linear infinite;width:max-content;}
 .testimonials-track:hover{animation-play-state:paused;}
 @keyframes marquee{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
-.testi-card{background:rgba(12,12,12,0.8);border:1px solid rgba(216,169,91,0.1);border-radius:16px;padding:2rem;width:340px;flex-shrink:0;transition:border-color 0.3s ease;}
+.testi-card{background:rgba(12,12,12,0.8);border:1px solid rgba(216,169,91,0.1);border-radius:16px;padding:2rem;width:340px;flex-shrink:0;transition:border-color 0.3s ease;display:flex;flex-direction:column;}
 .testi-card:hover{border-color:rgba(216,169,91,0.3);}
 .testi-stars{color:var(--gold);font-size:0.85rem;letter-spacing:2px;margin-bottom:0.875rem;}
-.testi-text{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1.25rem;}
-.testi-author{display:flex;align-items:center;gap:0.75rem;}
+.testi-text{font-size:0.82rem;color:rgba(255,255,255,0.6);line-height:1.7;margin-bottom:1.25rem;flex-grow:1;}
+.testi-author{display:flex;align-items:center;gap:0.75rem;margin-top:auto;}
 .testi-av{width:36px;height:36px;border-radius:50%;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:0.8rem;color:#000;font-weight:700;flex-shrink:0;}
 .testi-name{font-size:0.82rem;font-weight:600;color:var(--white);}
 .testi-role{font-size:0.73rem;color:rgba(255,255,255,0.35);}
