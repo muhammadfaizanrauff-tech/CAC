@@ -299,12 +299,13 @@
         <div class="calc-cta">
           <h3>Ready to Recover This Revenue?</h3>
           <p>Enter your email and we'll send you a summary of your results — or book a free strategy call now.</p>
-          <div class="email-row">
-            <input type="email" id="emailLead" class="email-inp" placeholder="your@email.com"/>
-            <button onclick="sendReport('lead')" class="btn btn-gold" style="white-space:nowrap;">Email My Results →</button>
+          <div class="email-row" style="align-items:center;gap:0.75rem;">
+            <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.45);border-radius:8px;padding:0.55rem 1.1rem;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;flex-shrink:0;animation:pulse-red 1.5s ease-in-out infinite;"></span>
+              <span style="color:#ef4444;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Email Report — Coming Soon</span>
+            </div>
           </div>
-          <div class="email-sent" id="sentLead">✓ Report on its way — check your inbox!</div>
-          <p class="email-fine">No spam. One email with your numbers.</p>
+          <p class="email-fine">This feature is coming soon. Book a call to get your results now.</p>
           <div style="margin-top:1rem;padding-top:21px;border-top:1px solid rgba(255,255,255,0.06);">
             <a href="calendar" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
           </div>
@@ -334,26 +335,70 @@
           Your Current Setup
         </div>
 
-        <!-- Staff count -->
+        <!-- Admin Staff -->
         <div class="inp-group">
           <div class="inp-label"><span>Admin / Reception Staff</span></div>
           <div class="staff-counter" style="margin-top:0.5rem;">
-            <button class="staff-btn" onclick="changeStaff(-1)">−</button>
+            <button class="staff-btn" onclick="changeStaff('aiStaff','staffDisplay',-1)">−</button>
             <div class="staff-display" id="staffDisplay">1</div>
-            <button class="staff-btn" onclick="changeStaff(1)">+</button>
+            <button class="staff-btn" onclick="changeStaff('aiStaff','staffDisplay',1)">+</button>
             <span style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-left:0.25rem;">person(s)</span>
           </div>
           <input type="hidden" id="aiStaff" value="1"/>
-          <div class="inp-hint">Number of admin or reception roles handled by staff</div>
+          <div class="inp-hint">Admin or reception roles replaced by AI</div>
         </div>
-
-        <!-- Salary slider -->
         <div class="inp-group">
           <div class="inp-label">
-            <span>Avg. Monthly Salary / Person</span>
+            <span>Admin Monthly Salary / Person</span>
             <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalaryNum" value="4000" min="2000" max="8000" step="100" oninput="syncSl('aiSalarySl',this,2000,8000);aiCalcUpdate()" style="width:64px;"/></div>
           </div>
           <input type="range" class="inp-slider" id="aiSalarySl" min="2000" max="8000" value="4000" step="100" oninput="syncNum('aiSalaryNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Base monthly salary before taxes/overhead</div>
+        </div>
+
+        <div class="inp-divider"></div>
+
+        <!-- Sales Rep Staff -->
+        <div class="inp-group">
+          <div class="inp-label"><span>Sales Representatives</span></div>
+          <div class="staff-counter" style="margin-top:0.5rem;">
+            <button class="staff-btn" onclick="changeStaff('aiSalesStaff','salesStaffDisplay',-1)">−</button>
+            <div class="staff-display" id="salesStaffDisplay">0</div>
+            <button class="staff-btn" onclick="changeStaff('aiSalesStaff','salesStaffDisplay',1)">+</button>
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-left:0.25rem;">person(s)</span>
+          </div>
+          <input type="hidden" id="aiSalesStaff" value="0"/>
+          <div class="inp-hint">Sales roles supported or replaced by AI automation</div>
+        </div>
+        <div class="inp-group">
+          <div class="inp-label">
+            <span>Sales Rep Monthly Salary / Person</span>
+            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalesSalaryNum" value="5000" min="2000" max="12000" step="100" oninput="syncSl('aiSalesSalarySl',this,2000,12000);aiCalcUpdate()" style="width:64px;"/></div>
+          </div>
+          <input type="range" class="inp-slider" id="aiSalesSalarySl" min="2000" max="12000" value="5000" step="100" oninput="syncNum('aiSalesSalaryNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Base monthly salary before taxes/overhead</div>
+        </div>
+
+        <div class="inp-divider"></div>
+
+        <!-- Marketing Rep Staff -->
+        <div class="inp-group">
+          <div class="inp-label"><span>Marketing Representatives</span></div>
+          <div class="staff-counter" style="margin-top:0.5rem;">
+            <button class="staff-btn" onclick="changeStaff('aiMktStaff','mktStaffDisplay',-1)">−</button>
+            <div class="staff-display" id="mktStaffDisplay">0</div>
+            <button class="staff-btn" onclick="changeStaff('aiMktStaff','mktStaffDisplay',1)">+</button>
+            <span style="font-size:0.78rem;color:rgba(255,255,255,0.35);margin-left:0.25rem;">person(s)</span>
+          </div>
+          <input type="hidden" id="aiMktStaff" value="0"/>
+          <div class="inp-hint">Marketing roles supported or replaced by AI automation</div>
+        </div>
+        <div class="inp-group">
+          <div class="inp-label">
+            <span>Marketing Rep Monthly Salary / Person</span>
+            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiMktSalaryNum" value="4500" min="2000" max="12000" step="100" oninput="syncSl('aiMktSalarySl',this,2000,12000);aiCalcUpdate()" style="width:64px;"/></div>
+          </div>
+          <input type="range" class="inp-slider" id="aiMktSalarySl" min="2000" max="12000" value="4500" step="100" oninput="syncNum('aiMktSalaryNum',this);aiCalcUpdate()"/>
           <div class="inp-hint">Base monthly salary before taxes/overhead</div>
         </div>
 
@@ -468,12 +513,13 @@
         <div class="calc-cta">
           <h3>Ready to Move Forward With AI?</h3>
           <p>Enter your email and we'll send your full savings report — or book a call to get started.</p>
-          <div class="email-row">
-            <input type="email" id="emailAI" class="email-inp" placeholder="your@email.com"/>
-            <button onclick="sendReport('ai')" class="btn btn-gold" style="white-space:nowrap;">Email My Report →</button>
+          <div class="email-row" style="align-items:center;gap:0.75rem;">
+            <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.45);border-radius:8px;padding:0.55rem 1.1rem;">
+              <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;flex-shrink:0;animation:pulse-red 1.5s ease-in-out infinite;"></span>
+              <span style="color:#ef4444;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Email Report — Coming Soon</span>
+            </div>
           </div>
-          <div class="email-sent" id="sentAI">✓ Report sent — check your inbox!</div>
-          <p class="email-fine">No spam. One email with your savings breakdown.</p>
+          <p class="email-fine">This feature is coming soon. Book a call to get your results now.</p>
           <div style="margin-top:1rem;padding-top:21px;border-top:1px solid rgba(255,255,255,0.06);">
             <a href="calendar" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
           </div>
@@ -584,10 +630,11 @@ document.addEventListener('DOMContentLoaded', function(){ calcUpdate(); aiCalcUp
 const OVERHEAD_RATE = 0.18;
 const WORK_WEEKS    = 4.33;
 
-function changeStaff(delta){
-  const el = document.getElementById('aiStaff');
-  const disp = document.getElementById('staffDisplay');
-  let v = Math.max(1, Math.min(20, parseInt(el.value) + delta));
+function changeStaff(inputId, dispId, delta){
+  const el = document.getElementById(inputId);
+  const disp = document.getElementById(dispId);
+  const min = inputId === 'aiStaff' ? 1 : 0;
+  let v = Math.max(min, Math.min(20, parseInt(el.value) + delta));
   el.value = v;
   disp.textContent = v;
   aiCalcUpdate();
@@ -604,9 +651,13 @@ function fmtDollar(n){
 }
 
 function aiCalcUpdate(){
-  const staff    = parseInt(document.getElementById('aiStaff').value) || 1;
-  const salary   = parseInt(document.getElementById('aiSalaryNum').value) || 4000;
-  const aiCost   = parseInt(document.getElementById('aiPackage').value) || 1400;
+  const staff       = parseInt(document.getElementById('aiStaff').value) || 1;
+  const salary      = parseInt(document.getElementById('aiSalaryNum').value) || 4000;
+  const salesStaff  = parseInt(document.getElementById('aiSalesStaff').value) || 0;
+  const salesSalary = parseInt(document.getElementById('aiSalesSalaryNum').value) || 5000;
+  const mktStaff    = parseInt(document.getElementById('aiMktStaff').value) || 0;
+  const mktSalary   = parseInt(document.getElementById('aiMktSalaryNum').value) || 4500;
+  const aiCost      = parseInt(document.getElementById('aiPackage').value) || 1400;
   const overhead = document.getElementById('aiOverhead').checked;
   const showHrs  = document.getElementById('aiHoursToggle').checked;
   const hrsWk    = parseInt(document.getElementById('aiHoursNum').value) || 20;
@@ -623,7 +674,7 @@ function aiCalcUpdate(){
   }
 
   // Algorithm
-  const base_labor      = staff * salary;
+  const base_labor      = (staff * salary) + (salesStaff * salesSalary) + (mktStaff * mktSalary);
   const overhead_amount = overhead ? base_labor * OVERHEAD_RATE : 0;
   const human_cost      = base_labor + overhead_amount;
   const monthly_savings = human_cost - aiCost;
