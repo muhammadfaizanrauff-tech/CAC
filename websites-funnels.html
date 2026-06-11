@@ -3,14 +3,93 @@
 <head>
   <meta charset="UTF-8"/>
   <link rel="icon" type="image/jpeg" href="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/695ee7e449ed625e7d48539d.jpg"/>
-  <link rel="apple-touch-icon" href="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/695ee7e449ed625e7d48539d.jpg"/>  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Websites & Funnels | Chris Alchemy Consulting</title>
-  <meta name="description" content="Professional website and funnel design services by Chris Alchemy Consulting."/>
+  <link rel="apple-touch-icon" href="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/695ee7e449ed625e7d48539d.jpg"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Websites &amp; Funnels | Chris Alchemy Consulting</title>
+  <meta name="description" content="Conversion-ready websites and funnels built inside GoHighLevel or hand-coded from scratch — wired to your CRM from day one."/>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500,600,700,800&family=Inter:wght@400,500,600,700&display=swap"/></noscript>
   <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    /* ── TAB TOGGLE ── */
+    .wf-tabs{display:flex;gap:0;background:rgba(10,10,10,0.9);border:var(--border);border-radius:12px;padding:4px;width:fit-content;margin:0 auto 3rem;}
+    .wf-tab{padding:0.55rem 1.75rem;border-radius:9px;font-size:0.82rem;font-weight:700;letter-spacing:0.04em;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.45);transition:all 0.25s ease;font-family:var(--font-body);}
+    .wf-tab[aria-selected="true"]{background:var(--grad-gold);color:#000;}
+    .wf-panel{display:none;}
+    .wf-panel.active{display:block;}
+
+    /* ── PACKAGE BLOCK ── */
+    .pkg-block{margin-bottom:3.5rem;}
+    .pkg-block-head{margin-bottom:1.75rem;}
+    .pkg-block-title{font-family:var(--font-head);font-size:1.35rem;color:var(--white);font-weight:700;margin-bottom:0.35rem;}
+    .pkg-block-sub{font-size:0.85rem;color:rgba(255,255,255,0.42);line-height:1.65;max-width:680px;}
+    .pkg-divider{height:1px;background:linear-gradient(90deg,rgba(216,169,91,0.3),transparent);margin-bottom:1.75rem;}
+
+    /* ── PRICE CARDS (4-up) ── */
+    .wf-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;}
+    @media(max-width:1100px){.wf-cards{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:560px){.wf-cards{grid-template-columns:1fr;}}
+    .wf-card{background:rgba(8,8,8,0.9);border:1px solid rgba(255,255,255,0.07);border-radius:20px;padding:2rem 1.6rem;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:all 0.35s var(--ease);}
+    .wf-card.featured{border-color:rgba(216,169,91,0.35);background:rgba(10,78,92,0.14);}
+    .wf-card:hover{transform:translateY(-8px);border-color:rgba(216,169,91,0.4);box-shadow:0 24px 60px rgba(0,0,0,0.45),var(--shadow-gold);}
+    .wf-badge{position:absolute;top:1rem;right:1rem;background:var(--grad-gold);color:#000;font-size:0.62rem;font-weight:700;letter-spacing:0.05em;padding:0.22rem 0.6rem;border-radius:100px;text-transform:uppercase;}
+    .wf-tier{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:0.75rem;}
+    .wf-price{margin-bottom:0.4rem;}
+    .wf-price .cur{font-size:1.1rem;color:var(--gold);vertical-align:super;font-weight:700;line-height:1;}
+    .wf-price .amt{font-family:var(--font-head);font-size:2.2rem;font-weight:700;line-height:1;}
+    .wf-price-note{font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:1rem;}
+    .wf-desc{font-size:0.8rem;color:rgba(255,255,255,0.42);line-height:1.65;margin-bottom:1rem;flex:1;}
+    .wf-div{height:1px;background:rgba(255,255,255,0.06);margin:0.875rem 0;}
+    .wf-features{list-style:none;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1.4rem;}
+    .wf-features li{display:flex;align-items:flex-start;gap:0.55rem;font-size:0.78rem;color:rgba(255,255,255,0.58);}
+    .wf-features .ck{color:var(--gold);font-size:0.72rem;flex-shrink:0;margin-top:3px;}
+    .wf-btn{display:block;width:100%;padding:0.72rem;border-radius:10px;font-size:0.8rem;font-weight:700;text-align:center;border:none;cursor:pointer;transition:all 0.3s ease;font-family:var(--font-body);text-decoration:none;}
+    .wf-btn.gold{background:var(--grad-gold);color:#000;}
+    .wf-btn.outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.15);}
+    .wf-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(216,169,91,0.3);}
+
+    /* ── INCLUDED STRIP ── */
+    .inc-strip{background:rgba(10,78,92,0.1);border-top:var(--border);border-bottom:var(--border);padding:2.5rem 2.5rem;}
+    .inc-strip-inner{max-width:var(--max-w);margin:0 auto;}
+    .inc-strip-title{font-size:0.65rem;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:1.25rem;display:flex;align-items:center;gap:0.625rem;}
+    .inc-strip-title::before{content:'';width:24px;height:1px;background:var(--gold);}
+    .inc-pills{display:flex;flex-wrap:wrap;gap:0.625rem;}
+    .inc-pill{display:flex;align-items:center;gap:0.4rem;padding:0.35rem 0.85rem;background:rgba(216,169,91,0.06);border:1px solid rgba(216,169,91,0.15);border-radius:100px;font-size:0.75rem;color:rgba(255,255,255,0.62);}
+    .inc-pill::before{content:'✓';color:var(--gold);font-size:0.68rem;font-weight:700;}
+
+    /* ── COMPARISON TABLES ── */
+    .wf-table-wrap{overflow-x:auto;margin-top:2rem;}
+    .wf-table{width:100%;border-collapse:collapse;min-width:460px;}
+    .wf-table th{padding:0.875rem 1.25rem;text-align:center;font-size:0.72rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);font-weight:700;border-bottom:1px solid rgba(216,169,91,0.18);}
+    .wf-table th:first-child{text-align:left;}
+    .wf-table td{padding:0.8rem 1.25rem;font-size:0.875rem;color:rgba(255,255,255,0.55);border-bottom:1px solid rgba(255,255,255,0.05);text-align:center;}
+    .wf-table td:first-child{text-align:left;color:rgba(255,255,255,0.75);font-weight:500;}
+    .wf-table tr:hover td{background:rgba(216,169,91,0.03);}
+    .wf-table .val{color:var(--white);font-weight:600;}
+
+    /* ── ADD-ONS ── */
+    .addon-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;}
+    @media(max-width:900px){.addon-row{grid-template-columns:repeat(2,1fr);}}
+    @media(max-width:560px){.addon-row{grid-template-columns:1fr;}}
+    .wf-addon{background:rgba(10,10,10,0.8);border:var(--border);border-radius:16px;padding:1.6rem;transition:all 0.35s ease;}
+    .wf-addon:hover{transform:translateY(-5px);border-color:rgba(216,169,91,0.35);box-shadow:var(--shadow-gold);}
+    .wf-addon-title{font-family:var(--font-head);font-size:0.95rem;color:var(--white);margin-bottom:0.35rem;font-weight:700;}
+    .wf-addon-price{font-size:0.85rem;color:var(--gold);font-weight:600;margin-bottom:0.6rem;}
+    .wf-addon-desc{font-size:0.78rem;color:rgba(255,255,255,0.45);line-height:1.65;}
+
+    /* ── TWO-COL TABLE LAYOUT ── */
+    .table-pair{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+    @media(max-width:860px){.table-pair{grid-template-columns:1fr;}}
+    .table-block-title{font-family:var(--font-head);font-size:1rem;color:var(--white);font-weight:700;margin-bottom:1rem;}
+
+    @media(max-width:768px){
+      .inc-strip{padding:2rem 1.25rem;}
+      .wf-tabs{width:auto;}
+      .wf-tab{padding:0.5rem 1.1rem;font-size:0.78rem;}
+    }
+  </style>
 </head>
 <body>
 
@@ -18,7 +97,7 @@
 <div class="cursor"></div>
 <div class="cursor-ring"></div>
 
-<!-- NAV -->
+<!-- ===== NAV ===== -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="home" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
@@ -26,7 +105,7 @@
       <li><a href="home">Home</a></li>
       <li><a href="about">About</a></li>
       <li><a href="services">Services</a></li>
-      <li><a href="websites-funnels">Websites &amp; Funnels</a></li>
+      <li><a href="websites-funnels" class="active">Websites &amp; Funnels</a></li>
       <li><a href="addons">Add-ons</a></li>
       <li><a href="speaking">Speaking</a></li>
       <li><a href="marketing">Marketing</a></li>
@@ -34,9 +113,7 @@
       <li><a href="contact">Contact</a></li>
     </ul>
     <a href="calendar" class="nav-btn btn">Book a Call</a>
-    <button class="hamburger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -45,7 +122,7 @@
   <a href="home">Home</a>
   <a href="about">About</a>
   <a href="services">Services</a>
-  <a href="websites-funnels" class="active">Websites &amp; Funnels</a>
+  <a href="websites-funnels">Websites &amp; Funnels</a>
   <a href="addons">Add-ons</a>
   <a href="speaking">Speaking</a>
   <a href="marketing">Marketing</a>
@@ -54,21 +131,663 @@
   <a href="calendar" class="btn btn-gold nav-btn">Book a Call</a>
 </div>
 
-<!-- PLACEHOLDER CONTENT -->
-<section class="hero" style="min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;">
+<!-- ===== HERO ===== -->
+<section class="hero" style="min-height:88vh;padding-bottom:5rem;">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-grad"></div>
   <div class="hero-content">
-    <div class="hero-col" style="max-width:680px;margin:0 auto;">
-      <p class="hero-eyebrow text-gold" style="letter-spacing:0.18em;text-transform:uppercase;font-size:0.8rem;font-weight:600;margin-bottom:1.25rem;">Coming Soon</p>
-      <h1 class="hero-title" style="font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.08;margin-bottom:1.5rem;">Websites &amp; Funnels</h1>
-      <p class="hero-sub" style="font-size:1.1rem;color:rgba(255,255,255,0.55);max-width:520px;margin:0 auto 2.5rem;">This page is coming soon. In the meantime, explore our other services or book a call to learn more.</p>
-      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
-        <a href="services" class="btn btn-gold">View Services</a>
-        <a href="calendar" class="btn btn-outline">Book a Call</a>
+    <div class="hero-col">
+      <div class="badge" data-aos="fade"><span class="badge-dot"></span>Websites &amp; Funnels</div>
+      <h1 class="hero-title" data-aos="up" data-delay="80">Websites &amp; Funnels That <em>Turn Clicks Into Clients</em></h1>
+      <p class="hero-sub" data-aos="up" data-delay="160">Whether you need it live fast inside GoHighLevel or hand-coded and one-of-a-kind, we build conversion-ready websites and funnels — wired to your CRM and automations from the first click.</p>
+      <div class="hero-actions" data-aos="up" data-delay="240">
+        <a href="calendar" class="btn btn-gold" data-mag>Book a Free Strategy Call</a>
+        <a href="#packages" class="btn btn-outline">See Packages &amp; Pricing</a>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ===== PACKAGES ===== -->
+<section class="section" id="packages" style="padding-top:4rem;padding-bottom:1rem;">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">Packages &amp; Pricing</div>
+      <h2 class="section-title" data-aos="up" data-delay="80">One-Time <em>Project Fees</em></h2>
+      <p class="section-desc wide center" data-aos="up" data-delay="160" style="margin:0 auto 2.5rem;">All prices are one-time USD fees. GHL builds go live fast; custom builds are engineered from scratch. Both are wired to your GoHighLevel CRM.</p>
+    </div>
+
+    <!-- Tab Toggle -->
+    <div role="tablist" aria-label="Package type" class="wf-tabs" data-aos="fade" data-delay="200">
+      <button class="wf-tab" role="tab" aria-selected="true" aria-controls="panel-websites" id="tab-websites">Websites</button>
+      <button class="wf-tab" role="tab" aria-selected="false" aria-controls="panel-funnels" id="tab-funnels">Funnels</button>
+    </div>
+
+    <!-- WEBSITES PANEL -->
+    <div class="wf-panel active" id="panel-websites" role="tabpanel" aria-labelledby="tab-websites">
+
+      <!-- Package 1: GHL Websites -->
+      <div class="pkg-block" data-aos="up">
+        <div class="pkg-block-head">
+          <div class="pkg-block-title">GHL Websites</div>
+          <p class="pkg-block-sub">Professional, conversion-ready websites built natively inside GoHighLevel — launched fast, wired to your CRM from day one.</p>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="wf-cards">
+          <!-- 5 Pages -->
+          <div class="wf-card">
+            <div class="wf-tier">5 Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">497</span></div>
+            <div class="wf-price-note">One-time fee · ~1 week</div>
+            <p class="wf-desc">Essential presence: Home, About, Services, Contact + 1. CRM-connected form, embedded booking calendar, SEO basics, 1 revision round.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> 5 pages (Home, About, Services, Contact + 1)</li>
+              <li><span class="ck">✓</span> CRM-connected lead form</li>
+              <li><span class="ck">✓</span> Embedded booking calendar</li>
+              <li><span class="ck">✓</span> On-page SEO basics</li>
+              <li><span class="ck">✓</span> 1 revision round</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- 8 Pages — MOST POPULAR -->
+          <div class="wf-card featured">
+            <div class="wf-badge">Most Popular</div>
+            <div class="wf-tier">8 Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">797</span></div>
+            <div class="wf-price-note">One-time fee · ~1.5 weeks</div>
+            <p class="wf-desc">Adds individual service pages, blog/resources, a testimonials page, lead-magnet opt-in, 2 revision rounds.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> 8 pages including service detail pages</li>
+              <li><span class="ck">✓</span> Blog / resources section</li>
+              <li><span class="ck">✓</span> Testimonials page</li>
+              <li><span class="ck">✓</span> Lead-magnet opt-in</li>
+              <li><span class="ck">✓</span> 2 revision rounds</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn gold">Get Started</a>
+          </div>
+          <!-- 12 Pages -->
+          <div class="wf-card">
+            <div class="wf-tier">12 Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">1,197</span></div>
+            <div class="wf-price-note">One-time fee · ~2–3 weeks</div>
+            <p class="wf-desc">Authority site: service/location pages, multiple landing pages, full blog, advanced on-page SEO, pop-ups, 3 revision rounds + a training call.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> 12 pages incl. location/service pages</li>
+              <li><span class="ck">✓</span> Multiple landing pages</li>
+              <li><span class="ck">✓</span> Advanced on-page SEO</li>
+              <li><span class="ck">✓</span> Pop-ups &amp; exit intent</li>
+              <li><span class="ck">✓</span> 3 revisions + training call</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- More Pages -->
+          <div class="wf-card">
+            <div class="wf-tier">13+ Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">1,497</span></div>
+            <div class="wf-price-note">from · +$99 per page over 12</div>
+            <p class="wf-desc">Custom-scoped: sitemap session, reusable page templates, priority scheduling. Scope confirmed on your strategy call.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Custom sitemap session</li>
+              <li><span class="ck">✓</span> Reusable page templates</li>
+              <li><span class="ck">✓</span> Priority scheduling</li>
+              <li><span class="ck">✓</span> +$99 per page over 12</li>
+              <li><span class="ck">✓</span> Everything in 12-page tier</li>
+            </ul>
+            <a href="calendar" class="wf-btn outline">Book a Call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 2: Custom Websites -->
+      <div class="pkg-block" data-aos="up" data-delay="80">
+        <div class="pkg-block-head">
+          <div class="pkg-block-title">Custom Websites <span style="color:rgba(255,255,255,0.35);font-weight:400;font-size:0.9rem;">(Code-Based)</span></div>
+          <p class="pkg-block-sub">Bespoke, hand-coded websites engineered for brands that want a one-of-a-kind experience, total design control, and performance templates can't match.</p>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="wf-cards">
+          <!-- 5 Pages Custom -->
+          <div class="wf-card">
+            <div class="wf-tier">5 Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">1,497</span></div>
+            <div class="wf-price-note">One-time fee · ~2.5–4 weeks</div>
+            <p class="wf-desc">Bespoke essentials: custom design, animations, performance optimization, GHL-connected forms, deployment.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Fully custom design</li>
+              <li><span class="ck">✓</span> Custom animations</li>
+              <li><span class="ck">✓</span> Performance optimized</li>
+              <li><span class="ck">✓</span> GHL-connected forms</li>
+              <li><span class="ck">✓</span> Full deployment</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- 8 Pages Custom — MOST POPULAR -->
+          <div class="wf-card featured">
+            <div class="wf-badge">Most Popular</div>
+            <div class="wf-tier">8 Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">2,297</span></div>
+            <div class="wf-price-note">One-time fee · ~4–6 weeks</div>
+            <p class="wf-desc">Documented design system, self-serve custom CMS/blog, richer interactions, schema SEO.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Documented design system</li>
+              <li><span class="ck">✓</span> Custom CMS / blog</li>
+              <li><span class="ck">✓</span> Rich interactions</li>
+              <li><span class="ck">✓</span> Schema &amp; structured SEO</li>
+              <li><span class="ck">✓</span> 2 revision rounds</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn gold">Get Started</a>
+          </div>
+          <!-- 12 Pages Custom -->
+          <div class="wf-card">
+            <div class="wf-tier">12 Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">3,297</span></div>
+            <div class="wf-price-note">One-time fee · ~6–9 weeks</div>
+            <p class="wf-desc">Flagship: full component library, advanced CMS, custom integrations (booking/payments/up to 2 APIs), motion design, accessibility.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Full component library</li>
+              <li><span class="ck">✓</span> Advanced CMS</li>
+              <li><span class="ck">✓</span> Up to 2 custom API integrations</li>
+              <li><span class="ck">✓</span> Motion design</li>
+              <li><span class="ck">✓</span> Accessibility compliant</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- More Pages Custom -->
+          <div class="wf-card">
+            <div class="wf-tier">13+ Pages</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">3,997</span></div>
+            <div class="wf-price-note">from · +$250 per page over 12</div>
+            <p class="wf-desc">Enterprise: architecture phase, templating system, multi-language/region, staging environment. Scope confirmed on call.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Architecture planning phase</li>
+              <li><span class="ck">✓</span> Templating system</li>
+              <li><span class="ck">✓</span> Multi-language / multi-region</li>
+              <li><span class="ck">✓</span> Staging environment</li>
+              <li><span class="ck">✓</span> +$250 per page over 12</li>
+            </ul>
+            <a href="calendar" class="wf-btn outline">Book a Call</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-websites -->
+
+    <!-- FUNNELS PANEL -->
+    <div class="wf-panel" id="panel-funnels" role="tabpanel" aria-labelledby="tab-funnels">
+
+      <!-- Package 3: GHL Funnels -->
+      <div class="pkg-block" data-aos="up">
+        <div class="pkg-block-head">
+          <div class="pkg-block-title">GHL Funnels</div>
+          <p class="pkg-block-sub">High-converting sales funnels built inside GoHighLevel — every step wired to your automations and follow-up from the first click.</p>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="wf-cards">
+          <!-- 3 Steps -->
+          <div class="wf-card">
+            <div class="wf-tier">3 Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">397</span></div>
+            <div class="wf-price-note">One-time fee · ~4–6 days</div>
+            <p class="wf-desc">Lead/booking funnel: opt-in, thank-you, booking/offer step. 1 automation connection, 1 revision.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Opt-in, thank-you, booking step</li>
+              <li><span class="ck">✓</span> 1 automation connection</li>
+              <li><span class="ck">✓</span> CRM pipeline wired</li>
+              <li><span class="ck">✓</span> Mobile-responsive</li>
+              <li><span class="ck">✓</span> 1 revision round</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- 5 Steps — MOST POPULAR -->
+          <div class="wf-card featured">
+            <div class="wf-badge">Most Popular</div>
+            <div class="wf-tier">5 Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">647</span></div>
+            <div class="wf-price-note">One-time fee · ~1 week</div>
+            <p class="wf-desc">Complete sales funnel: opt-in, sales page, checkout, upsell, thank-you. 2 automations, 2 revisions.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Opt-in → sales → checkout → upsell → thank-you</li>
+              <li><span class="ck">✓</span> 2 automation connections</li>
+              <li><span class="ck">✓</span> Checkout integration</li>
+              <li><span class="ck">✓</span> Upsell page</li>
+              <li><span class="ck">✓</span> 2 revision rounds</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn gold">Get Started</a>
+          </div>
+          <!-- 7 Steps -->
+          <div class="wf-card">
+            <div class="wf-tier">7 Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">897</span></div>
+            <div class="wf-price-note">One-time fee · ~1.5–2 weeks</div>
+            <p class="wf-desc">Optimized revenue funnel: VSL/bridge page, 2nd upsell/downsell, 3 automations, segmentation tags, 3 revisions + strategy call.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> VSL / bridge page</li>
+              <li><span class="ck">✓</span> 2nd upsell + downsell</li>
+              <li><span class="ck">✓</span> 3 automation connections</li>
+              <li><span class="ck">✓</span> Segmentation tags</li>
+              <li><span class="ck">✓</span> 3 revisions + strategy call</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- More Steps -->
+          <div class="wf-card">
+            <div class="wf-tier">8+ Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">1,097</span></div>
+            <div class="wf-price-note">from · +$120 per step over 7</div>
+            <p class="wf-desc">Custom-scoped: branching logic, application forms, multiple automation recipes. Scope confirmed on your strategy call.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Branching logic flows</li>
+              <li><span class="ck">✓</span> Application / qualification forms</li>
+              <li><span class="ck">✓</span> Multiple automation recipes</li>
+              <li><span class="ck">✓</span> +$120 per step over 7</li>
+              <li><span class="ck">✓</span> Everything in 7-step tier</li>
+            </ul>
+            <a href="calendar" class="wf-btn outline">Book a Call</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Package 4: Custom Funnels -->
+      <div class="pkg-block" data-aos="up" data-delay="80">
+        <div class="pkg-block-head">
+          <div class="pkg-block-title">Custom Funnels <span style="color:rgba(255,255,255,0.35);font-weight:400;font-size:0.9rem;">(Code-Based)</span></div>
+          <p class="pkg-block-sub">Hand-coded, fully bespoke sales funnels engineered for maximum conversion, total design freedom, and speed off-the-shelf builders can't touch — still wired to your GoHighLevel automations.</p>
+        </div>
+        <div class="pkg-divider"></div>
+        <div class="wf-cards">
+          <!-- 3 Steps Custom -->
+          <div class="wf-card">
+            <div class="wf-tier">3 Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">1,197</span></div>
+            <div class="wf-price-note">One-time fee · ~2–3.5 weeks</div>
+            <p class="wf-desc">Bespoke lead/booking funnel: custom design, sub-second load, custom validated forms, A/B scaffolding.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Fully custom design</li>
+              <li><span class="ck">✓</span> Sub-second load speed</li>
+              <li><span class="ck">✓</span> Custom validated forms</li>
+              <li><span class="ck">✓</span> A/B test scaffolding</li>
+              <li><span class="ck">✓</span> GHL automation wired</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- 5 Steps Custom — MOST POPULAR -->
+          <div class="wf-card featured">
+            <div class="wf-badge">Most Popular</div>
+            <div class="wf-tier">5 Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">1,897</span></div>
+            <div class="wf-price-note">One-time fee · ~3–5 weeks</div>
+            <p class="wf-desc">Custom checkout + order bump, upsell with one-click logic, A/B framework, 2 GHL automations.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Custom checkout + order bump</li>
+              <li><span class="ck">✓</span> One-click upsell logic</li>
+              <li><span class="ck">✓</span> A/B testing framework</li>
+              <li><span class="ck">✓</span> 2 GHL automations</li>
+              <li><span class="ck">✓</span> Full code handoff</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn gold">Get Started</a>
+          </div>
+          <!-- 7 Steps Custom -->
+          <div class="wf-card">
+            <div class="wf-tier">7 Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">2,597</span></div>
+            <div class="wf-price-note">One-time fee · ~5–7 weeks</div>
+            <p class="wf-desc">Optimized: VSL/bridge, 2nd upsell/downsell, multivariate testing, behavioral personalization, 3 automations + optimization call.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> VSL / bridge page</li>
+              <li><span class="ck">✓</span> Multivariate testing</li>
+              <li><span class="ck">✓</span> Behavioral personalization</li>
+              <li><span class="ck">✓</span> 3 GHL automations</li>
+              <li><span class="ck">✓</span> Optimization call included</li>
+            </ul>
+            <a href="checkout-plans" class="wf-btn outline">Get Started</a>
+          </div>
+          <!-- More Steps Custom -->
+          <div class="wf-card">
+            <div class="wf-tier">8+ Steps</div>
+            <div class="wf-price"><span class="cur">$</span><span class="amt">2,997</span></div>
+            <div class="wf-price-note">from · +$300 per step over 7</div>
+            <p class="wf-desc">Launch/enterprise: branching journeys, application/qualification systems, multiple integrations, staging environment.</p>
+            <div class="wf-div"></div>
+            <ul class="wf-features">
+              <li><span class="ck">✓</span> Branching journey architecture</li>
+              <li><span class="ck">✓</span> Application / qualification systems</li>
+              <li><span class="ck">✓</span> Multiple integrations</li>
+              <li><span class="ck">✓</span> Staging environment</li>
+              <li><span class="ck">✓</span> +$300 per step over 7</li>
+            </ul>
+            <a href="calendar" class="wf-btn outline">Book a Call</a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-funnels -->
+
+  </div><!-- /container -->
+</section>
+
+<!-- ===== INCLUDED IN EVERY PROJECT STRIP ===== -->
+<div class="inc-strip">
+  <div class="inc-strip-inner">
+    <div class="inc-strip-title">Included in every project</div>
+    <div class="inc-pills">
+      <span class="inc-pill">Mobile-responsive on every page/step</span>
+      <span class="inc-pill">On-page SEO basics</span>
+      <span class="inc-pill">Optimized fast-loading images</span>
+      <span class="inc-pill">Lead form connected to your GoHighLevel CRM</span>
+      <span class="inc-pill">Analytics &amp; pixel setup</span>
+      <span class="inc-pill">SSL / secure setup</span>
+      <span class="inc-pill">Revisions included (1–3 rounds by tier)</span>
+      <span class="inc-pill">Pre-launch QA on desktop, tablet &amp; mobile</span>
+      <span class="inc-pill">Loom handoff walkthrough</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== COMPARISON TABLES ===== -->
+<section class="section" style="padding-top:3.5rem;">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">Side by Side</div>
+      <h2 class="section-title" data-aos="up" data-delay="80">GHL vs <em>Custom Code</em></h2>
+      <p class="section-desc wide center" data-aos="up" data-delay="160" style="margin:0 auto;">Same outcomes, different level of craft. GHL builds go live fast; custom builds are engineered to stand out.</p>
+    </div>
+
+    <div class="table-pair" data-aos="up" data-delay="100">
+      <!-- Websites comparison -->
+      <div>
+        <div class="table-block-title">Websites</div>
+        <div class="wf-table-wrap">
+          <table class="wf-table">
+            <thead>
+              <tr>
+                <th>Pages</th>
+                <th>GHL Website</th>
+                <th>Custom Website</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>5</td><td class="val">$497</td><td class="val">$1,497</td></tr>
+              <tr><td>8</td><td class="val">$797</td><td class="val">$2,297</td></tr>
+              <tr><td>12</td><td class="val">$1,197</td><td class="val">$3,297</td></tr>
+              <tr><td>13+</td><td class="val">from $1,497<br><span style="font-size:0.72rem;color:rgba(255,255,255,0.35);">+$99/pg</span></td><td class="val">from $3,997<br><span style="font-size:0.72rem;color:rgba(255,255,255,0.35);">+$250/pg</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- Funnels comparison -->
+      <div>
+        <div class="table-block-title">Funnels</div>
+        <div class="wf-table-wrap">
+          <table class="wf-table">
+            <thead>
+              <tr>
+                <th>Steps</th>
+                <th>GHL Funnel</th>
+                <th>Custom Funnel</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>3</td><td class="val">$397</td><td class="val">$1,197</td></tr>
+              <tr><td>5</td><td class="val">$647</td><td class="val">$1,897</td></tr>
+              <tr><td>7</td><td class="val">$897</td><td class="val">$2,597</td></tr>
+              <tr><td>8+</td><td class="val">from $1,097<br><span style="font-size:0.72rem;color:rgba(255,255,255,0.35);">+$120/step</span></td><td class="val">from $2,997<br><span style="font-size:0.72rem;color:rgba(255,255,255,0.35);">+$300/step</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== ADD-ONS / UPSELLS ===== -->
+<section class="section" style="background:rgba(10,78,92,0.05);padding-top:3.5rem;">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">Enhance Your Build</div>
+      <h2 class="section-title" data-aos="up" data-delay="80">Optional <em>Add-Ons</em></h2>
+      <p class="section-desc wide center" data-aos="up" data-delay="160" style="margin:0 auto;">Stack these onto any project to go further, faster.</p>
+    </div>
+    <div class="addon-row">
+      <div class="wf-addon" data-aos="up" data-delay="0">
+        <div class="wf-addon-title">Monthly Care Plan</div>
+        <div class="wf-addon-price">$97/mo <span style="color:rgba(255,255,255,0.3);">GHL</span> &nbsp;·&nbsp; $197/mo <span style="color:rgba(255,255,255,0.3);">Custom</span></div>
+        <p class="wf-addon-desc">Ongoing edits, hosting management, backups, and updates — so your site or funnel stays fast, secure, and current without you lifting a finger.</p>
+      </div>
+      <div class="wf-addon" data-aos="up" data-delay="60">
+        <div class="wf-addon-title">Done-for-You Copywriting</div>
+        <div class="wf-addon-price">$97/page &nbsp;·&nbsp; $147/funnel step</div>
+        <p class="wf-addon-desc">Revenue-focused copy written from scratch for every page or funnel step — so your offer lands and converts from day one.</p>
+      </div>
+      <div class="wf-addon" data-aos="up" data-delay="120">
+        <div class="wf-addon-title">Rush Delivery</div>
+        <div class="wf-addon-price">+30–50% surcharge</div>
+        <p class="wf-addon-desc">Need it live faster? We'll prioritize your project and compress the timeline. Surcharge depends on scope and current schedule.</p>
+      </div>
+      <div class="wf-addon" data-aos="up" data-delay="0">
+        <div class="wf-addon-title">Extra Revision Round</div>
+        <div class="wf-addon-price">$97 <span style="color:rgba(255,255,255,0.3);">GHL</span> &nbsp;·&nbsp; $197 <span style="color:rgba(255,255,255,0.3);">Custom</span></div>
+        <p class="wf-addon-desc">Need more polish? Add an extra round of revisions to any project after the included rounds are used.</p>
+      </div>
+      <div class="wf-addon" data-aos="up" data-delay="60">
+        <div class="wf-addon-title">Automation Bundles</div>
+        <div class="wf-addon-price">from $119 one-time</div>
+        <p class="wf-addon-desc">Pair your build with our existing automation add-ons: AI Chat Bot ($399), Business Automation ($119), Reviews &amp; Referrals ($119), or Monthly Nurture ($139).</p>
+      </div>
+      <div class="wf-addon" data-aos="up" data-delay="120">
+        <div class="wf-addon-title">SaaS Plan Upgrade</div>
+        <div class="wf-addon-price">from $299/mo</div>
+        <p class="wf-addon-desc">Every build buyer is a natural candidate for a Starter–Scale SaaS plan to keep the whole CRM system running and following up automatically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="section" style="padding-top:3.5rem;">
+  <div class="container">
+    <div class="center mb-lg">
+      <div class="section-eyebrow" data-aos="fade">Common Questions</div>
+      <h2 class="section-title" data-aos="up" data-delay="80">Straight <em>Answers</em></h2>
+    </div>
+    <div style="max-width:820px;margin:0 auto;" data-aos="up" data-delay="100">
+      <div class="acc">
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">Why are custom code-based builds about 3× the GHL price?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">Real design and engineering from scratch — bespoke layouts, custom animations, performance tuning, integrations — versus building on GHL's existing system. You pay for differentiation, speed, full code ownership, and scalability. GHL builds are excellent; custom builds are exceptional.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">Will my GHL build still connect to my CRM and automations?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">Yes, natively — forms, bookings, and steps are wired to your pipelines and follow-up from day one. Custom builds also connect to GoHighLevel for lead capture; you just get a bespoke front end that your competitors can't copy.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">How is pricing decided?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">By page count for websites and step count for funnels. Need more than the top tier? The "More" option scales at a clear per-page / per-step rate — no hidden surprises. Scope and exact timeline are confirmed on your strategy call.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">What's included in every tier?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">Mobile-responsive design, on-page SEO basics, fast-loading images, a lead form connected to your GHL CRM, analytics &amp; pixel setup, SSL, revision rounds (1–3 by tier), pre-launch QA across devices, and a Loom handoff walkthrough. The price is a complete service, not a bare build.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">How long does it take?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">GHL sites ~1–3 weeks; GHL funnels ~4–14 business days; custom sites ~2.5–9 weeks; custom funnels ~2–7 weeks. Exact timeline is confirmed on your strategy call. Rush delivery is available for a surcharge.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">Do I own everything after the build?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">Yes. GHL builds live inside your GoHighLevel account — they're yours. Custom builds are deployed to your hosting with the full codebase handed to you. You're never dependent on us to keep your site running.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">What about ongoing help after launch?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">Add the optional monthly care plan for edits, hosting, backups, and updates. Or step into a Starter–Scale SaaS plan to keep your whole CRM system running and following up automatically — every build buyer gets priority access.</div>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <button class="acc-head" aria-expanded="false">
+            <span class="acc-q">Do you write the copy?</span>
+            <span class="acc-ico">+</span>
+          </button>
+          <div class="acc-body" role="region">
+            <div class="acc-body-inner">Lower tiers include guided copywriting — you supply raw content, we structure and polish it. Higher tiers include done-for-you copy on key conversion pages. A full done-for-you copywriting upgrade ($97/page or $147/funnel step) is available on any tier.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLOSING CTA ===== -->
+<section class="cta-banner">
+  <div class="container">
+    <h2 class="section-title center" data-aos="up" style="margin:0 auto 1.25rem;max-width:640px;">Stop sending traffic to pages that don't <em>convert</em>.</h2>
+    <p class="section-desc center" data-aos="up" data-delay="100" style="max-width:480px;margin:0 auto 2.5rem;">Book your free strategy call and we'll map the exact site or funnel your offer needs — and what it'll return.</p>
+    <div class="flex-center gap-md" data-aos="up" data-delay="200">
+      <a href="calendar" class="btn btn-gold" data-mag>Book a Free Strategy Call</a>
+      <a href="services" class="btn btn-outline">View SaaS Plans</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="home" class="nav-logo"><img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a063796e92818f121b73965.png" alt="Chris Alchemy Consulting" class="nav-logo-img"/></a>
+        <p class="footer-tagline">Premium CRM setup, automation frameworks, and revenue systems for ambitious entrepreneurs ready to scale.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/chris.alchemy.consulting?igsh=NTc4MTIwNjQ2YQ%3D%3D&utm_source=qr" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="https://www.facebook.com/profile.php?id=61584564191738&mibextid=wwXIfr" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.linkedin.com/in/karageuzian?utm_source=share_via&utm_content=profile&utm_medium=member_ios" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigation</div>
+        <ul class="footer-links">
+          <li><a href="home">Home</a></li>
+          <li><a href="about">About</a></li>
+          <li><a href="services">Services</a></li>
+          <li><a href="websites-funnels">Websites &amp; Funnels</a></li>
+          <li><a href="addons">Add-ons</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Resources</div>
+        <ul class="footer-links">
+          <li><a href="speaking">Speaking</a></li>
+          <li><a href="marketing">Marketing</a></li>
+          <li><a href="calculator">Calculator</a></li>
+          <li><a href="calendar">Book a Call</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <div class="footer-col-title">Get in Touch</div>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg> <a href="contact" style="color:inherit;">Contact Us</a></p>
+        <p><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg> chrisalchemyconsulting.com</p>
+        <div class="mt-md"><a href="calendar" class="btn btn-gold" style="font-size:0.82rem;padding:0.6rem 1.25rem;">Book a Call →</a></div>
+      </div>
+    </div>
+    <div class="footer-div"></div>
+    <div class="footer-bottom">
+      <span>© 2026 Chris Alchemy Consulting. All rights reserved.</span>
+      <span>Transforming Businesses Through Automation &amp; Strategy</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="back-top" aria-label="Back to top">↑</a>
+
 <script src="js/main.js"></script>
+<script>
+/* ===== WEBSITES / FUNNELS TAB TOGGLE ===== */
+(function () {
+  var tabs = document.querySelectorAll('.wf-tab');
+  var panels = document.querySelectorAll('.wf-panel');
+
+  function activate(idx) {
+    tabs.forEach(function (t, i) {
+      var selected = i === idx;
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+    });
+    panels.forEach(function (p, i) {
+      p.classList.toggle('active', i === idx);
+    });
+  }
+
+  tabs.forEach(function (tab, idx) {
+    tab.addEventListener('click', function () { activate(idx); });
+    tab.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { activate((idx + 1) % tabs.length); tabs[(idx + 1) % tabs.length].focus(); }
+      if (e.key === 'ArrowLeft')  { activate((idx - 1 + tabs.length) % tabs.length); tabs[(idx - 1 + tabs.length) % tabs.length].focus(); }
+    });
+  });
+
+  /* keep accordion accessible with aria-expanded */
+  document.querySelectorAll('.acc-head').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !expanded ? 'true' : 'false');
+    });
+  });
+}());
+</script>
+<script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
 </body>
 </html>
