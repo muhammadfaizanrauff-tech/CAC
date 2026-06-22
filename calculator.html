@@ -511,9 +511,15 @@
         <!-- CTA -->
         <div class="calc-cta">
           <h3>Ready to Move Forward With AI?</h3>
-          <p>Book a free strategy call and we'll walk through your numbers together.</p>
-          <div style="margin-top:1rem;">
-            <a href="calendar" class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
+          <p>Enter your email and we'll send your full savings report instantly.</p>
+          <div class="email-row">
+            <input type="email" class="email-inp" id="emailAI" placeholder="your@email.com"/>
+            <button class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1.25rem;white-space:nowrap;cursor:pointer;" onclick="sendReport('ai')">Send me the report</button>
+          </div>
+          <div class="email-sent" id="sentAI">Report sent! Check your inbox in a few minutes.</div>
+          <p class="email-fine">No spam. Just your personalised results.</p>
+          <div style="margin-top:1rem;padding-top:21px;border-top:1px solid rgba(255,255,255,0.06);">
+            <a href="calendar" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
           </div>
         </div>
 
@@ -706,7 +712,43 @@ function aiCalcUpdate(){
   if(showHrs) document.getElementById('aiHoursReclaimed').textContent = hrs_reclaimed;
 }
 
+const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/2ab17077-ce4b-4af3-a96a-286f44acb48d';
 
+async function sendReport(type){
+  const emailEl = document.getElementById('emailAI');
+  const sentEl  = document.getElementById('sentAI');
+  const email   = emailEl.value.trim();
+
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    emailEl.style.borderColor = 'rgba(220,60,60,0.6)';
+    emailEl.focus();
+    return;
+  }
+  emailEl.style.borderColor = '';
+
+  const payload = {
+    email,
+    source:          'AI Cost-Savings Calculator',
+    page_url:        window.location.href,
+    staff_count:     document.getElementById('aiStaff').value,
+    monthly_salary:  '$' + document.getElementById('aiSalaryNum').value,
+    ai_package:      document.getElementById('aiPackage').options[document.getElementById('aiPackage').selectedIndex].text,
+    human_cost:      document.getElementById('aiHumanCost').textContent,
+    ai_cost:         document.getElementById('aiCostVal').textContent,
+    monthly_savings: document.getElementById('aiMonthlySavings').textContent,
+    yearly_savings:  document.getElementById('aiYearlySavings').textContent,
+    percent_saved:   document.getElementById('aiPercent').textContent,
+    hires_avoided:   document.getElementById('aiHires').textContent
+  };
+
+  try {
+    await fetch(GHL_WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), mode:'no-cors' });
+  } catch(e){}
+
+  emailEl.style.display = 'none';
+  emailEl.closest('.email-row').style.display = 'none';
+  sentEl.style.display = 'block';
+}
 </script>
   <script src="https://beta.leadconnectorhq.com/loader.js" data-resources-url="https://beta.leadconnectorhq.com/chat-widget/loader.js" data-widget-id="6a0f80583e715fb5ddfa36a2"></script>
 </body>
