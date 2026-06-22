@@ -511,14 +511,13 @@
         <!-- CTA -->
         <div class="calc-cta">
           <h3>Ready to Move Forward With AI?</h3>
-          <p>Enter your email and we'll send your full savings report — or book a call to get started.</p>
-          <div class="email-row" style="align-items:center;gap:0.75rem;">
-            <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.45);border-radius:8px;padding:0.55rem 1.1rem;">
-              <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;flex-shrink:0;animation:pulse-red 1.5s ease-in-out infinite;"></span>
-              <span style="color:#ef4444;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Email Report — Coming Soon</span>
-            </div>
+          <p>Enter your email and we'll send your full savings report instantly.</p>
+          <div class="email-row">
+            <input type="email" class="email-inp" id="emailAI" placeholder="your@email.com"/>
+            <button class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1.25rem;white-space:nowrap;cursor:pointer;" onclick="sendReport('ai')">Send me the report</button>
           </div>
-          <p class="email-fine">This feature is coming soon. Book a call to get your results now.</p>
+          <div class="email-sent" id="sentAI">Report sent! Check your inbox in a few minutes.</div>
+          <p class="email-fine">No spam. Just your personalised results.</p>
           <div style="margin-top:1rem;padding-top:21px;border-top:1px solid rgba(255,255,255,0.06);">
             <a href="calendar" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
           </div>
