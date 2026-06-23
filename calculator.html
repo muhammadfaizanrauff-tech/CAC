@@ -13,11 +13,11 @@
   <link rel="stylesheet" href="css/style.css"/>
   <style>
     /* ===== CALCULATOR LAYOUT ===== */
-    .calc-shell{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:flex-start;}
+    .calc-shell{display:grid;grid-template-columns:1fr 1.1fr;gap:2rem;align-items:stretch;}
     @media(max-width:960px){.calc-shell{grid-template-columns:1fr;}}
 
     /* Inputs panel */
-    .calc-panel{background:rgba(8,8,8,0.9);border:var(--border);border-radius:20px;padding:2.25rem;}
+    .calc-panel{background:rgba(8,8,8,0.9);border:var(--border);border-radius:20px;padding:2.25rem;height:100%;box-sizing:border-box;}
     @media(max-width:560px){.calc-panel{padding:1.5rem;}}
     .calc-panel-title{font-family:'Montserrat',sans-serif;font-size:0.9rem;font-weight:700;color:var(--white);letter-spacing:0.04em;margin-bottom:1.75rem;display:flex;align-items:center;gap:0.625rem;}
     .calc-panel-title svg{color:var(--gold);}
