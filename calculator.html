@@ -511,10 +511,16 @@
         <!-- CTA -->
         <div class="calc-cta">
           <h3>Ready to Move Forward With AI?</h3>
-          <p>Enter your email and we'll send your full savings report instantly.</p>
-          <div class="email-row">
-            <input type="email" class="email-inp" id="emailAI" placeholder="your@email.com"/>
-            <button class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1.25rem;white-space:nowrap;cursor:pointer;" onclick="sendReport('ai')">Send me the report</button>
+          <p>Enter your details and we'll send your full savings report instantly.</p>
+          <div class="email-row" style="flex-direction:column;gap:0.6rem;">
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+              <input type="text" class="email-inp" id="firstNameAI" placeholder="First name" style="flex:1;min-width:120px;"/>
+              <input type="text" class="email-inp" id="lastNameAI" placeholder="Last name" style="flex:1;min-width:120px;"/>
+            </div>
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+              <input type="email" class="email-inp" id="emailAI" placeholder="your@email.com" style="flex:1;"/>
+              <button class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1.25rem;white-space:nowrap;cursor:pointer;" onclick="sendReport('ai')">Send me the report</button>
+            </div>
           </div>
           <div class="email-sent" id="sentAI">The report will be emailed to you within 2-5 minutes. Thank you!</div>
           <p class="email-fine">No spam. Just your personalised results.</p>
@@ -715,10 +721,18 @@ function aiCalcUpdate(){
 const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/fac08971-83db-40c4-bda6-1189e25fd7b0';
 
 async function sendReport(type){
-  const emailEl = document.getElementById('emailAI');
-  const sentEl  = document.getElementById('sentAI');
-  const email   = emailEl.value.trim();
+  const firstNameEl = document.getElementById('firstNameAI');
+  const lastNameEl  = document.getElementById('lastNameAI');
+  const emailEl     = document.getElementById('emailAI');
+  const sentEl      = document.getElementById('sentAI');
+  const firstName   = firstNameEl.value.trim();
+  const lastName    = lastNameEl.value.trim();
+  const email       = emailEl.value.trim();
 
+  if(!firstName){ firstNameEl.style.borderColor='rgba(220,60,60,0.6)'; firstNameEl.focus(); return; }
+  firstNameEl.style.borderColor = '';
+  if(!lastName){ lastNameEl.style.borderColor='rgba(220,60,60,0.6)'; lastNameEl.focus(); return; }
+  lastNameEl.style.borderColor = '';
   if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
     emailEl.style.borderColor = 'rgba(220,60,60,0.6)';
     emailEl.focus();
@@ -727,6 +741,8 @@ async function sendReport(type){
   emailEl.style.borderColor = '';
 
   const payload = {
+    first_name:      firstName,
+    last_name:       lastName,
     email,
     source:          'AI Cost-Savings Calculator',
     page_url:        window.location.href,
