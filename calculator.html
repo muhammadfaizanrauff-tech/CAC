@@ -758,7 +758,7 @@ async function sendReport(type){
   };
 
   try {
-    await fetch(GHL_WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(payload), mode:'no-cors' });
+    await fetch(GHL_WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
   } catch(e){}
 
   emailEl.style.display = 'none';
