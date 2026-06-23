@@ -299,14 +299,19 @@
 
         <div class="calc-cta">
           <h3>Ready to Recover This Revenue?</h3>
-          <p>Enter your email and we'll send you a summary of your results — or book a free strategy call now.</p>
-          <div class="email-row" style="align-items:center;gap:0.75rem;">
-            <div style="display:inline-flex;align-items:center;gap:0.6rem;background:rgba(220,38,38,0.12);border:1px solid rgba(220,38,38,0.45);border-radius:8px;padding:0.55rem 1.1rem;">
-              <span style="width:8px;height:8px;border-radius:50%;background:#ef4444;flex-shrink:0;animation:pulse-red 1.5s ease-in-out infinite;"></span>
-              <span style="color:#ef4444;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;">Email Report — Coming Soon</span>
+          <p>Enter your details and we'll send your full lead loss report instantly.</p>
+          <div class="email-row" id="leadEmailRow" style="flex-direction:column;gap:0.6rem;">
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+              <input type="text" class="email-inp" id="firstNameLead" placeholder="First name" style="flex:1;min-width:120px;"/>
+              <input type="text" class="email-inp" id="lastNameLead" placeholder="Last name" style="flex:1;min-width:120px;"/>
+            </div>
+            <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
+              <input type="email" class="email-inp" id="emailLead" placeholder="your@email.com" style="flex:1;"/>
+              <button class="btn btn-gold" style="font-size:0.82rem;padding:0.65rem 1.25rem;white-space:nowrap;cursor:pointer;" onclick="sendLeadReport()">Send me the report</button>
             </div>
           </div>
-          <p class="email-fine">This feature is coming soon. Book a call to get your results now.</p>
+          <div class="email-sent" id="sentLead">The report will be emailed to you within 2-5 minutes. Thank you!</div>
+          <p class="email-fine">No spam. Just your personalised results.</p>
           <div style="margin-top:1rem;padding-top:21px;border-top:1px solid rgba(255,255,255,0.06);">
             <a href="calendar" class="btn btn-outline" style="font-size:0.82rem;padding:0.6rem 1.25rem;" data-mag>Book Free Strategy Call →</a>
           </div>
@@ -718,7 +723,53 @@ function aiCalcUpdate(){
   if(showHrs) document.getElementById('aiHoursReclaimed').textContent = hrs_reclaimed;
 }
 
-const GHL_WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/fac08971-83db-40c4-bda6-1189e25fd7b0';
+const GHL_WEBHOOK_URL_AI   = 'https://services.leadconnectorhq.com/hooks/awxkZBfnK7DLVQiXETyI/webhook-trigger/fac08971-83db-40c4-bda6-1189e25fd7b0';
+const GHL_WEBHOOK_URL_LEAD = 'YOUR_LEAD_WEBHOOK_URL_HERE';
+
+async function sendLeadReport(){
+  const firstNameEl = document.getElementById('firstNameLead');
+  const lastNameEl  = document.getElementById('lastNameLead');
+  const emailEl     = document.getElementById('emailLead');
+  const sentEl      = document.getElementById('sentLead');
+  const firstName   = firstNameEl.value.trim();
+  const lastName    = lastNameEl.value.trim();
+  const email       = emailEl.value.trim();
+
+  if(!firstName){ firstNameEl.style.borderColor='rgba(220,60,60,0.6)'; firstNameEl.focus(); return; }
+  firstNameEl.style.borderColor = '';
+  if(!lastName){ lastNameEl.style.borderColor='rgba(220,60,60,0.6)'; lastNameEl.focus(); return; }
+  lastNameEl.style.borderColor = '';
+  if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    emailEl.style.borderColor = 'rgba(220,60,60,0.6)';
+    emailEl.focus();
+    return;
+  }
+  emailEl.style.borderColor = '';
+
+  const payload = {
+    first_name:        firstName,
+    last_name:         lastName,
+    email,
+    source:            'Lead Loss & Revenue Calculator',
+    page_url:          window.location.href,
+    monthly_leads:     document.getElementById('numLeads').value,
+    deal_value:        '$' + document.getElementById('numDeal').value,
+    close_rate:        document.getElementById('numClose').value + '%',
+    leads_missed:      document.getElementById('metMissed').textContent,
+    revenue_lost:      document.getElementById('metLost').textContent,
+    current_revenue:   document.getElementById('revCurrent').textContent,
+    projected_revenue: document.getElementById('revProjected').textContent,
+    monthly_gain:      document.getElementById('gainMonthly').textContent,
+    annual_gain:       document.getElementById('gainAnnual').textContent
+  };
+
+  try {
+    await fetch(GHL_WEBHOOK_URL_LEAD, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+  } catch(e){}
+
+  document.getElementById('leadEmailRow').style.display = 'none';
+  sentEl.style.display = 'block';
+}
 
 async function sendReport(type){
   const firstNameEl = document.getElementById('firstNameAI');
@@ -758,7 +809,7 @@ async function sendReport(type){
   };
 
   try {
-    await fetch(GHL_WEBHOOK_URL, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
+    await fetch(GHL_WEBHOOK_URL_AI, { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
   } catch(e){}
 
   emailEl.style.display = 'none';
