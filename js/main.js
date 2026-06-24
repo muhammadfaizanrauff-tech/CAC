@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===== AI TESTING POPUP (shows after 7s, once per session) ===== */
 function initAIPopup() {
-  if (sessionStorage.getItem('aiPopupSeen')) return;
+  if (localStorage.getItem('aiPopupSeen')) return;
 
   const style = document.createElement('style');
   style.textContent = `
@@ -443,12 +443,15 @@ function initAIPopup() {
 
   function closePopup() {
     overlay.classList.remove('aip-visible');
-    sessionStorage.setItem('aiPopupSeen', '1');
+    localStorage.setItem('aiPopupSeen', '1');
     setTimeout(() => overlay.remove(), 350);
   }
 
   overlay.querySelector('.aip-close').addEventListener('click', closePopup);
   overlay.querySelector('.aip-dismiss').addEventListener('click', closePopup);
+  overlay.querySelector('.aip-btn').addEventListener('click', function() {
+    localStorage.setItem('aiPopupSeen', '1');
+  });
   overlay.addEventListener('click', function(e) {
     if (e.target === overlay) closePopup();
   });
