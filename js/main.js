@@ -249,7 +249,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===== AI TESTING POPUP (shows after 7s, once per session) ===== */
 function initAIPopup() {
-  if (localStorage.getItem('aiPopupSeen')) return;
+  /* Clear flag on page refresh so popup shows again */
+  const navEntry = performance.getEntriesByType('navigation')[0];
+  if (navEntry && navEntry.type === 'reload') {
+    sessionStorage.removeItem('aiPopupSeen');
+  }
+  if (sessionStorage.getItem('aiPopupSeen')) return;
 
   const style = document.createElement('style');
   style.textContent = `
@@ -443,14 +448,14 @@ function initAIPopup() {
 
   function closePopup() {
     overlay.classList.remove('aip-visible');
-    localStorage.setItem('aiPopupSeen', '1');
+    sessionStorage.setItem('aiPopupSeen', '1');
     setTimeout(() => overlay.remove(), 350);
   }
 
   overlay.querySelector('.aip-close').addEventListener('click', closePopup);
   overlay.querySelector('.aip-dismiss').addEventListener('click', closePopup);
   overlay.querySelector('.aip-btn').addEventListener('click', function() {
-    localStorage.setItem('aiPopupSeen', '1');
+    sessionStorage.setItem('aiPopupSeen', '1');
   });
   overlay.addEventListener('click', function(e) {
     if (e.target === overlay) closePopup();
