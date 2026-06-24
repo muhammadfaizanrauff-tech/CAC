@@ -244,114 +244,219 @@ document.addEventListener('DOMContentLoaded', () => {
   initMagnetic();
   initParticles('hero-canvas');
   setActiveNav();
-  initTestAIBtn();
+  initAIPopup();
 });
 
-/* ===== FLOATING TEST AI CALL BUTTON ===== */
-function initTestAIBtn() {
-  /* Inject styles */
+/* ===== AI TESTING POPUP (shows after 7s, once per session) ===== */
+function initAIPopup() {
+  if (sessionStorage.getItem('aiPopupSeen')) return;
+
   const style = document.createElement('style');
   style.textContent = `
-    .ai-test-fab {
+    .aip-overlay {
       position: fixed;
-      bottom: 24px;
-      left: 20px;
-      z-index: 9999;
-      display: inline-flex;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      z-index: 99998;
+      display: flex;
       align-items: center;
-      gap: 10px;
-      background: #0d0d0d;
-      border: 1px solid rgba(201,163,90,0.45);
-      border-radius: 50px;
-      padding: 10px 18px 10px 12px;
-      text-decoration: none;
-      cursor: pointer;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.55), 0 0 0 0 rgba(201,163,90,0);
-      transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
-      animation: fabSlideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
     }
-    .ai-test-fab:hover {
-      border-color: rgba(201,163,90,0.85);
-      box-shadow: 0 6px 32px rgba(0,0,0,0.6), 0 0 20px rgba(201,163,90,0.2);
-      transform: translateY(-2px);
+    .aip-overlay.aip-visible {
+      opacity: 1;
+      pointer-events: auto;
     }
-    .ai-test-fab-icon {
+    .aip-card {
       position: relative;
-      width: 36px;
-      height: 36px;
+      background: #0e0e0e;
+      border: 1px solid rgba(201,163,90,0.25);
+      border-radius: 22px;
+      padding: 2.25rem 2rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(201,163,90,0.08);
+      transform: translateY(24px) scale(0.97);
+      transition: transform 0.35s cubic-bezier(0.34,1.3,0.64,1), opacity 0.3s ease;
+      opacity: 0;
+    }
+    .aip-overlay.aip-visible .aip-card {
+      transform: translateY(0) scale(1);
+      opacity: 1;
+    }
+    .aip-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.05);
+      color: rgba(255,255,255,0.45);
+      font-size: 1rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 0.18s, color 0.18s;
+    }
+    .aip-close:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+    }
+    .aip-icon-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .aip-icon {
+      position: relative;
+      width: 62px;
+      height: 62px;
       border-radius: 50%;
       background: linear-gradient(135deg, #C9A35A 0%, #E7C982 100%);
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
     }
-    .ai-test-fab-icon::before,
-    .ai-test-fab-icon::after {
+    .aip-icon::before,
+    .aip-icon::after {
       content: '';
       position: absolute;
       inset: 0;
       border-radius: 50%;
-      border: 2px solid rgba(201,163,90,0.6);
-      animation: fabRing 2.4s ease-out infinite;
+      border: 2px solid rgba(201,163,90,0.5);
+      animation: aipRing 2.4s ease-out infinite;
     }
-    .ai-test-fab-icon::after { animation-delay: 1.2s; }
-    .ai-test-fab-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.25;
+    .aip-icon::after { animation-delay: 1.2s; }
+    @keyframes aipRing {
+      0%   { transform: scale(1);    opacity: 0.7; }
+      100% { transform: scale(1.9);  opacity: 0;   }
     }
-    .ai-test-fab-label {
-      font-family: 'Montserrat', -apple-system, sans-serif;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.04em;
+    .aip-eyebrow {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
+      color: #C9A35A;
+      margin-bottom: 0.6rem;
+    }
+    .aip-title {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+    .aip-title span {
       background: linear-gradient(135deg, #C9A35A 0%, #E7C982 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      white-space: nowrap;
     }
-    .ai-test-fab-sub {
-      font-family: 'Inter', -apple-system, sans-serif;
-      font-size: 0.65rem;
-      color: rgba(255,255,255,0.38);
-      white-space: nowrap;
+    .aip-body {
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
     }
-    @keyframes fabRing {
-      0%   { transform: scale(1);    opacity: 0.7; }
-      100% { transform: scale(1.85); opacity: 0;   }
+    .aip-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.9rem 1.25rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #C9A35A 0%, #E7C982 100%);
+      color: #0a0a0a;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s, transform 0.15s;
+      min-height: 48px;
     }
-    @keyframes fabSlideIn {
-      from { opacity: 0; transform: translateX(-20px); }
-      to   { opacity: 1; transform: translateX(0);     }
+    .aip-btn:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
     }
+    .aip-dismiss {
+      display: block;
+      text-align: center;
+      margin-top: 0.85rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: color 0.18s;
+    }
+    .aip-dismiss:hover { color: rgba(255,255,255,0.5); }
     @media (max-width: 480px) {
-      .ai-test-fab { padding: 9px 14px 9px 10px; gap: 8px; bottom: 80px; }
-      .ai-test-fab-icon { width: 32px; height: 32px; }
-      .ai-test-fab-label { font-size: 0.68rem; }
-      .ai-test-fab-sub { display: none; }
+      .aip-card { padding: 1.75rem 1.25rem 1.5rem; border-radius: 18px; }
+      .aip-title { font-size: 1.15rem; }
+      .aip-icon { width: 52px; height: 52px; }
     }
   `;
   document.head.appendChild(style);
 
-  /* Build the button */
-  const fab = document.createElement('a');
-  fab.className = 'ai-test-fab';
-  fab.href = 'ai-testing';
-  fab.setAttribute('aria-label', 'Test the AI Call');
-  fab.innerHTML = `
-    <span class="ai-test-fab-icon">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="#0a0a0a">
-        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.69-1.69a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-      </svg>
-    </span>
-    <span class="ai-test-fab-text">
-      <span class="ai-test-fab-label">Test AI Call</span>
-      <span class="ai-test-fab-sub">Try it live →</span>
-    </span>
+  const overlay = document.createElement('div');
+  overlay.className = 'aip-overlay';
+  overlay.setAttribute('role', 'dialog');
+  overlay.setAttribute('aria-modal', 'true');
+  overlay.setAttribute('aria-label', 'Try our AI Voice demo');
+  overlay.innerHTML = `
+    <div class="aip-card">
+      <button class="aip-close" aria-label="Close">&times;</button>
+      <div class="aip-icon-wrap">
+        <div class="aip-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="#0a0a0a">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.69-1.69a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </div>
+      </div>
+      <div class="aip-eyebrow">Live AI Demo</div>
+      <h2 class="aip-title">Want to Hear <span>AI Answer</span> Your Calls?</h2>
+      <p class="aip-body">Our AI picks up every inbound call and follows up on every lead — 24/7, no staff needed. Give it a real call or test the outbound AI right now and hear it for yourself.</p>
+      <a class="aip-btn" href="ai-testing">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.69-1.69a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        Test the AI Call Now
+      </a>
+      <span class="aip-dismiss">No thanks, maybe later</span>
+    </div>
   `;
+  document.body.appendChild(overlay);
 
-  document.body.appendChild(fab);
+  function closePopup() {
+    overlay.classList.remove('aip-visible');
+    sessionStorage.setItem('aiPopupSeen', '1');
+    setTimeout(() => overlay.remove(), 350);
+  }
+
+  overlay.querySelector('.aip-close').addEventListener('click', closePopup);
+  overlay.querySelector('.aip-dismiss').addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e) {
+    if (e.target === overlay) closePopup();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closePopup();
+  }, { once: true });
+
+  setTimeout(function() {
+    overlay.classList.add('aip-visible');
+  }, 7000);
 }
