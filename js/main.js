@@ -244,4 +244,114 @@ document.addEventListener('DOMContentLoaded', () => {
   initMagnetic();
   initParticles('hero-canvas');
   setActiveNav();
+  initTestAIBtn();
 });
+
+/* ===== FLOATING TEST AI CALL BUTTON ===== */
+function initTestAIBtn() {
+  /* Inject styles */
+  const style = document.createElement('style');
+  style.textContent = `
+    .ai-test-fab {
+      position: fixed;
+      bottom: 24px;
+      left: 20px;
+      z-index: 9999;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #0d0d0d;
+      border: 1px solid rgba(201,163,90,0.45);
+      border-radius: 50px;
+      padding: 10px 18px 10px 12px;
+      text-decoration: none;
+      cursor: pointer;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.55), 0 0 0 0 rgba(201,163,90,0);
+      transition: box-shadow 0.25s ease, border-color 0.25s ease, transform 0.2s ease;
+      animation: fabSlideIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    .ai-test-fab:hover {
+      border-color: rgba(201,163,90,0.85);
+      box-shadow: 0 6px 32px rgba(0,0,0,0.6), 0 0 20px rgba(201,163,90,0.2);
+      transform: translateY(-2px);
+    }
+    .ai-test-fab-icon {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #C9A35A 0%, #E7C982 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ai-test-fab-icon::before,
+    .ai-test-fab-icon::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      border: 2px solid rgba(201,163,90,0.6);
+      animation: fabRing 2.4s ease-out infinite;
+    }
+    .ai-test-fab-icon::after { animation-delay: 1.2s; }
+    .ai-test-fab-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.25;
+    }
+    .ai-test-fab-label {
+      font-family: 'Montserrat', -apple-system, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, #C9A35A 0%, #E7C982 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      white-space: nowrap;
+    }
+    .ai-test-fab-sub {
+      font-family: 'Inter', -apple-system, sans-serif;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.38);
+      white-space: nowrap;
+    }
+    @keyframes fabRing {
+      0%   { transform: scale(1);    opacity: 0.7; }
+      100% { transform: scale(1.85); opacity: 0;   }
+    }
+    @keyframes fabSlideIn {
+      from { opacity: 0; transform: translateX(-20px); }
+      to   { opacity: 1; transform: translateX(0);     }
+    }
+    @media (max-width: 480px) {
+      .ai-test-fab { padding: 9px 14px 9px 10px; gap: 8px; bottom: 80px; }
+      .ai-test-fab-icon { width: 32px; height: 32px; }
+      .ai-test-fab-label { font-size: 0.68rem; }
+      .ai-test-fab-sub { display: none; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  /* Build the button */
+  const fab = document.createElement('a');
+  fab.className = 'ai-test-fab';
+  fab.href = 'ai-testing';
+  fab.setAttribute('aria-label', 'Test the AI Call');
+  fab.innerHTML = `
+    <span class="ai-test-fab-icon">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#0a0a0a">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.77a16 16 0 0 0 6.29 6.29l1.69-1.69a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+    </span>
+    <span class="ai-test-fab-text">
+      <span class="ai-test-fab-label">Test AI Call</span>
+      <span class="ai-test-fab-sub">Try it live →</span>
+    </span>
+  `;
+
+  document.body.appendChild(fab);
+}
