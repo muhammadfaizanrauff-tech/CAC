@@ -23,6 +23,13 @@
     .about-badge-card-left{position:absolute;bottom:-20px;left:-20px;background:rgba(10,10,10,0.9);border:1px solid rgba(216,169,91,0.25);border-radius:16px;padding:1.25rem 1.5rem;backdrop-filter:blur(20px);}
     .about-badge-card .num,.about-badge-card-left .num{font-family:'Montserrat',sans-serif;font-size:2rem;color:var(--gold);font-weight:700;line-height:1;}
     .about-badge-card .lbl,.about-badge-card-left .lbl{font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;}
+    .about-badges-mobile{display:none;}
+    @media(max-width:900px){
+      .about-badge-card,.about-badge-card-left{display:none;}
+      .about-badges-mobile{display:flex;gap:1rem;margin-top:1.5rem;}
+      .about-badge-mobile{flex:1;background:rgba(10,10,10,0.9);border:1px solid rgba(216,169,91,0.25);border-radius:16px;padding:1.1rem 1.25rem;backdrop-filter:blur(20px);}
+      .about-badge-mobile .lbl{font-size:0.75rem;color:rgba(255,255,255,0.45);margin-top:0.2rem;line-height:1.5;}
+    }
     .values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem;}
     @media(max-width:768px){.values-grid{grid-template-columns:1fr;}}
     .value-card{background:rgba(10,10,10,0.7);border:var(--border);border-radius:16px;padding:2rem;transition:all 0.35s ease;}
@@ -99,6 +106,16 @@
         <div class="about-badge-card">
           <img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a3da3526507a79601816b4e.png" alt="GoHighLevel" style="width:32px;height:32px;object-fit:contain;margin-bottom:0.5rem;display:block;"/>
           <div class="lbl">GoHighLevel<br/>Expert Setup</div>
+        </div>
+        <div class="about-badges-mobile">
+          <div class="about-badge-mobile">
+            <img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a3da38f257ee1fdf526beb5.png" alt="Claude AI" style="width:28px;height:28px;object-fit:contain;margin-bottom:0.4rem;display:block;"/>
+            <div class="lbl">Claude AI<br/>Integration Expert</div>
+          </div>
+          <div class="about-badge-mobile">
+            <img src="https://assets.cdn.filesafe.space/awxkZBfnK7DLVQiXETyI/media/6a3da3526507a79601816b4e.png" alt="GoHighLevel" style="width:28px;height:28px;object-fit:contain;margin-bottom:0.4rem;display:block;"/>
+            <div class="lbl">GoHighLevel<br/>Expert Setup</div>
+          </div>
         </div>
       </div>
       <div data-aos="left" data-delay="100">
