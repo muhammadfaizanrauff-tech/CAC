@@ -1,3 +1,20 @@
+/* ===== NAV DROPDOWN CLICK ===== */
+document.querySelectorAll('.nav-drop-toggle').forEach(function(btn) {
+  btn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    var li = btn.closest('.nav-has-drop');
+    var isOpen = li.classList.contains('open');
+    document.querySelectorAll('.nav-has-drop.open').forEach(function(el) { el.classList.remove('open'); });
+    if (!isOpen) li.classList.add('open');
+  });
+});
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-has-drop.open').forEach(function(el) { el.classList.remove('open'); });
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') document.querySelectorAll('.nav-has-drop.open').forEach(function(el) { el.classList.remove('open'); });
+});
+
 /* ===== SCROLL PROGRESS ===== */
 const prog = document.querySelector('.scroll-progress');
 const backTop = document.querySelector('.back-top');
