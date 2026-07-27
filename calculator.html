@@ -391,10 +391,13 @@
         <div class="inp-group">
           <div class="inp-label">
             <span>Admin Monthly Salary / Person</span>
-            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalaryNum" value="4000" min="2000" max="8000" step="100" oninput="syncSl('aiSalarySl',this,2000,8000);aiCalcUpdate()" style="width:64px;"/></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact $</span>
+              <div class="inp-val-row"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalaryNum" value="4000" min="0" oninput="syncSl('aiSalarySl',this,0,16000);aiCalcUpdate()" style="width:64px;"/></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="aiSalarySl" min="2000" max="8000" value="4000" step="100" oninput="syncNum('aiSalaryNum',this);aiCalcUpdate()"/>
-          <div class="inp-hint">Base monthly salary before taxes/overhead</div>
+          <input type="range" class="inp-slider" id="aiSalarySl" min="0" max="16000" value="4000" step="100" oninput="syncNum('aiSalaryNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Slider goes to $16K — over that, type your exact number above</div>
         </div>
 
         <div class="inp-divider"></div>
@@ -414,10 +417,13 @@
         <div class="inp-group">
           <div class="inp-label">
             <span>Sales Rep Monthly Salary / Person</span>
-            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalesSalaryNum" value="5000" min="2000" max="12000" step="100" oninput="syncSl('aiSalesSalarySl',this,2000,12000);aiCalcUpdate()" style="width:64px;"/></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact $</span>
+              <div class="inp-val-row"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiSalesSalaryNum" value="5000" min="0" oninput="syncSl('aiSalesSalarySl',this,0,24000);aiCalcUpdate()" style="width:64px;"/></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="aiSalesSalarySl" min="2000" max="12000" value="5000" step="100" oninput="syncNum('aiSalesSalaryNum',this);aiCalcUpdate()"/>
-          <div class="inp-hint">Base monthly salary before taxes/overhead</div>
+          <input type="range" class="inp-slider" id="aiSalesSalarySl" min="0" max="24000" value="5000" step="100" oninput="syncNum('aiSalesSalaryNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Slider goes to $24K — over that, type your exact number above</div>
         </div>
 
         <div class="inp-divider"></div>
@@ -437,10 +443,13 @@
         <div class="inp-group">
           <div class="inp-label">
             <span>Marketing Rep Monthly Salary / Person</span>
-            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiMktSalaryNum" value="4500" min="2000" max="12000" step="100" oninput="syncSl('aiMktSalarySl',this,2000,12000);aiCalcUpdate()" style="width:64px;"/></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact $</span>
+              <div class="inp-val-row"><span class="inp-unit">$</span><input type="number" class="inp-num" id="aiMktSalaryNum" value="4500" min="0" oninput="syncSl('aiMktSalarySl',this,0,24000);aiCalcUpdate()" style="width:64px;"/></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="aiMktSalarySl" min="2000" max="12000" value="4500" step="100" oninput="syncNum('aiMktSalaryNum',this);aiCalcUpdate()"/>
-          <div class="inp-hint">Base monthly salary before taxes/overhead</div>
+          <input type="range" class="inp-slider" id="aiMktSalarySl" min="0" max="24000" value="4500" step="100" oninput="syncNum('aiMktSalaryNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Slider goes to $24K — over that, type your exact number above</div>
         </div>
 
         <!-- AI Package -->
@@ -481,9 +490,13 @@
         <div class="hours-field" id="hoursField">
           <div class="inp-label">
             <span>Hours/week on phones &amp; admin</span>
-            <div class="inp-val-wrap"><input type="number" class="inp-num" id="aiHoursNum" value="20" min="1" max="80" oninput="syncSl('aiHoursSl',this,1,80);aiCalcUpdate()" style="width:40px;"/><span class="inp-unit">hrs</span></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact hrs</span>
+              <div class="inp-val-row"><input type="number" class="inp-num" id="aiHoursNum" value="20" min="0" max="168" oninput="syncSl('aiHoursSl',this,0,168);aiCalcUpdate()" style="width:40px;"/><span class="inp-unit">hrs</span></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="aiHoursSl" min="1" max="80" value="20" step="1" oninput="syncNum('aiHoursNum',this);aiCalcUpdate()"/>
+          <input type="range" class="inp-slider" id="aiHoursSl" min="0" max="168" value="20" step="1" oninput="syncNum('aiHoursNum',this);aiCalcUpdate()"/>
+          <div class="inp-hint">Slider covers a full week (168 hrs) — type an exact number above</div>
         </div>
 
         <div class="inp-divider"></div>
