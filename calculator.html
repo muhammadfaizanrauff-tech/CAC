@@ -116,7 +116,9 @@
     .inp-num::-webkit-inner-spin-button,.inp-num::-webkit-outer-spin-button{-webkit-appearance:none;}
     .inp-num:focus{border-bottom-color:var(--gold);background:rgba(216,169,91,0.04);}
     .inp-unit{color:var(--gold);font-weight:700;font-size:0.83rem;font-family:'Montserrat',sans-serif;margin-left:1px;}
-    .inp-val-wrap{display:flex;align-items:center;}
+    .inp-val-wrap{display:flex;flex-direction:column;align-items:flex-end;gap:0.2rem;}
+    .inp-val-row{display:flex;align-items:center;}
+    .inp-val-tag{font-size:0.58rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;color:rgba(216,169,91,0.55);}
 
     /* Chart custom override */
     .chart-overrides{margin-bottom:1rem;}
@@ -250,27 +252,36 @@
         <div class="inp-group">
           <div class="inp-label">
             <span>Monthly Leads</span>
-            <div class="inp-val-wrap"><input type="number" class="inp-num" id="numLeads" value="100" min="1" oninput="syncSl('slLeads',this,5,5000);calcUpdate()"/></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact #</span>
+              <div class="inp-val-row"><input type="number" class="inp-num" id="numLeads" value="100" min="0" oninput="syncSl('slLeads',this,0,1000);calcUpdate()"/></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="slLeads" min="5" max="500" value="100" step="5" oninput="syncNum('numLeads',this);calcUpdate()"/>
-          <div class="inp-hint">Total leads per month (type any number)</div>
+          <input type="range" class="inp-slider" id="slLeads" min="0" max="1000" value="100" step="10" oninput="syncNum('numLeads',this);calcUpdate()"/>
+          <div class="inp-hint">Slider goes to 1,000 — over that, type your exact number above</div>
         </div>
 
         <div class="inp-group">
           <div class="inp-label">
             <span>Average Deal Value</span>
-            <div class="inp-val-wrap"><span class="inp-unit">$</span><input type="number" class="inp-num" id="numDeal" value="2000" min="1" oninput="syncSl('slDeal',this,100,999999);calcUpdate()" style="width:78px;"/></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact $</span>
+              <div class="inp-val-row"><span class="inp-unit">$</span><input type="number" class="inp-num" id="numDeal" value="2000" min="0" oninput="syncSl('slDeal',this,0,100000);calcUpdate()" style="width:78px;"/></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="slDeal" min="100" max="50000" value="2000" step="100" oninput="syncNum('numDeal',this);calcUpdate()"/>
-          <div class="inp-hint">Revenue per client (enter your real number)</div>
+          <input type="range" class="inp-slider" id="slDeal" min="0" max="100000" value="2000" step="500" oninput="syncNum('numDeal',this);calcUpdate()"/>
+          <div class="inp-hint">Slider goes to $100K — over that, type your exact number above</div>
         </div>
 
         <div class="inp-group" style="margin-bottom:0;">
           <div class="inp-label">
             <span>Current Close Rate</span>
-            <div class="inp-val-wrap"><input type="number" class="inp-num" id="numClose" value="20" min="1" max="100" oninput="syncSl('slClose',this,1,100);calcUpdate()"/><span class="inp-unit">%</span></div>
+            <div class="inp-val-wrap">
+              <span class="inp-val-tag">✎ Type exact %</span>
+              <div class="inp-val-row"><input type="number" class="inp-num" id="numClose" value="20" min="1" max="100" oninput="syncSl('slClose',this,1,100);calcUpdate()"/><span class="inp-unit">%</span></div>
+            </div>
           </div>
-          <input type="range" class="inp-slider" id="slClose" min="1" max="80" value="20" step="1" oninput="syncNum('numClose',this);calcUpdate()"/>
+          <input type="range" class="inp-slider" id="slClose" min="1" max="100" value="20" step="1" oninput="syncNum('numClose',this);calcUpdate()"/>
           <div class="inp-hint">% of leads you convert to paying clients</div>
         </div>
 
