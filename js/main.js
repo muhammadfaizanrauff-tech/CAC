@@ -1,19 +1,110 @@
-/* ===== NAV DROPDOWN CLICK ===== */
-document.querySelectorAll('.nav-drop-toggle').forEach(function(btn) {
-  btn.addEventListener('click', function(e) {
-    e.stopPropagation();
-    var li = btn.closest('.nav-has-drop');
-    var isOpen = li.classList.contains('open');
-    document.querySelectorAll('.nav-has-drop.open').forEach(function(el) { el.classList.remove('open'); });
-    if (!isOpen) li.classList.add('open');
+/* ===== NAV DROPDOWN =====
+   Hover the toggle -> menu opens and stays while the cursor rests on it.
+   Leave the toggle WITHOUT reaching the menu -> it lingers for 7s, then closes.
+   Reach the menu -> it sticks until you leave it, then closes after 250ms.
+   Re-entering the toggle mid-countdown restarts the 7s from zero.
+   Click pins it open; outside click, Escape, scroll or another nav link closes it. */
+(function() {
+  var HOLD_MS  = 7000; // linger when the cursor never reached the menu
+  var GRACE_MS = 250;  // forgiveness after leaving the menu itself
+  var groups = [];
+
+  function closeAll(except) {
+    groups.forEach(function(g) { if (g !== except) g.close(); });
+  }
+  function anyOpen() {
+    return groups.some(function(g) {
+      return g.li.classList.contains('menu-shown') || g.li.classList.contains('open');
+    });
+  }
+
+  document.querySelectorAll('.nav-has-drop').forEach(function(li) {
+    var menu   = li.querySelector('.nav-drop');
+    var toggle = li.querySelector('.nav-drop-toggle');
+    if (!menu || !toggle) return;
+
+    var hold = null, grace = null, reached = false;
+    var g = {
+      li: li,
+      open: function() {
+        clearTimeout(hold); clearTimeout(grace); hold = grace = null;
+        li.classList.add('menu-shown');
+        toggle.setAttribute('aria-expanded', 'true');
+      },
+      close: function() {
+        clearTimeout(hold); clearTimeout(grace); hold = grace = null;
+        reached = false;
+        li.classList.remove('menu-shown', 'open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    };
+    groups.push(g);
+    toggle.setAttribute('aria-haspopup', 'true');
+    toggle.setAttribute('aria-expanded', 'false');
+
+    // Entering the toggle (or the bridge below it)
+    li.addEventListener('pointerenter', function(e) {
+      if (e.pointerType === 'touch') return;
+      var counting = hold !== null;
+      closeAll(g);
+      g.open();
+      if (counting) hold = setTimeout(g.close, HOLD_MS); // re-entry restarts the 7s
+    });
+
+    // Entering the menu itself commits it — no auto-close from here on
+    menu.addEventListener('pointerenter', function(e) {
+      if (e.pointerType === 'touch') return;
+      reached = true;
+      clearTimeout(hold); clearTimeout(grace); hold = grace = null;
+    });
+
+    // Leaving the whole zone (toggle + bridge + menu)
+    li.addEventListener('pointerleave', function(e) {
+      if (e.pointerType === 'touch') return;
+      if (li.classList.contains('open')) return; // click-pinned stays put
+      clearTimeout(hold); clearTimeout(grace); hold = grace = null;
+      if (reached) grace = setTimeout(g.close, GRACE_MS);
+      else hold = setTimeout(g.close, HOLD_MS);
+    });
+
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      var pinned = li.classList.contains('open');
+      closeAll(g);
+      if (pinned) { g.close(); return; }
+      g.open();
+      li.classList.add('open');
+      reached = true;
+    });
+
+    // Keyboard: opens on focus, closes when focus leaves the group
+    li.addEventListener('focusin', function() {
+      if (toggle.matches(':focus-visible') || menu.contains(document.activeElement)) {
+        closeAll(g);
+        g.open();
+        reached = true;
+      }
+    });
+    li.addEventListener('focusout', function(e) {
+      if (!li.contains(e.relatedTarget)) g.close();
+    });
   });
-});
-document.addEventListener('click', function() {
-  document.querySelectorAll('.nav-has-drop.open').forEach(function(el) { el.classList.remove('open'); });
-});
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') document.querySelectorAll('.nav-has-drop.open').forEach(function(el) { el.classList.remove('open'); });
-});
+
+  if (!groups.length) return;
+
+  document.addEventListener('click', function() { closeAll(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeAll(); });
+  window.addEventListener('scroll', function() { if (anyOpen()) closeAll(); }, { passive: true });
+
+  // Hovering any other nav item closes it immediately
+  document.querySelectorAll('.nav-inner .nav-links > li, .nav-inner .nav-logo, .nav-inner > .nav-btn').forEach(function(el) {
+    if (el.classList.contains('nav-has-drop')) return;
+    el.addEventListener('pointerenter', function(e) {
+      if (e.pointerType === 'touch') return;
+      closeAll();
+    });
+  });
+})();
 
 /* ===== SCROLL PROGRESS ===== */
 const prog = document.querySelector('.scroll-progress');
